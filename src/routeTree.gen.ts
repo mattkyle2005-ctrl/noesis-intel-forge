@@ -10,33 +10,43 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CoursesMetalsTheftRouteImport } from './routes/courses.metals-theft'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CoursesMetalsTheftRoute = CoursesMetalsTheftRouteImport.update({
+  id: '/courses/metals-theft',
+  path: '/courses/metals-theft',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/courses/metals-theft': typeof CoursesMetalsTheftRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/courses/metals-theft': typeof CoursesMetalsTheftRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/courses/metals-theft': typeof CoursesMetalsTheftRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/courses/metals-theft'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/courses/metals-theft'
+  id: '__root__' | '/' | '/courses/metals-theft'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CoursesMetalsTheftRoute: typeof CoursesMetalsTheftRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +58,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/courses/metals-theft': {
+      id: '/courses/metals-theft'
+      path: '/courses/metals-theft'
+      fullPath: '/courses/metals-theft'
+      preLoaderRoute: typeof CoursesMetalsTheftRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CoursesMetalsTheftRoute: CoursesMetalsTheftRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
