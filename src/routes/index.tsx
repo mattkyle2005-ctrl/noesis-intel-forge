@@ -1,68 +1,52 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 import {
-  Crosshair, ShieldCheck, MapPin, Users, Lock, Search,
-  Scale, BarChart3, Network, ArrowRight, Radio, Menu,
-  Phone, Mail, MapPinned, Zap, Target, Award,
+  Search, Network, ClipboardList, Radio, Scale,
+  ShieldCheck, Building2, Landmark, ArrowRight, Menu,
+  Phone, Mail, MapPinned, AlertTriangle, FileWarning,
+  TrainFront, Zap, Target, CheckCircle2,
 } from "lucide-react";
 import heroImg from "@/assets/hero.jpg";
 import aboutImg from "@/assets/about.jpg";
 import logoImg from "@/assets/logo.png";
-import cMetals from "@/assets/course-metals.jpg";
 import cIntel from "@/assets/course-intel.jpg";
 import cInvestigate from "@/assets/course-investigate.jpg";
-import cComms from "@/assets/course-comms.jpg";
 import cLegal from "@/assets/course-legal.jpg";
-import cIndustry from "@/assets/course-industry.jpg";
 
 export const Route = createFileRoute("/")({
   component: Landing,
+  head: () => ({
+    meta: [
+      { title: "Noesis — Intelligence-Led Metals Theft Investigations & Enforcement Training" },
+      { name: "description", content: "South African training in intelligence-led investigation and enforcement. Flagship 5-day programme in metals theft, from community tip to courtroom conviction." },
+      { property: "og:title", content: "Noesis — From cable to courtroom." },
+      { property: "og:description", content: "Intelligence-led investigation and enforcement training for SAPS, metro police and SOE risk teams." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
 });
 
 const nav = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Courses", href: "#courses" },
-  { label: "For Organisations", href: "#organisations" },
-  { label: "Contact", href: "#contact" },
+  { label: "The Problem", href: "#problem" },
+  { label: "Approach", href: "#approach" },
+  { label: "Who It's For", href: "#audiences" },
+  { label: "Programme", href: "#programme" },
+  { label: "Enquire", href: "#contact" },
 ];
-
-const pillars = [
-  { icon: Crosshair, title: "Targeted Training", body: "Industry-specific, scenario-based learning." },
-  { icon: ShieldCheck, title: "Practical & Applied", body: "Real-world case studies and intelligence tools." },
-  { icon: MapPin, title: "South Africa Focused", body: "Designed for the unique challenges of metals theft." },
-  { icon: Users, title: "Stronger Together", body: "Building capability across agencies and sectors." },
-  { icon: Lock, title: "Safer Communities", body: "Turning intelligence into prevention and impact." },
-];
-
-const approach = [
-  { icon: Search, title: "Intelligence Driven", body: "Actionable insights that drive operations." },
-  { icon: Zap, title: "Practical Focus", body: "Tools and techniques you can apply immediately." },
-  { icon: Award, title: "Expert Led", body: "Training developed by industry experts." },
-  { icon: BarChart3, title: "Measurable Impact", body: "Stronger outcomes for safer communities." },
-];
-
-const courses = [
-  { img: cMetals, icon: Target, title: "Metals Theft Overview", body: "Understand the scope, impact and modus operandi.", level: "Foundation" },
-  { img: cIntel, icon: Search, title: "Crime Intelligence Fundamentals", body: "Collection, analysis and actionable intelligence.", level: "Foundation" },
-  { img: cInvestigate, icon: Network, title: "Investigative Techniques", body: "From scene to intelligence-led investigation.", level: "Intermediate" },
-  { img: cComms, icon: Radio, title: "Information Management", body: "Systems, databases and intelligence workflows.", level: "Intermediate" },
-  { img: cLegal, icon: Scale, title: "Case Building & Prosecution", body: "Strengthen dockets. Secure convictions.", level: "Advanced" },
-  { img: cIndustry, icon: ShieldCheck, title: "Industry Partnerships", body: "Collaboration for prevention and impact.", level: "Advanced" },
-];
-
-const partners = ["SAPS", "PSIRA", "TRANSNET", "ESKOM", "SANRAL", "PRASA", "TELKOM", "MINE SA"];
 
 function Landing() {
   return (
     <div id="home" className="min-h-screen bg-background text-foreground">
       <Header />
       <Hero />
-      <Pillars />
-      <About />
-      <Courses />
-      <Stats />
-      <Partners />
-      <CTA />
+      <Problem />
+      <Approach />
+      <Audiences />
+      <Programme />
+      <WhyNoesis />
+      <Facilitators />
+      <Contact />
       <Footer />
     </div>
   );
@@ -71,10 +55,10 @@ function Landing() {
 function Logo({ className = "" }: { className?: string }) {
   return (
     <a href="#home" className={`flex items-center gap-3 ${className}`}>
-      <img src={logoImg} alt="Noesis Academy" className="h-10 w-10 object-contain" width={40} height={40} />
+      <img src={logoImg} alt="Noesis" className="h-10 w-10 object-contain" width={40} height={40} />
       <div className="leading-none">
         <div className="text-lg font-bold tracking-[0.25em] text-foreground">NOESIS</div>
-        <div className="text-[0.65rem] tracking-[0.35em] text-copper mt-0.5">ACADEMY</div>
+        <div className="text-[0.6rem] tracking-[0.35em] text-copper mt-0.5">TRAINING</div>
       </div>
     </a>
   );
@@ -97,7 +81,7 @@ function Header() {
           href="#contact"
           className="hidden sm:inline-flex group items-center gap-2 bg-copper text-primary-foreground px-5 py-2.5 text-sm font-semibold tracking-wide hover:bg-bronze transition-colors"
         >
-          ENROL NOW <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          ENQUIRE <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
         </a>
         <button className="lg:hidden text-foreground" aria-label="Menu"><Menu /></button>
       </div>
@@ -105,113 +89,218 @@ function Header() {
   );
 }
 
+const cycle = [
+  { n: "01", label: "COLLECT", body: "Source handling. OSINT. Institutional intelligence." },
+  { n: "02", label: "ANALYSE", body: "5×5×5 grading. Link charts. Geospatial patterns." },
+  { n: "03", label: "PLAN", body: "Mandate. Warrants. Tactical operational order." },
+  { n: "04", label: "EXECUTE", body: "Coordinated operation. Chain of custody. Courtroom-ready docket." },
+];
+
 function Hero() {
   return (
     <section className="relative overflow-hidden">
       <div className="absolute inset-0 bg-grid opacity-40" />
-      <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 70% 40%, transparent 30%, var(--background) 80%)" }} />
-      <div className="container-x relative grid lg:grid-cols-[1.1fr_1fr] gap-12 lg:gap-16 items-center py-20 lg:py-28">
-        <div className="animate-fade-up">
-          <div className="inline-flex items-center gap-3 mb-8">
-            <span className="h-px w-10 bg-copper" />
-            <span className="text-copper text-xs font-semibold tracking-[0.3em]">INTELLIGENCE. THAT MAKES A DIFFERENCE.</span>
+      <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 70% 30%, transparent 30%, var(--background) 85%)" }} />
+      <div className="container-x relative pt-16 lg:pt-24 pb-20">
+        <div className="grid lg:grid-cols-[1.15fr_1fr] gap-12 lg:gap-16 items-center">
+          <div className="animate-fade-up">
+            <div className="inline-flex items-center gap-3 mb-8">
+              <span className="h-px w-10 bg-copper" />
+              <span className="text-copper text-xs font-semibold tracking-[0.3em]">INTELLIGENCE-LED INVESTIGATION & ENFORCEMENT</span>
+            </div>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.03] mb-6">
+              FROM CABLE<br />
+              TO <span className="text-gradient-copper">COURTROOM.</span>
+            </h1>
+            <p className="text-muted-foreground text-lg max-w-xl mb-10 leading-relaxed">
+              Noesis is a South African training company. Our flagship programme teaches investigators the full operational cycle for metals theft — from the community tip to the conviction that survives cross-examination.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <a href="#programme" className="group inline-flex items-center gap-3 bg-copper text-primary-foreground px-7 py-4 text-sm font-semibold tracking-wide hover:bg-bronze transition-colors shadow-[var(--shadow-copper)]">
+                THE FLAGSHIP PROGRAMME <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </a>
+              <a href="#approach" className="inline-flex items-center gap-3 border border-border px-7 py-4 text-sm font-semibold tracking-wide text-foreground hover:border-copper hover:text-copper transition-colors">
+                OUR METHOD
+              </a>
+            </div>
           </div>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.02] mb-6">
-            EMPOWERING<br />PROFESSIONALS.<br />
-            <span className="text-gradient-copper">PROTECTING</span> COMMUNITIES.
-          </h1>
-          <p className="text-muted-foreground text-lg max-w-xl mb-10 leading-relaxed">
-            Specialised training in metals theft crime intelligence and combat tactics for law enforcement and private security professionals across South Africa.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <a href="#courses" className="group inline-flex items-center gap-3 bg-copper text-primary-foreground px-7 py-4 text-sm font-semibold tracking-wide hover:bg-bronze transition-colors shadow-[var(--shadow-copper)]">
-              EXPLORE COURSES <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </a>
-            <a href="#about" className="inline-flex items-center gap-3 border border-border px-7 py-4 text-sm font-semibold tracking-wide text-foreground hover:border-copper hover:text-copper transition-colors">
-              OUR APPROACH
-            </a>
+
+          <div className="relative animate-fade-up" style={{ animationDelay: "0.15s" }}>
+            <div className="absolute -inset-4 bg-gradient-to-br from-copper/15 to-transparent blur-3xl" />
+            <div className="relative overflow-hidden border border-copper/30">
+              <img src={heroImg} alt="Investigative briefing" className="w-full h-[520px] object-cover" width={1600} height={1200} />
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
+              <div className="absolute top-4 left-4 flex items-center gap-2 text-[0.6rem] tracking-[0.3em] text-copper bg-background/70 backdrop-blur px-3 py-1.5 border border-copper/40">
+                <span className="h-1.5 w-1.5 bg-copper animate-pulse rounded-full" /> OPERATIONAL CYCLE
+              </div>
+              <div className="absolute inset-x-0 h-24 bg-gradient-to-b from-transparent via-copper/10 to-transparent pointer-events-none animate-scan" />
+            </div>
           </div>
         </div>
-        <div className="relative animate-fade-up" style={{ animationDelay: "0.2s" }}>
-          <div className="absolute -inset-4 bg-gradient-to-br from-copper/20 to-transparent blur-3xl" />
-          <div className="relative overflow-hidden border border-copper/30">
-            <img src={heroImg} alt="Noesis intelligence unit at rail infrastructure" className="w-full h-[560px] object-cover" width={1600} height={1200} />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
-            <div className="absolute top-4 left-4 flex items-center gap-2 text-[0.65rem] tracking-[0.3em] text-copper bg-background/60 backdrop-blur px-3 py-1.5 border border-copper/40">
-              <span className="h-1.5 w-1.5 bg-copper animate-pulse rounded-full" /> LIVE OPS
-            </div>
-            <div className="absolute bottom-4 right-4 text-right">
-              <div className="text-xs tracking-[0.3em] text-copper">NOESIS</div>
-              <div className="text-[0.6rem] tracking-[0.25em] text-muted-foreground">INTELLIGENCE UNIT</div>
-            </div>
-            <div className="absolute inset-x-0 h-24 bg-gradient-to-b from-transparent via-copper/10 to-transparent pointer-events-none animate-scan" />
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
 
-function Pillars() {
-  return (
-    <section className="border-y border-border">
-      <div className="container-x grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-        {pillars.map((p, i) => (
-          <div
-            key={p.title}
-            className={`p-6 lg:p-8 group hover:bg-secondary/40 transition-colors ${i > 0 ? "lg:border-l border-border" : ""}`}
-          >
-            <p.icon className="h-7 w-7 text-copper mb-4" strokeWidth={1.5} />
-            <div className="text-[0.65rem] tracking-[0.3em] text-copper font-semibold mb-2">{p.title.toUpperCase()}</div>
-            <p className="text-sm text-muted-foreground leading-relaxed">{p.body}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function About() {
-  return (
-    <section id="about" className="py-24 lg:py-32">
-      <div className="container-x grid lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-20 items-center">
-        <div>
-          <div className="inline-flex items-center gap-3 mb-6">
-            <span className="h-px w-10 bg-copper" />
-            <span className="text-copper text-xs font-semibold tracking-[0.3em]">ABOUT NOESIS ACADEMY</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-6">
-            KNOWLEDGE TODAY.<br />
-            <span className="text-gradient-copper">SAFER TOMORROW.</span>
-          </h2>
-          <p className="text-muted-foreground text-lg leading-relaxed mb-10 max-w-lg">
-            We equip professionals with the knowledge, skills and intelligence to disrupt metals theft networks and protect South Africa's critical infrastructure and communities.
-          </p>
-          <div className="grid sm:grid-cols-2 gap-6 mb-10">
-            {approach.map((a) => (
-              <div key={a.title} className="flex gap-4">
-                <div className="shrink-0 h-11 w-11 border border-copper/40 flex items-center justify-center text-copper">
-                  <a.icon className="h-5 w-5" strokeWidth={1.5} />
+        {/* Cycle strip */}
+        <div className="mt-16 lg:mt-20 border-t border-border pt-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border">
+            {cycle.map((s, i) => (
+              <div key={s.n} className="bg-background p-6 relative group">
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-[0.6rem] tracking-[0.3em] text-copper font-semibold">{s.n}</span>
+                  <span className="h-px flex-1 bg-copper/30" />
+                  {i < cycle.length - 1 && <ArrowRight className="h-3 w-3 text-copper/60 hidden md:block" />}
                 </div>
-                <div>
-                  <div className="text-sm font-semibold text-foreground mb-1 tracking-wide">{a.title}</div>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{a.body}</p>
-                </div>
+                <div className="text-sm font-bold tracking-[0.25em] mb-2">{s.label}</div>
+                <p className="text-xs text-muted-foreground leading-relaxed">{s.body}</p>
               </div>
             ))}
           </div>
         </div>
-        <div className="relative">
-          <div className="absolute -inset-6 bg-gradient-to-tr from-copper/15 to-transparent blur-3xl" />
-          <div className="relative border border-border overflow-hidden">
-            <img src={aboutImg} alt="Security officers on patrol" className="w-full h-[520px] object-cover" width={1400} height={1000} loading="lazy" />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
-            <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end">
-              <div>
-                <div className="text-copper text-xs tracking-[0.3em]">FIELD READY</div>
-                <div className="text-2xl font-bold mt-1">Built for the ground.</div>
+      </div>
+    </section>
+  );
+}
+
+const problems = [
+  {
+    icon: Zap,
+    tag: "ESKOM",
+    headline: "R5–7 billion a year in copper cable theft.",
+    body: "A further R2 billion a year to replace stolen cable — before counting the cost of the outages it causes. R221 million in infrastructure theft and vandalism recorded in ten months to February 2025 alone.",
+  },
+  {
+    icon: TrainFront,
+    tag: "TRANSNET & PRASA",
+    headline: "30,000 km of infrastructure lost.",
+    body: "Transnet alone reported 1,121 km of cable stolen in a single financial year. Across Eskom, Transnet and PRASA: roughly 11,000 copper theft incidents a year.",
+  },
+  {
+    icon: Building2,
+    tag: "MUNICIPAL",
+    headline: "R380 million in a single city.",
+    body: "City Power in Johannesburg logged 2,000 cable theft incidents in one financial year at R380 million to repair. Every metro is fighting the same fight with different budgets.",
+  },
+  {
+    icon: FileWarning,
+    tag: "SAPS",
+    headline: "Arrests without convictions aren't progress.",
+    body: "Roughly 18,000 detectives nationally cover every crime category. Syndicates operate in high-visibility jackets in broad daylight. Officers are rarely trained to build the intelligence picture that would catch them before the cable's already gone.",
+  },
+];
+
+function Problem() {
+  return (
+    <section id="problem" className="py-24 lg:py-32 border-t border-border">
+      <div className="container-x">
+        <div className="max-w-3xl mb-14">
+          <div className="inline-flex items-center gap-3 mb-6">
+            <span className="h-px w-10 bg-copper" />
+            <span className="text-copper text-xs font-semibold tracking-[0.3em]">THE PROBLEM</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-6">
+            R45 BILLION LOST A YEAR.<br />
+            <span className="text-gradient-copper">Everyone is reacting.</span>
+          </h2>
+          <p className="text-muted-foreground text-lg leading-relaxed">
+            South Africa loses roughly R45 billion a year to infrastructure theft and vandalism. The figures break down differently for every audience — but the common thread is the same. Nobody is trained to get ahead of it.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-px bg-border border border-border">
+          {problems.map((p) => (
+            <div key={p.tag} className="bg-background p-8 lg:p-10">
+              <div className="flex items-start gap-4 mb-5">
+                <div className="shrink-0 h-11 w-11 border border-copper/40 flex items-center justify-center text-copper">
+                  <p.icon className="h-5 w-5" strokeWidth={1.5} />
+                </div>
+                <div className="text-[0.65rem] tracking-[0.3em] text-copper font-semibold pt-3">{p.tag}</div>
               </div>
-              <div className="text-[0.6rem] tracking-[0.3em] text-muted-foreground">NOESIS · SA</div>
+              <h3 className="text-2xl md:text-3xl font-bold leading-tight mb-4">{p.headline}</h3>
+              <p className="text-muted-foreground leading-relaxed">{p.body}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-10 flex items-start gap-4 max-w-3xl">
+          <AlertTriangle className="h-5 w-5 text-copper mt-1 shrink-0" />
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            This is organised crime operating in plain sight — cable to scrap yard to export. It cannot be solved with more raids. It has to be investigated, analysed, and prosecuted as a value chain.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const steps = [
+  {
+    icon: Search,
+    n: "01",
+    title: "Understand the crime",
+    body: "How metals theft actually works as organised crime — the value chain from cable to scrap yard to export, and who profits at each link.",
+  },
+  {
+    icon: Radio,
+    n: "02",
+    title: "Collect the intelligence",
+    body: "Source handling, OSINT and informant management. Working with banks, second-hand goods dealers and FICA-accountable entities to build a picture before acting.",
+  },
+  {
+    icon: Network,
+    n: "03",
+    title: "Analyse it properly",
+    body: "The 5×5×5 grading system for source reliability and information accuracy. Link-chart and network analysis. Geospatial pattern mapping. Scattered tips become an actionable intelligence product.",
+  },
+  {
+    icon: ClipboardList,
+    n: "04",
+    title: "Plan and execute the operation",
+    body: "Turning an intelligence product into a legally sound tactical operation. Who has what mandate — SAPS, metro police, peace officer — the warrants and legal grounds required, and how the operation is actually run.",
+  },
+  {
+    icon: Scale,
+    n: "05",
+    title: "Make it stick in court",
+    body: "Chain of custody. POCA, racketeering, money laundering and asset forfeiture. Building a docket that survives cross-examination instead of collapsing at trial.",
+  },
+];
+
+function Approach() {
+  return (
+    <section id="approach" className="py-24 lg:py-32 bg-secondary/30 border-y border-border relative">
+      <div className="absolute inset-0 bg-grid opacity-20" />
+      <div className="container-x relative">
+        <div className="grid lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20">
+          <div className="lg:sticky lg:top-28 self-start">
+            <div className="inline-flex items-center gap-3 mb-6">
+              <span className="h-px w-10 bg-copper" />
+              <span className="text-copper text-xs font-semibold tracking-[0.3em]">THE NOESIS APPROACH</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-6">
+              One connected<br />
+              <span className="text-gradient-copper">operational cycle.</span>
+            </h2>
+            <p className="text-muted-foreground text-lg leading-relaxed max-w-md">
+              Not tactics in isolation. Not forensics in isolation. Not legal theory in isolation. The full cycle, taught as one method.
+            </p>
+          </div>
+
+          <div className="relative">
+            <div className="absolute left-[22px] top-4 bottom-4 w-px bg-copper/30 hidden md:block" />
+            <div className="space-y-6">
+              {steps.map((s) => (
+                <div key={s.n} className="relative flex gap-6 group">
+                  <div className="shrink-0 h-11 w-11 border border-copper/50 bg-background flex items-center justify-center text-copper relative z-10 group-hover:bg-copper group-hover:text-primary-foreground transition-colors">
+                    <s.icon className="h-5 w-5" strokeWidth={1.5} />
+                  </div>
+                  <div className="flex-1 border border-border bg-card p-6 group-hover:border-copper/50 transition-colors">
+                    <div className="flex items-baseline gap-3 mb-2">
+                      <span className="text-[0.6rem] tracking-[0.3em] text-copper font-semibold">STEP {s.n}</span>
+                      <span className="h-px flex-1 bg-border" />
+                    </div>
+                    <h3 className="text-xl md:text-2xl font-bold mb-3">{s.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed">{s.body}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -220,91 +309,205 @@ function About() {
   );
 }
 
-function Courses() {
+const audiences = [
+  {
+    icon: ShieldCheck,
+    tag: "SAPS",
+    title: "SAPS detectives and unit commanders",
+    body: "Move beyond the arrest-count. Build dockets that convict, and intelligence products that direct the next operation instead of chasing the last one.",
+  },
+  {
+    icon: Building2,
+    tag: "MUNICIPAL",
+    title: "Metro & municipal law enforcement",
+    body: "Peace-officer and metro-police mandates operate under a specific legal envelope. This programme trains commanders to work that envelope precisely — and to interoperate cleanly with SAPS.",
+  },
+  {
+    icon: Landmark,
+    tag: "SOE & PRIVATE",
+    title: "SOE security and risk divisions",
+    body: "For Eskom, Transnet, PRASA and comparable risk teams: fund a cohort, commission a direct contract, or embed the methodology across an internal investigations function.",
+  },
+];
+
+function Audiences() {
   return (
-    <section id="courses" className="py-24 lg:py-32 bg-secondary/30 border-y border-border relative">
-      <div className="absolute inset-0 bg-grid opacity-20" />
-      <div className="container-x relative">
-        <div className="flex flex-wrap items-end justify-between gap-6 mb-16">
+    <section id="audiences" className="py-24 lg:py-32">
+      <div className="container-x">
+        <div className="flex flex-wrap items-end justify-between gap-6 mb-14">
           <div>
             <div className="inline-flex items-center gap-3 mb-4">
               <span className="h-px w-10 bg-copper" />
-              <span className="text-copper text-xs font-semibold tracking-[0.3em]">OUR COURSES</span>
+              <span className="text-copper text-xs font-semibold tracking-[0.3em]">WHO IT'S FOR</span>
             </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl">
-              PRACTICAL. RELEVANT.<br /><span className="text-gradient-copper">IMPACTFUL.</span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl leading-[1.05]">
+              Three mandates.<br />
+              <span className="text-gradient-copper">One methodology.</span>
             </h2>
           </div>
-          <a href="#contact" className="group inline-flex items-center gap-3 border border-copper text-copper px-6 py-3 text-sm font-semibold tracking-wide hover:bg-copper hover:text-primary-foreground transition-colors">
-            VIEW ALL COURSES <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          {audiences.map((a) => (
+            <div key={a.tag} className="group border border-border bg-card p-8 hover:border-copper/60 transition-colors">
+              <div className="flex items-center justify-between mb-6">
+                <div className="h-12 w-12 border border-copper/40 flex items-center justify-center text-copper">
+                  <a.icon className="h-6 w-6" strokeWidth={1.5} />
+                </div>
+                <span className="text-[0.6rem] tracking-[0.3em] text-copper font-semibold">{a.tag}</span>
+              </div>
+              <h3 className="text-xl font-bold mb-3 leading-tight">{a.title}</h3>
+              <p className="text-muted-foreground leading-relaxed">{a.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const programmeFacts = [
+  { label: "DURATION", value: "5 days" },
+  { label: "FORMAT", value: "In-person, cohort" },
+  { label: "ALIGNMENT", value: "NQF-aligned" },
+  { label: "ACCREDITATION", value: "SASSETA in progress" },
+];
+
+const programmeIncludes = [
+  "The value chain of organised metals theft — from cable to export",
+  "Source handling, OSINT, informant management and institutional intelligence",
+  "5×5×5 grading, link-chart, network and geospatial analysis",
+  "Mandate, warrants and lawful operational planning",
+  "Chain of custody, POCA, racketeering, money laundering and asset forfeiture",
+  "Docket construction that survives cross-examination",
+];
+
+function Programme() {
+  return (
+    <section id="programme" className="py-24 lg:py-32 border-y border-border bg-secondary/20">
+      <div className="container-x grid lg:grid-cols-[1.1fr_1fr] gap-12 lg:gap-20 items-start">
+        <div>
+          <div className="inline-flex items-center gap-3 mb-6">
+            <span className="h-px w-10 bg-copper" />
+            <span className="text-copper text-xs font-semibold tracking-[0.3em]">FLAGSHIP PROGRAMME</span>
+          </div>
+          <h2 className="text-3xl md:text-5xl leading-[1.05] mb-6">
+            Intelligence-Led Metals Theft <span className="text-gradient-copper">Investigations & Enforcement.</span>
+          </h2>
+          <p className="text-muted-foreground text-lg leading-relaxed mb-10">
+            A 5-day, NQF-aligned programme. The first Noesis programme to reach cohort delivery, and the operational blueprint for everything that follows.
+          </p>
+
+          <div className="grid grid-cols-2 gap-px bg-border border border-border mb-10">
+            {programmeFacts.map((f) => (
+              <div key={f.label} className="bg-background p-5">
+                <div className="text-[0.6rem] tracking-[0.3em] text-copper font-semibold mb-2">{f.label}</div>
+                <div className="text-lg font-bold">{f.value}</div>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-xs text-muted-foreground leading-relaxed max-w-lg">
+            Noesis is pursuing SASSETA accreditation as a non-standard learning programme. The course is not yet SASSETA-accredited and is not represented as such.
+          </p>
+        </div>
+
+        <div className="border border-copper/40 bg-card p-8 lg:p-10">
+          <div className="flex items-center gap-3 mb-6">
+            <Target className="h-5 w-5 text-copper" />
+            <div className="text-[0.65rem] tracking-[0.3em] text-copper font-semibold">WHAT'S COVERED</div>
+          </div>
+          <ul className="space-y-4 mb-8">
+            {programmeIncludes.map((i) => (
+              <li key={i} className="flex items-start gap-3">
+                <CheckCircle2 className="h-5 w-5 text-copper mt-0.5 shrink-0" strokeWidth={1.5} />
+                <span className="text-sm text-foreground leading-relaxed">{i}</span>
+              </li>
+            ))}
+          </ul>
+          <a href="#contact" className="group w-full inline-flex items-center justify-between gap-3 bg-copper text-primary-foreground px-6 py-4 text-sm font-semibold tracking-wide hover:bg-bronze transition-colors">
+            REQUEST THE FULL PROGRAMME OUTLINE <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </a>
         </div>
+      </div>
+    </section>
+  );
+}
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {courses.map((c, i) => (
-            <article key={c.title} className="group relative bg-card border border-border overflow-hidden hover:border-copper/60 transition-all duration-300 hover:-translate-y-1">
-              <div className="relative aspect-[16/10] overflow-hidden">
-                <img src={c.img} alt={c.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" width={900} height={700} loading="lazy" />
-                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
-                <div className="absolute top-4 left-4 h-11 w-11 border border-copper/60 bg-background/70 backdrop-blur flex items-center justify-center text-copper">
-                  <c.icon className="h-5 w-5" strokeWidth={1.5} />
-                </div>
-                <div className="absolute top-4 right-4 text-[0.6rem] tracking-[0.3em] text-copper bg-background/70 backdrop-blur px-2.5 py-1 border border-copper/40">
-                  0{i + 1}
-                </div>
+const differentiators = [
+  { title: "Not general fraud training.", body: "Fraud examiner programmes teach financial investigation in the abstract. They do not teach infrastructure crime, and they do not teach tactical operations." },
+  { title: "Not a generic security catalogue.", body: "Multi-qualification vocational providers offer close protection, paralegal studies and policing diplomas side by side. Breadth is not depth. Noesis does one thing." },
+  { title: "The full cycle, taught as one method.", body: "Understand the crime. Collect. Analyse. Plan and execute. Prosecute. No other South African provider teaches all five as one connected operational cycle." },
+];
+
+function WhyNoesis() {
+  return (
+    <section className="py-24 lg:py-32">
+      <div className="container-x grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-20 items-start">
+        <div className="relative">
+          <div className="absolute -inset-6 bg-gradient-to-tr from-copper/15 to-transparent blur-3xl" />
+          <div className="relative border border-border overflow-hidden">
+            <img src={aboutImg} alt="Analysts working a link chart during a briefing" className="w-full h-[480px] object-cover" width={1400} height={1000} loading="lazy" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+            <div className="absolute bottom-6 left-6 right-6">
+              <div className="text-copper text-[0.6rem] tracking-[0.3em]">METHOD-LED</div>
+              <div className="text-2xl font-bold mt-1">From the desk to the operation.</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div className="inline-flex items-center gap-3 mb-6">
+            <span className="h-px w-10 bg-copper" />
+            <span className="text-copper text-xs font-semibold tracking-[0.3em]">WHY NOESIS</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-8">
+            The only training that goes from <span className="text-gradient-copper">community tip to conviction.</span>
+          </h2>
+          <div className="space-y-6">
+            {differentiators.map((d) => (
+              <div key={d.title} className="border-l-2 border-copper pl-5">
+                <h3 className="text-lg font-bold mb-2">{d.title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{d.body}</p>
               </div>
-              <div className="p-6">
-                <h3 className="text-lg font-bold mb-2 tracking-wide">{c.title.toUpperCase()}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-4">{c.body}</p>
-                <div className="flex items-center justify-between pt-4 border-t border-border">
-                  <span className="text-[0.65rem] tracking-[0.3em] text-copper font-semibold">{c.level.toUpperCase()}</span>
-                  <ArrowRight className="h-4 w-4 text-copper opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
-                </div>
-              </div>
-            </article>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
   );
 }
 
-function Stats() {
-  const stats = [
-    { icon: Award, value: "500+", label: "PROFESSIONALS TRAINED", sub: "Across law enforcement and private security." },
-    { icon: Lock, value: "20+", label: "SPECIALISED COURSES", sub: "Practical, intelligence-led learning pathways." },
-    { icon: MapPin, value: "9", label: "NATIONWIDE IMPACT", sub: "Strengthening capability across South Africa." },
-    { icon: Users, value: "24/7", label: "STRONGER TOGETHER", sub: "Building safer communities through intelligence." },
+function Facilitators() {
+  const people = [
+    { name: "Neil Arendse", role: "Lead Facilitator" },
+    { name: "Rudolph Wiltshire", role: "Lead Facilitator" },
   ];
   return (
-    <section className="py-20 lg:py-24">
-      <div className="container-x grid grid-cols-2 lg:grid-cols-4 gap-8">
-        {stats.map((s) => (
-          <div key={s.label} className="border-l border-copper/60 pl-6 py-2">
-            <s.icon className="h-6 w-6 text-copper mb-4" strokeWidth={1.5} />
-            <div className="text-4xl md:text-5xl font-bold text-gradient-copper mb-2">{s.value}</div>
-            <div className="text-[0.65rem] tracking-[0.3em] text-foreground font-semibold mb-2">{s.label}</div>
-            <p className="text-xs text-muted-foreground leading-relaxed">{s.sub}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function Partners() {
-  return (
-    <section id="organisations" className="py-16 border-y border-border overflow-hidden">
+    <section className="py-24 lg:py-32 border-y border-border bg-secondary/20">
       <div className="container-x">
-        <div className="text-center text-[0.65rem] tracking-[0.4em] text-muted-foreground mb-10">
-          TRUSTED BY AGENCIES AND ORGANISATIONS COMMITTED TO COMBATING METALS THEFT
+        <div className="max-w-3xl mb-12">
+          <div className="inline-flex items-center gap-3 mb-6">
+            <span className="h-px w-10 bg-copper" />
+            <span className="text-copper text-xs font-semibold tracking-[0.3em]">LEAD FACILITATORS</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl leading-[1.05]">
+            Taught by practitioners.
+          </h2>
         </div>
-      </div>
-      <div className="relative">
-        <div className="flex animate-marquee gap-16 whitespace-nowrap w-max">
-          {[...partners, ...partners, ...partners].map((p, i) => (
-            <div key={i} className="text-2xl font-bold tracking-[0.3em] text-muted-foreground/60 hover:text-copper transition-colors">
-              {p}
+        <div className="grid md:grid-cols-2 gap-6">
+          {people.map((p) => (
+            <div key={p.name} className="border border-border bg-card p-8 flex gap-6 items-start">
+              <div className="h-16 w-16 border border-copper/40 flex items-center justify-center text-copper text-lg font-bold">
+                {p.name.split(" ").map((n) => n[0]).join("")}
+              </div>
+              <div className="flex-1">
+                <div className="text-xl font-bold">{p.name}</div>
+                <div className="text-copper text-[0.65rem] tracking-[0.3em] font-semibold mt-1 mb-4">{p.role.toUpperCase()}</div>
+                <div className="text-sm text-muted-foreground italic">
+                  Biography and operational background to be confirmed.
+                </div>
+              </div>
             </div>
           ))}
         </div>
@@ -313,83 +516,124 @@ function Partners() {
   );
 }
 
-function CTA() {
+function Contact() {
+  const [sent, setSent] = useState(false);
   return (
     <section id="contact" className="py-24 lg:py-32 relative overflow-hidden">
-      <div className="absolute inset-0 bg-grid opacity-30" />
-      <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at center, color-mix(in oklab, var(--copper) 15%, transparent) 0%, transparent 60%)" }} />
-      <div className="container-x relative">
-        <div className="border border-copper/40 bg-card/60 backdrop-blur p-8 lg:p-16 grid lg:grid-cols-[1.3fr_1fr] gap-10 items-center">
-          <div>
-            <div className="flex items-center gap-4 mb-6">
-              <img src={logoImg} alt="" className="h-14 w-14 object-contain" width={56} height={56} />
-              <div>
-                <div className="text-copper text-xs tracking-[0.3em]">INVEST IN INTELLIGENCE.</div>
-                <div className="text-3xl md:text-4xl font-bold mt-1">PROTECT OUR FUTURE.</div>
-              </div>
-            </div>
-            <p className="text-muted-foreground text-lg leading-relaxed max-w-xl">
-              Join Noesis Academy and be part of the solution against metals theft in South Africa. Talk to our team about custom programmes for your organisation.
-            </p>
+      <div className="absolute inset-0 bg-grid opacity-25" />
+      <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at center, color-mix(in oklab, var(--copper) 12%, transparent) 0%, transparent 65%)" }} />
+      <div className="container-x relative grid lg:grid-cols-[1fr_1fr] gap-12 lg:gap-20 items-start">
+        <div>
+          <div className="inline-flex items-center gap-3 mb-6">
+            <span className="h-px w-10 bg-copper" />
+            <span className="text-copper text-xs font-semibold tracking-[0.3em]">ENQUIRE</span>
           </div>
-          <div className="flex flex-col gap-4">
-            <a href="mailto:info@noesis.academy" className="group inline-flex items-center justify-between gap-3 bg-copper text-primary-foreground px-6 py-4 text-sm font-semibold tracking-wide hover:bg-bronze transition-colors">
-              ENROL NOW <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </a>
-            <a href="#courses" className="inline-flex items-center justify-between gap-3 border border-border px-6 py-4 text-sm font-semibold tracking-wide hover:border-copper hover:text-copper transition-colors">
-              REQUEST A CALLBACK <ArrowRight className="h-4 w-4" />
-            </a>
-          </div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-6">
+            Request a programme <span className="text-gradient-copper">briefing.</span>
+          </h2>
+          <p className="text-muted-foreground text-lg leading-relaxed mb-10">
+            Tell us about your unit, division or organisation. We'll come back with dates, a full outline, and cohort or in-house options.
+          </p>
+          <ul className="space-y-3 text-sm text-muted-foreground">
+            <li className="flex items-center gap-3"><Mail className="h-4 w-4 text-copper" /> info@noesis.co.za</li>
+            <li className="flex items-center gap-3"><Phone className="h-4 w-4 text-copper" /> Contact number to be confirmed</li>
+            <li className="flex items-center gap-3"><MapPinned className="h-4 w-4 text-copper" /> South Africa — national delivery</li>
+          </ul>
         </div>
+
+        <form
+          onSubmit={(e) => { e.preventDefault(); setSent(true); }}
+          className="border border-copper/40 bg-card/70 backdrop-blur p-8 lg:p-10 space-y-5"
+        >
+          {sent ? (
+            <div className="py-8 text-center">
+              <CheckCircle2 className="h-10 w-10 text-copper mx-auto mb-4" />
+              <div className="text-xl font-bold mb-2">Enquiry received.</div>
+              <p className="text-muted-foreground text-sm">We'll respond within two working days.</p>
+            </div>
+          ) : (
+            <>
+              <Field label="Name" name="name" required maxLength={100} />
+              <Field label="Organisation" name="org" required maxLength={150} />
+              <Field label="Role / Rank" name="role" required maxLength={100} />
+              <Field label="Email" name="email" type="email" required maxLength={150} />
+              <div>
+                <label className="block text-[0.6rem] tracking-[0.3em] text-copper font-semibold mb-2">MESSAGE</label>
+                <textarea
+                  name="message"
+                  rows={4}
+                  maxLength={1000}
+                  className="w-full bg-background border border-border px-4 py-3 text-sm text-foreground focus:border-copper focus:outline-none transition-colors resize-none"
+                />
+              </div>
+              <p className="text-[0.65rem] text-muted-foreground leading-relaxed">
+                We collect only what we need to respond to your enquiry, in line with POPIA. Your details are not shared with third parties.
+              </p>
+              <button
+                type="submit"
+                className="group w-full inline-flex items-center justify-between gap-3 bg-copper text-primary-foreground px-6 py-4 text-sm font-semibold tracking-wide hover:bg-bronze transition-colors"
+              >
+                SEND ENQUIRY <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </button>
+            </>
+          )}
+        </form>
       </div>
     </section>
+  );
+}
+
+function Field({ label, name, type = "text", required, maxLength }: { label: string; name: string; type?: string; required?: boolean; maxLength?: number }) {
+  return (
+    <div>
+      <label htmlFor={name} className="block text-[0.6rem] tracking-[0.3em] text-copper font-semibold mb-2">
+        {label.toUpperCase()}{required && " *"}
+      </label>
+      <input
+        id={name}
+        name={name}
+        type={type}
+        required={required}
+        maxLength={maxLength}
+        className="w-full bg-background border border-border px-4 py-3 text-sm text-foreground focus:border-copper focus:outline-none transition-colors"
+      />
+    </div>
   );
 }
 
 function Footer() {
-  const cols = [
-    { title: "Company", links: ["About Us", "Our Approach", "Careers", "News", "Contact"] },
-    { title: "Courses", links: ["All Courses", "Learning Pathways", "In-House Training", "Enrolment Info", "FAQs"] },
-    { title: "Resources", links: ["Blog", "Case Studies", "Reports", "Guides", "Toolkits"] },
-    { title: "For Orgs", links: ["In-House Training", "Strategic Partnerships", "Capacity Building", "Consulting"] },
-  ];
   return (
-    <footer className="border-t border-border bg-background pt-20 pb-8">
-      <div className="container-x grid lg:grid-cols-[1.4fr_2fr_1fr] gap-12 mb-16">
+    <footer className="border-t border-border bg-background pt-16 pb-8">
+      <div className="container-x grid lg:grid-cols-[1.4fr_1fr_1fr] gap-12 mb-12">
         <div>
           <Logo />
-          <p className="text-sm text-muted-foreground mt-6 max-w-xs leading-relaxed">
-            Intelligence training that drives impact and builds safer communities.
+          <p className="text-sm text-muted-foreground mt-6 max-w-sm leading-relaxed">
+            A South African training company. Intelligence-led investigation and enforcement, starting with metals theft.
           </p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {cols.map((c) => (
-            <div key={c.title}>
-              <div className="text-[0.65rem] tracking-[0.3em] text-copper font-semibold mb-4">{c.title.toUpperCase()}</div>
-              <ul className="space-y-2.5">
-                {c.links.map((l) => (
-                  <li key={l}><a href="#" className="text-sm text-muted-foreground hover:text-copper transition-colors">{l}</a></li>
-                ))}
-              </ul>
-            </div>
-          ))}
+        <div>
+          <div className="text-[0.6rem] tracking-[0.3em] text-copper font-semibold mb-4">NAVIGATE</div>
+          <ul className="space-y-2.5">
+            {nav.map((n) => (
+              <li key={n.href}><a href={n.href} className="text-sm text-muted-foreground hover:text-copper transition-colors">{n.label}</a></li>
+            ))}
+          </ul>
         </div>
         <div>
-          <div className="text-[0.65rem] tracking-[0.3em] text-copper font-semibold mb-4">CONTACT</div>
+          <div className="text-[0.6rem] tracking-[0.3em] text-copper font-semibold mb-4">CONTACT</div>
           <ul className="space-y-3 text-sm text-muted-foreground">
-            <li className="flex items-center gap-2.5"><Phone className="h-4 w-4 text-copper" /> +27 10 500 2726</li>
-            <li className="flex items-center gap-2.5"><Mail className="h-4 w-4 text-copper" /> info@noesis.academy</li>
-            <li className="flex items-center gap-2.5"><MapPinned className="h-4 w-4 text-copper" /> Pretoria, South Africa</li>
+            <li className="flex items-center gap-2.5"><Mail className="h-4 w-4 text-copper" /> info@noesis.co.za</li>
+            <li className="flex items-center gap-2.5"><MapPinned className="h-4 w-4 text-copper" /> South Africa</li>
           </ul>
         </div>
       </div>
       <div className="container-x">
         <div className="divider-copper mb-6" />
         <div className="flex flex-wrap items-center justify-between gap-4 text-xs text-muted-foreground">
-          <div>© {new Date().getFullYear()} Noesis Academy. All rights reserved.</div>
+          <div>© {new Date().getFullYear()} Noesis. All rights reserved.</div>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-copper transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-copper transition-colors">Terms & Conditions</a>
+            <a href="#" className="hover:text-copper transition-colors">Privacy (POPIA)</a>
+            <a href="#" className="hover:text-copper transition-colors">Terms</a>
           </div>
         </div>
       </div>

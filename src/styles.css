@@ -47,8 +47,8 @@
   --slate-brand: oklch(0.28 0.03 235);
   --steel: oklch(0.35 0.025 250);
   --smoke: oklch(0.45 0.015 250);
-  --copper: oklch(0.72 0.14 55);
-  --bronze: oklch(0.58 0.11 50);
+  --copper: oklch(0.66 0.13 40);
+  --bronze: oklch(0.52 0.11 35);
   --sand: oklch(0.90 0.02 70);
   --off-white: oklch(0.97 0.005 250);
 
@@ -59,19 +59,19 @@
   --card-foreground: oklch(0.97 0.005 250);
   --popover: oklch(0.18 0.035 248);
   --popover-foreground: oklch(0.97 0.005 250);
-  --primary: oklch(0.72 0.14 55);
+  --primary: oklch(0.66 0.13 40);
   --primary-foreground: oklch(0.14 0.03 250);
   --secondary: oklch(0.22 0.03 248);
   --secondary-foreground: oklch(0.97 0.005 250);
   --muted: oklch(0.22 0.03 248);
   --muted-foreground: oklch(0.70 0.015 250);
-  --accent: oklch(0.58 0.11 50);
+  --accent: oklch(0.52 0.11 35);
   --accent-foreground: oklch(0.97 0.005 250);
   --destructive: oklch(0.60 0.22 27);
   --destructive-foreground: oklch(0.97 0.005 250);
   --border: oklch(0.28 0.03 240 / 60%);
   --input: oklch(0.28 0.03 240);
-  --ring: oklch(0.72 0.14 55);
+  --ring: oklch(0.66 0.13 40);
 
   --gradient-hero: linear-gradient(135deg, oklch(0.14 0.03 250) 0%, oklch(0.10 0.02 245) 100%);
   --gradient-copper: linear-gradient(135deg, var(--copper) 0%, var(--bronze) 100%);
