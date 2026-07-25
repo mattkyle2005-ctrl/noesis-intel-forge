@@ -71,7 +71,7 @@
   --destructive-foreground: oklch(0.97 0.005 250);
   --border: oklch(0.28 0.03 240 / 60%);
   --input: oklch(0.28 0.03 240);
-  --ring: oklch(0.72 0.14 55);
+  --ring: oklch(0.66 0.13 40);
 
   --gradient-hero: linear-gradient(135deg, oklch(0.14 0.03 250) 0%, oklch(0.10 0.02 245) 100%);
   --gradient-copper: linear-gradient(135deg, var(--copper) 0%, var(--bronze) 100%);
