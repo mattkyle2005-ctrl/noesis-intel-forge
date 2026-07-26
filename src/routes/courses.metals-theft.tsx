@@ -1,8 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useState, type FormEvent } from "react";
 import {
   ArrowRight, ArrowLeft, Download, CheckCircle2, Clock, Users, Award, MapPin,
   Search, Radio, Network, ClipboardList, Scale, Target, Zap, TrainFront, Building2,
-  Mail, Phone,
+  Mail, Phone, Plus, Minus, PhoneCall, Send, ShieldCheck, Loader2,
 } from "lucide-react";
 import heroImg from "@/assets/hero-v2.jpg";
 import trainingImg from "@/assets/training.jpg";
@@ -59,8 +60,11 @@ function CoursePage() {
       <CourseHero />
       <WhyNow />
       <FactsBar />
+      <DynamicCycle />
       <Modules />
       <Outcomes />
+      <FAQ />
+      <EnquiryForm />
       <Enrol />
       <CourseFooter />
     </div>
@@ -302,5 +306,358 @@ function CourseFooter() {
         <Link to="/" className="hover:text-copper transition-colors">← Return home</Link>
       </div>
     </footer>
+  );
+}
+
+const cycleSteps = [
+  { icon: Radio, key: "COLLECT", title: "Collect", blurb: "Human sources, OSINT, institutional feeds. Turn noise into a graded stream.", detail: "Informant handling under lawful cover. OSINT tradecraft across marketplaces, WhatsApp groups and second-hand dealer registers. FICA and banking partnerships worked properly." },
+  { icon: Network, key: "ANALYSE", title: "Analyse", blurb: "5×5×5 grading, link charts, geospatial hotspots. Find the syndicate, not the runner.", detail: "Grade every source and every piece of information. Build the network from cable cutter to exporter. Overlay incident data on geography to predict, not chase." },
+  { icon: ClipboardList, key: "PLAN", title: "Plan", blurb: "Mandate, warrant, operational order. Nothing improvised, nothing challenged in court.", detail: "Confirm the mandate: SAPS, metro, peace officer or private. Draft warrants and Section 205s that survive scrutiny. Rehearse the op order before anyone moves." },
+  { icon: Zap, key: "EXECUTE", title: "Execute", blurb: "Coordinated action, clean scene, docket that survives cross-examination.", detail: "Multi-agency choreography. Chain-of-custody discipline from the first exhibit. Docket built for POCA, racketeering and asset forfeiture — not just possession." },
+];
+
+function DynamicCycle() {
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+  useEffect(() => {
+    if (paused) return;
+    const id = setInterval(() => setActive((a) => (a + 1) % cycleSteps.length), 3200);
+    return () => clearInterval(id);
+  }, [paused]);
+  const step = cycleSteps[active];
+  return (
+    <section className="py-24 lg:py-32 border-b border-border relative overflow-hidden">
+      <div className="absolute inset-0 bg-grid opacity-20" />
+      <div className="container-x relative">
+        <div className="max-w-3xl mb-14">
+          <div className="inline-flex items-center gap-3 mb-6">
+            <span className="h-px w-10 bg-copper" />
+            <span className="text-copper text-xs font-semibold tracking-[0.3em]">THE METHOD · LIVE CYCLE</span>
+          </div>
+          <h2 className="text-3xl md:text-5xl leading-[1.05] mb-4">
+            Collect. Analyse. Plan. <span className="text-gradient-copper">Execute.</span>
+          </h2>
+          <p className="text-muted-foreground text-lg leading-relaxed">
+            One continuous loop. Break any link and the case collapses. Hover a stage to hold it.
+          </p>
+        </div>
+        <div
+          className="grid lg:grid-cols-4 gap-3 mb-10"
+          onMouseLeave={() => setPaused(false)}
+        >
+          {cycleSteps.map((s, i) => {
+            const isActive = i === active;
+            return (
+              <button
+                key={s.key}
+                onMouseEnter={() => { setPaused(true); setActive(i); }}
+                onFocus={() => { setPaused(true); setActive(i); }}
+                onClick={() => { setPaused(true); setActive(i); }}
+                className={`text-left border p-6 transition-all duration-500 relative overflow-hidden ${
+                  isActive ? "border-copper bg-copper/10 shadow-[var(--shadow-copper)] scale-[1.02]" : "border-border bg-card hover:border-copper/40"
+                }`}
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <div className={`h-10 w-10 border flex items-center justify-center transition-colors ${isActive ? "border-copper bg-copper text-primary-foreground" : "border-copper/40 text-copper"}`}>
+                    <s.icon className="h-5 w-5" strokeWidth={1.5} />
+                  </div>
+                  <span className="text-[0.6rem] tracking-[0.3em] text-copper font-semibold">0{i + 1}</span>
+                </div>
+                <div className="text-lg font-bold mb-2">{s.title}</div>
+                <div className="text-xs text-muted-foreground leading-relaxed">{s.blurb}</div>
+                <div className={`absolute bottom-0 left-0 h-0.5 bg-copper transition-all duration-[3200ms] ease-linear ${isActive && !paused ? "w-full" : "w-0"}`} />
+              </button>
+            );
+          })}
+        </div>
+        <div key={step.key} className="border border-copper/40 bg-card p-8 lg:p-10 animate-fade-in">
+          <div className="flex items-start gap-5">
+            <div className="h-12 w-12 border border-copper bg-copper text-primary-foreground flex items-center justify-center shrink-0">
+              <step.icon className="h-6 w-6" strokeWidth={1.5} />
+            </div>
+            <div>
+              <div className="text-[0.6rem] tracking-[0.3em] text-copper font-semibold mb-2">STAGE 0{active + 1} · {step.key}</div>
+              <h3 className="text-2xl md:text-3xl font-bold mb-3">{step.title}</h3>
+              <p className="text-muted-foreground leading-relaxed">{step.detail}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const faqs = [
+  { q: "Who should attend this programme?", a: "SAPS unit commanders and detectives, metro police and municipal law enforcement leads, and SOE risk / security divisions at Eskom, Transnet, PRASA and metros. Private investigators working infrastructure files are welcome subject to vetting." },
+  { q: "Is Noesis SASSETA accredited?", a: "Noesis is pursuing SASSETA accreditation. The programme is NQF-aligned in structure and content while accreditation is in progress. We are transparent about status on every proposal." },
+  { q: "How is the course delivered?", a: "Five consecutive days, in-person, cohort format. We deliver open cohorts nationally and private in-house cohorts at your facility. Materials, workbooks and templates are included." },
+  { q: "What does it cost?", a: "Pricing depends on cohort type (open vs private in-house) and delegate numbers. Request a briefing and we will send a written proposal within two working days." },
+  { q: "Do delegates receive a certificate?", a: "Yes. Delegates who complete all five modules and the applied exercises receive a Noesis certificate of completion, with module hours listed for CPD purposes." },
+  { q: "Can you tailor content to our mandate?", a: "Yes. Private cohorts are calibrated to your legal mandate — SAPS, metro peace officer, SOE investigator or private — so warrants, powers and operational orders match what your team can actually execute." },
+  { q: "How soon can we book?", a: "Open cohorts run quarterly. Private in-house cohorts typically confirm within four to six weeks of a signed proposal." },
+];
+
+function FAQ() {
+  const [open, setOpen] = useState<number | null>(0);
+  return (
+    <section className="py-24 lg:py-32 bg-secondary/20 border-b border-border">
+      <div className="container-x grid lg:grid-cols-[1fr_1.6fr] gap-12 lg:gap-20">
+        <div>
+          <div className="inline-flex items-center gap-3 mb-6">
+            <span className="h-px w-10 bg-copper" />
+            <span className="text-copper text-xs font-semibold tracking-[0.3em]">FAQ</span>
+          </div>
+          <h2 className="text-3xl md:text-5xl leading-[1.05] mb-6">
+            The questions <span className="text-gradient-copper">commanders ask.</span>
+          </h2>
+          <p className="text-muted-foreground leading-relaxed">
+            Straight answers. If something is not here, ask us directly in the enquiry form below.
+          </p>
+        </div>
+        <div className="divide-y divide-border border-y border-border">
+          {faqs.map((f, i) => {
+            const isOpen = open === i;
+            return (
+              <div key={f.q}>
+                <button
+                  onClick={() => setOpen(isOpen ? null : i)}
+                  className="w-full flex items-center justify-between gap-6 py-5 text-left hover:text-copper transition-colors"
+                  aria-expanded={isOpen}
+                >
+                  <span className="text-base md:text-lg font-semibold">{f.q}</span>
+                  <span className="shrink-0 h-8 w-8 border border-copper/50 flex items-center justify-center text-copper">
+                    {isOpen ? <Minus className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
+                  </span>
+                </button>
+                <div className={`grid transition-all duration-300 ${isOpen ? "grid-rows-[1fr] opacity-100 pb-6" : "grid-rows-[0fr] opacity-0"}`}>
+                  <div className="overflow-hidden">
+                    <p className="text-muted-foreground leading-relaxed max-w-3xl">{f.a}</p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+type EnquiryData = {
+  name: string;
+  email: string;
+  phone: string;
+  organisation: string;
+  role: string;
+  delegates: string;
+  cohort: string;
+  message: string;
+  callback: boolean;
+};
+
+const initialEnquiry: EnquiryData = {
+  name: "", email: "", phone: "", organisation: "", role: "",
+  delegates: "", cohort: "open", message: "", callback: false,
+};
+
+function validate(d: EnquiryData) {
+  const errors: Partial<Record<keyof EnquiryData, string>> = {};
+  if (!d.name.trim() || d.name.trim().length < 2) errors.name = "Please enter your full name.";
+  if (d.name.length > 100) errors.name = "Name must be under 100 characters.";
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email.trim())) errors.email = "Enter a valid email address.";
+  if (d.email.length > 255) errors.email = "Email must be under 255 characters.";
+  if (d.callback) {
+    if (!/^[+\d\s()-]{7,20}$/.test(d.phone.trim())) errors.phone = "Enter a valid phone number for the call-back.";
+  } else if (d.phone && !/^[+\d\s()-]{7,20}$/.test(d.phone.trim())) {
+    errors.phone = "Phone number looks invalid.";
+  }
+  if (!d.organisation.trim()) errors.organisation = "Organisation is required.";
+  if (d.organisation.length > 120) errors.organisation = "Organisation must be under 120 characters.";
+  if (!d.role.trim()) errors.role = "Role or rank is required.";
+  if (d.delegates && !/^\d{1,3}$/.test(d.delegates)) errors.delegates = "Delegates must be a number.";
+  if (d.message.length > 1000) errors.message = "Message must be under 1000 characters.";
+  return errors;
+}
+
+function EnquiryForm() {
+  const [data, setData] = useState<EnquiryData>(initialEnquiry);
+  const [errors, setErrors] = useState<Partial<Record<keyof EnquiryData, string>>>({});
+  const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
+
+  const update = <K extends keyof EnquiryData>(k: K, v: EnquiryData[K]) => {
+    setData((d) => ({ ...d, [k]: v }));
+    if (errors[k]) setErrors((e) => ({ ...e, [k]: undefined }));
+  };
+
+  const submit = async (e: FormEvent) => {
+    e.preventDefault();
+    const errs = validate(data);
+    setErrors(errs);
+    if (Object.keys(errs).length) return;
+    setStatus("sending");
+    await new Promise((r) => setTimeout(r, 900));
+    setStatus("sent");
+  };
+
+  if (status === "sent") {
+    return (
+      <section id="enquire" className="py-24 lg:py-32 border-b border-border relative overflow-hidden">
+        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at center, color-mix(in oklab, var(--copper) 12%, transparent) 0%, transparent 60%)" }} />
+        <div className="container-x relative max-w-2xl text-center animate-fade-in">
+          <div className="h-16 w-16 mx-auto border border-copper bg-copper/10 flex items-center justify-center text-copper mb-6">
+            <CheckCircle2 className="h-8 w-8" strokeWidth={1.5} />
+          </div>
+          <div className="text-[0.6rem] tracking-[0.3em] text-copper font-semibold mb-3">ENQUIRY RECEIVED</div>
+          <h2 className="text-3xl md:text-5xl leading-[1.05] mb-6">
+            Thank you, {data.name.split(" ")[0]}. <span className="text-gradient-copper">We are on it.</span>
+          </h2>
+          <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+            A Noesis facilitator will respond to <span className="text-foreground font-semibold">{data.email}</span> within two working days
+            {data.callback ? <> and will call you on <span className="text-foreground font-semibold">{data.phone}</span> to arrange a briefing.</> : "."}
+          </p>
+          <div className="border border-copper/40 bg-card p-6 text-left text-sm text-muted-foreground mb-8">
+            <div className="text-[0.6rem] tracking-[0.3em] text-copper font-semibold mb-3">SUMMARY</div>
+            <ul className="space-y-1.5">
+              <li><span className="text-foreground">Organisation:</span> {data.organisation}</li>
+              <li><span className="text-foreground">Role:</span> {data.role}</li>
+              <li><span className="text-foreground">Cohort type:</span> {data.cohort === "open" ? "Open cohort" : data.cohort === "private" ? "Private in-house" : "Embedded programme"}</li>
+              {data.delegates && <li><span className="text-foreground">Delegates:</span> {data.delegates}</li>}
+              {data.callback && <li className="text-copper">Facilitator call-back requested.</li>}
+            </ul>
+          </div>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <a href="/noesis-brochure.pdf" download className="inline-flex items-center gap-3 bg-copper text-primary-foreground px-6 py-3 text-sm font-semibold tracking-wide hover:bg-bronze transition-colors">
+              <Download className="h-4 w-4" /> DOWNLOAD BROCHURE
+            </a>
+            <button
+              onClick={() => { setData(initialEnquiry); setStatus("idle"); }}
+              className="inline-flex items-center gap-3 border border-copper/60 px-6 py-3 text-sm font-semibold tracking-wide hover:bg-copper/10 hover:text-copper transition-colors"
+            >
+              SUBMIT ANOTHER ENQUIRY
+            </button>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section id="enquire" className="py-24 lg:py-32 border-b border-border">
+      <div className="container-x grid lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20">
+        <div>
+          <div className="inline-flex items-center gap-3 mb-6">
+            <span className="h-px w-10 bg-copper" />
+            <span className="text-copper text-xs font-semibold tracking-[0.3em]">COURSE ENQUIRY</span>
+          </div>
+          <h2 className="text-3xl md:text-5xl leading-[1.05] mb-6">
+            Tell us who's coming. <span className="text-gradient-copper">We'll shape the cohort.</span>
+          </h2>
+          <p className="text-muted-foreground leading-relaxed mb-8">
+            Written responses within two working days. Prefer a conversation? Tick the call-back option and a facilitator will phone you directly.
+          </p>
+          <ul className="space-y-3 text-sm text-muted-foreground">
+            <li className="flex gap-3"><ShieldCheck className="h-4 w-4 text-copper mt-0.5 shrink-0" /> POPIA-conscious. Data used only to respond to this enquiry.</li>
+            <li className="flex gap-3"><PhoneCall className="h-4 w-4 text-copper mt-0.5 shrink-0" /> Optional facilitator call-back for commanders.</li>
+            <li className="flex gap-3"><CheckCircle2 className="h-4 w-4 text-copper mt-0.5 shrink-0" /> Written proposal for private cohorts within two working days.</li>
+          </ul>
+        </div>
+        <form onSubmit={submit} noValidate className="border border-border bg-card p-6 md:p-8 space-y-5">
+          <div className="grid md:grid-cols-2 gap-5">
+            <EField label="Full name" value={data.name} onChange={(v) => update("name", v)} error={errors.name} maxLength={100} required />
+            <EField label="Work email" type="email" value={data.email} onChange={(v) => update("email", v)} error={errors.email} maxLength={255} required />
+            <EField label="Organisation" value={data.organisation} onChange={(v) => update("organisation", v)} error={errors.organisation} maxLength={120} required />
+            <EField label="Role / rank" value={data.role} onChange={(v) => update("role", v)} error={errors.role} maxLength={80} required />
+            <EField label="Phone" type="tel" value={data.phone} onChange={(v) => update("phone", v)} error={errors.phone} maxLength={20} required={data.callback} />
+            <EField label="Approx. delegates" value={data.delegates} onChange={(v) => update("delegates", v)} error={errors.delegates} maxLength={3} />
+          </div>
+          <div>
+            <label className="block text-[0.6rem] tracking-[0.3em] text-copper font-semibold mb-2">COHORT TYPE</label>
+            <div className="grid grid-cols-3 gap-2">
+              {[
+                { v: "open", l: "Open cohort" },
+                { v: "private", l: "Private in-house" },
+                { v: "embedded", l: "Embedded programme" },
+              ].map((o) => (
+                <button
+                  key={o.v}
+                  type="button"
+                  onClick={() => update("cohort", o.v)}
+                  className={`border px-3 py-3 text-xs font-semibold tracking-wide transition-colors ${
+                    data.cohort === o.v ? "border-copper bg-copper/10 text-copper" : "border-border hover:border-copper/50"
+                  }`}
+                >
+                  {o.l}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div>
+            <label className="block text-[0.6rem] tracking-[0.3em] text-copper font-semibold mb-2">MESSAGE</label>
+            <textarea
+              value={data.message}
+              onChange={(e) => update("message", e.target.value)}
+              maxLength={1000}
+              rows={4}
+              placeholder="Context on your mandate, target crime types, timing..."
+              className="w-full bg-background border border-border px-3 py-3 text-sm focus:border-copper focus:outline-none transition-colors resize-none"
+            />
+            <div className="flex justify-between mt-1 text-[0.65rem] text-muted-foreground">
+              <span>{errors.message && <span className="text-destructive">{errors.message}</span>}</span>
+              <span>{data.message.length}/1000</span>
+            </div>
+          </div>
+          <label className="flex items-start gap-3 border border-border p-4 hover:border-copper/50 transition-colors cursor-pointer">
+            <input
+              type="checkbox"
+              checked={data.callback}
+              onChange={(e) => update("callback", e.target.checked)}
+              className="mt-1 h-4 w-4 accent-[color:var(--copper)]"
+            />
+            <div>
+              <div className="text-sm font-semibold flex items-center gap-2">
+                <PhoneCall className="h-4 w-4 text-copper" /> Request a facilitator call-back
+              </div>
+              <div className="text-xs text-muted-foreground mt-1">
+                A lead facilitator will phone you within one working day to discuss cohort fit and next steps.
+              </div>
+            </div>
+          </label>
+          <button
+            type="submit"
+            disabled={status === "sending"}
+            className="w-full group inline-flex items-center justify-center gap-3 bg-copper text-primary-foreground px-7 py-4 text-sm font-semibold tracking-wide hover:bg-bronze transition-colors shadow-[var(--shadow-copper)] disabled:opacity-70"
+          >
+            {status === "sending" ? (
+              <><Loader2 className="h-4 w-4 animate-spin" /> SENDING…</>
+            ) : (
+              <><Send className="h-4 w-4" /> SUBMIT ENQUIRY <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" /></>
+            )}
+          </button>
+        </form>
+      </div>
+    </section>
+  );
+}
+
+function EField({ label, value, onChange, error, type = "text", required, maxLength }: {
+  label: string; value: string; onChange: (v: string) => void; error?: string;
+  type?: string; required?: boolean; maxLength?: number;
+}) {
+  return (
+    <div>
+      <label className="block text-[0.6rem] tracking-[0.3em] text-copper font-semibold mb-2">
+        {label.toUpperCase()}{required && <span className="text-copper"> *</span>}
+      </label>
+      <input
+        type={type}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        maxLength={maxLength}
+        className={`w-full bg-background border px-3 py-3 text-sm focus:outline-none transition-colors ${
+          error ? "border-destructive" : "border-border focus:border-copper"
+        }`}
+      />
+      {error && <div className="text-[0.7rem] text-destructive mt-1">{error}</div>}
+    </div>
   );
 }
