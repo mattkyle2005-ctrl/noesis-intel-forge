@@ -34,6 +34,7 @@ const nav = [
   { label: "Who It's For", href: "#audiences" },
   { label: "Programme", href: "#programme" },
   { label: "Credibility", href: "#credibility" },
+  { label: "About", href: "#about" },
   { label: "Enquire", href: "#contact" },
 ];
 
