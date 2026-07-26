@@ -60,8 +60,11 @@ function CoursePage() {
       <CourseHero />
       <WhyNow />
       <FactsBar />
+      <DynamicCycle />
       <Modules />
       <Outcomes />
+      <FAQ />
+      <EnquiryForm />
       <Enrol />
       <CourseFooter />
     </div>
