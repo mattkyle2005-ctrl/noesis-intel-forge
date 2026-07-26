@@ -489,7 +489,7 @@ function EnquiryForm() {
     if (errors[k]) setErrors((e) => ({ ...e, [k]: undefined }));
   };
 
-  const submit = async (e: React.FormEvent) => {
+  const submit = async (e: FormEvent) => {
     e.preventDefault();
     const errs = validate(data);
     setErrors(errs);
