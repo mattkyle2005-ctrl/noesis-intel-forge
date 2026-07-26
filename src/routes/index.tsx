@@ -680,34 +680,46 @@ function WhyNoesis() {
 
 function Facilitators() {
   const people = [
-    { name: "Neil Arendse", role: "Lead Facilitator" },
-    { name: "Rudolph Wiltshire", role: "Lead Facilitator" },
+    {
+      name: "Neil Arendse",
+      role: "Co-founder · Lead Facilitator",
+      bio: "Career investigator with deep experience running intelligence-led operations against organised infrastructure crime. Leads curriculum design across the collect–analyse–execute cycle.",
+    },
+    {
+      name: "Rudolph Wiltshire",
+      role: "Co-founder · Lead Facilitator",
+      bio: "Tactical operations specialist focused on lawful planning, warrant execution and inter-agency coordination between SAPS, metro units and SOE risk divisions.",
+    },
+    {
+      name: "Matthew Arendse",
+      role: "Co-founder · Programme Director",
+      bio: "Programme architect responsible for NQF alignment, docket-to-court discipline and the financial-crime and POCA modules that anchor Noesis prosecutions.",
+    },
   ];
   return (
-    <section className="py-24 lg:py-32 border-y border-border bg-secondary/20">
+    <section id="about" className="py-24 lg:py-32 border-y border-border bg-secondary/20">
       <div className="container-x">
         <div className="max-w-3xl mb-12">
           <div className="inline-flex items-center gap-3 mb-6">
             <span className="h-px w-10 bg-copper" />
-            <span className="text-copper text-xs font-semibold tracking-[0.3em]">LEAD FACILITATORS</span>
+            <span className="text-copper text-xs font-semibold tracking-[0.3em]">ABOUT · CO-FOUNDERS</span>
           </div>
-          <h2 className="text-4xl md:text-5xl leading-[1.05]">
-            Taught by practitioners.
+          <h2 className="text-4xl md:text-5xl leading-[1.05] mb-6">
+            Built by practitioners. <span className="text-gradient-copper">Taught by them too.</span>
           </h2>
+          <p className="text-muted-foreground text-lg leading-relaxed">
+            Noesis Training was founded by three operators who have worked the full arc of infrastructure crime — from first informant to final conviction. Every module is written from that experience.
+          </p>
         </div>
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-3 gap-6">
           {people.map((p) => (
-            <div key={p.name} className="border border-border bg-card p-8 flex gap-6 items-start hover:border-copper/50 transition-colors">
-              <div className="h-16 w-16 border border-copper/40 flex items-center justify-center text-copper text-lg font-bold shrink-0">
+            <div key={p.name} className="border border-border bg-card p-8 hover:border-copper/50 transition-colors group">
+              <div className="h-16 w-16 border border-copper/40 flex items-center justify-center text-copper text-lg font-bold mb-6 group-hover:bg-copper group-hover:text-primary-foreground transition-colors">
                 {p.name.split(" ").map((n) => n[0]).join("")}
               </div>
-              <div className="flex-1">
-                <div className="text-xl font-bold">{p.name}</div>
-                <div className="text-copper text-[0.65rem] tracking-[0.3em] font-semibold mt-1 mb-4">{p.role.toUpperCase()}</div>
-                <div className="text-sm text-muted-foreground italic">
-                  Biography and operational background to be confirmed.
-                </div>
-              </div>
+              <div className="text-xl font-bold">{p.name}</div>
+              <div className="text-copper text-[0.65rem] tracking-[0.3em] font-semibold mt-1 mb-4">{p.role.toUpperCase()}</div>
+              <p className="text-sm text-muted-foreground leading-relaxed">{p.bio}</p>
             </div>
           ))}
         </div>
