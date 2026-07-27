@@ -5,10 +5,10 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-sm: 0px;
+  --radius-md: 1px;
+  --radius-lg: 2px;
+  --radius-xl: 2px;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -35,50 +35,54 @@
   --color-copper: var(--copper);
   --color-bronze: var(--bronze);
   --color-sand: var(--sand);
+  --color-fog: var(--fog);
   --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
-  --radius: 0.25rem;
+  --radius: 0px;
 
-  /* Brand palette */
-  --navy: oklch(0.20 0.04 250);
-  --slate-brand: oklch(0.28 0.03 235);
-  --steel: oklch(0.35 0.025 250);
-  --smoke: oklch(0.45 0.015 250);
-  --copper: oklch(0.66 0.13 40);
-  --bronze: oklch(0.52 0.11 35);
-  --sand: oklch(0.90 0.02 70);
-  --off-white: oklch(0.97 0.005 250);
+  /* Intelligence palette — hex, no gradients */
+  --navy: #020A15;
+  --slate-brand: #172433;
+  --steel: #324050;
+  --smoke: #4A5566;
+  --fog: #8E98A6;
+  --sand: #F3F5F8;
+  --copper: #D47452;
+  --bronze: #9E4F3B;
+  --off-white: #F3F5F8;
 
   /* Semantic */
-  --background: oklch(0.14 0.03 250);
-  --foreground: oklch(0.97 0.005 250);
-  --card: oklch(0.18 0.035 248);
-  --card-foreground: oklch(0.97 0.005 250);
-  --popover: oklch(0.18 0.035 248);
-  --popover-foreground: oklch(0.97 0.005 250);
-  --primary: oklch(0.66 0.13 40);
-  --primary-foreground: oklch(0.14 0.03 250);
-  --secondary: oklch(0.22 0.03 248);
-  --secondary-foreground: oklch(0.97 0.005 250);
-  --muted: oklch(0.22 0.03 248);
-  --muted-foreground: oklch(0.70 0.015 250);
-  --accent: oklch(0.52 0.11 35);
-  --accent-foreground: oklch(0.97 0.005 250);
-  --destructive: oklch(0.60 0.22 27);
-  --destructive-foreground: oklch(0.97 0.005 250);
-  --border: oklch(0.28 0.03 240 / 60%);
-  --input: oklch(0.28 0.03 240);
-  --ring: oklch(0.66 0.13 40);
+  --background: #020A15;
+  --foreground: #F3F5F8;
+  --card: #0B1522;
+  --card-foreground: #F3F5F8;
+  --popover: #0B1522;
+  --popover-foreground: #F3F5F8;
+  --primary: #D47452;
+  --primary-foreground: #020A15;
+  --secondary: #0F1B2A;
+  --secondary-foreground: #F3F5F8;
+  --muted: #0F1B2A;
+  --muted-foreground: #8E98A6;
+  --accent: #9E4F3B;
+  --accent-foreground: #F3F5F8;
+  --destructive: #C2553D;
+  --destructive-foreground: #F3F5F8;
+  --border: rgba(142, 152, 166, 0.16);
+  --input: #172433;
+  --ring: #D47452;
 
-  --gradient-hero: linear-gradient(135deg, oklch(0.14 0.03 250) 0%, oklch(0.10 0.02 245) 100%);
-  --gradient-copper: linear-gradient(135deg, var(--copper) 0%, var(--bronze) 100%);
-  --gradient-fade-bottom: linear-gradient(180deg, transparent 0%, oklch(0.14 0.03 250) 100%);
-  --shadow-copper: 0 20px 60px -20px color-mix(in oklab, var(--copper) 45%, transparent);
-  --shadow-elevated: 0 30px 80px -30px oklch(0 0 0 / 60%);
-  --grid-line: color-mix(in oklab, var(--copper) 10%, transparent);
+  /* Gradients kept as solid copper — retained for backwards compatibility */
+  --gradient-hero: #020A15;
+  --gradient-copper: #D47452;
+  --gradient-fade-bottom: linear-gradient(180deg, transparent 0%, #020A15 100%);
+  --shadow-copper: none;
+  --shadow-elevated: none;
+  --grid-line: rgba(212, 116, 82, 0.05);
+  --schematic-line: rgba(142, 152, 166, 0.06);
 }
 
 @utility container-x {
@@ -89,50 +93,81 @@
   @media (min-width: 1024px) { padding-inline: 3rem; }
 }
 
+/* Solid copper text — no gradient */
 @utility text-gradient-copper {
-  background: var(--gradient-copper);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--copper);
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
 }
 
+/* Subtle intelligence-interface schematic: engineering grid + coordinate marks */
 @utility bg-grid {
   background-image:
-    linear-gradient(var(--grid-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-  background-size: 60px 60px;
+    linear-gradient(var(--schematic-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--schematic-line) 1px, transparent 1px),
+    radial-gradient(circle at 1px 1px, var(--grid-line) 1px, transparent 0);
+  background-size: 80px 80px, 80px 80px, 240px 240px;
+  background-position: 0 0, 0 0, 40px 40px;
 }
 
+/* Hairline copper divider */
 @utility divider-copper {
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--copper), transparent);
+  background: var(--copper);
+  opacity: 0.35;
+}
+
+/* Outlined primary button */
+@utility btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.9rem 1.5rem;
+  border: 1px solid var(--copper);
+  color: var(--foreground);
+  background: transparent;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
+}
+@utility btn-outline-hover {
+  background: var(--copper);
+  color: var(--primary-foreground);
 }
 
 @keyframes scan {
   0% { transform: translateY(-100%); opacity: 0; }
-  50% { opacity: 1; }
+  50% { opacity: 0.6; }
   100% { transform: translateY(100%); opacity: 0; }
-}
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--copper) 50%, transparent); }
-  50% { box-shadow: 0 0 30px 8px color-mix(in oklab, var(--copper) 20%, transparent); }
 }
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
 @keyframes fade-up {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
 }
+@keyframes line-draw {
+  from { transform: scaleX(0); transform-origin: left; }
+  to { transform: scaleX(1); transform-origin: left; }
+}
 
-@utility animate-scan { animation: scan 3s ease-in-out infinite; }
-@utility animate-marquee { animation: marquee 40s linear infinite; }
-@utility animate-fade-up { animation: fade-up 0.8s ease-out both; }
-@utility animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+@utility animate-scan { animation: scan 4s ease-in-out infinite; }
+@utility animate-marquee { animation: marquee 50s linear infinite; }
+@utility animate-fade-up { animation: fade-up 0.7s ease-out both; }
+@utility animate-line-draw { animation: line-draw 1.2s ease-out both; }
+/* Neutralised — no glow */
+@utility animate-pulse-glow { animation: none; }
 
 @layer base {
-  * { border-color: var(--color-border); }
+  * {
+    border-color: var(--color-border);
+    border-radius: 0 !important;
+  }
   html { scroll-behavior: smooth; }
   body {
     background-color: var(--color-background);
@@ -143,7 +178,16 @@
   }
   h1, h2, h3, h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.015em;
     font-weight: 700;
   }
+  /* Global neutralisation to enforce restraint */
+  [class*="bg-gradient-"] { background-image: none !important; }
+  [class*="blur-"] { filter: none !important; }
+  [class*="shadow-"] { box-shadow: none !important; }
+  [class*="backdrop-blur"] { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+  /* Kill translate-y hover bounce */
+  .hover\:-translate-y-1:hover { transform: none !important; }
+  /* Keep the small live-dot square, not a pill */
+  .rounded-full { border-radius: 0 !important; }
 }
