@@ -156,21 +156,21 @@ function Hero() {
           </div>
 
           <div className="relative animate-fade-up" style={{ animationDelay: "0.15s" }}>
-            <div className="absolute -inset-4 bg-gradient-to-br from-copper/15 to-transparent blur-3xl" />
-            <div className="relative overflow-hidden border border-copper/30">
+            <div className="absolute -inset-6 bg-[radial-gradient(closest-side,rgba(212,116,82,0.22),transparent)] blur-2xl" />
+            <div className="relative overflow-hidden rounded-2xl border border-foreground/10">
               <img src={heroImg} alt="Analysts working a link chart during a briefing" className="w-full h-[520px] object-cover" width={1600} height={1200} />
               <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
-              <div className="absolute top-4 left-4 flex items-center gap-2 text-[0.6rem] tracking-[0.3em] text-copper bg-background/70 backdrop-blur px-3 py-1.5 border border-copper/40">
+              <div className="absolute top-4 left-4 flex items-center gap-2 text-[0.6rem] font-mono tracking-[0.3em] text-copper bg-background/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-copper/30">
                 <span className="h-1.5 w-1.5 bg-copper animate-pulse rounded-full" /> OPERATIONAL CYCLE
               </div>
               <div className="absolute inset-x-0 h-24 bg-gradient-to-b from-transparent via-copper/10 to-transparent pointer-events-none animate-scan" />
               <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
                 <div>
-                  <div className="text-[0.6rem] tracking-[0.3em] text-copper">LIVE OPS</div>
+                  <div className="text-[0.6rem] font-mono tracking-[0.3em] text-copper">LIVE OPS</div>
                   <div className="text-sm font-bold">Link-chart briefing</div>
                 </div>
                 <div className="text-right">
-                  <div className="text-[0.6rem] tracking-[0.3em] text-copper">GRADING</div>
+                  <div className="text-[0.6rem] font-mono tracking-[0.3em] text-copper">GRADING</div>
                   <div className="text-sm font-bold">5 × 5 × 5</div>
                 </div>
               </div>
@@ -178,22 +178,53 @@ function Hero() {
           </div>
         </div>
 
-        {/* Cycle strip */}
-        <div className="mt-16 lg:mt-20 border-t border-border pt-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border">
-            {cycle.map((s, i) => (
-              <div key={s.n} className="bg-background p-6 relative group hover:bg-secondary/40 transition-colors">
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="text-[0.6rem] tracking-[0.3em] text-copper font-semibold">{s.n}</span>
-                  <span className="h-px flex-1 bg-copper/30" />
-                  {i < cycle.length - 1 && <ArrowRight className="h-3 w-3 text-copper/60 hidden md:block" />}
-                </div>
-                <div className="text-sm font-bold tracking-[0.25em] mb-2">{s.label}</div>
-                <p className="text-xs text-muted-foreground leading-relaxed">{s.body}</p>
+        {/* Interactive cycle preview */}
+        <CyclePreview />
+      </div>
+    </section>
+  );
+}
+
+function CyclePreview() {
+  const [active, setActive] = useState(0);
+  const s = cycle[active];
+  return (
+    <div className="mt-16 lg:mt-20 rounded-2xl border border-foreground/10 bg-card/50 backdrop-blur-md hover:border-copper/40 transition-all duration-300 overflow-hidden">
+      <div className="flex items-center gap-2 px-5 py-3 border-b border-foreground/5">
+        <span className="h-2 w-2 rounded-full bg-copper/70" />
+        <span className="h-2 w-2 rounded-full bg-foreground/15" />
+        <span className="h-2 w-2 rounded-full bg-foreground/15" />
+        <span className="ml-3 text-[0.65rem] font-mono tracking-[0.25em] text-muted-foreground">noesis://operational-cycle</span>
+      </div>
+      <div className="grid md:grid-cols-[1.2fr_1fr]">
+        <div className="grid grid-cols-2 gap-3 p-5">
+          {cycle.map((c, i) => (
+            <button
+              key={c.n}
+              onMouseEnter={() => setActive(i)}
+              onFocus={() => setActive(i)}
+              onClick={() => setActive(i)}
+              className={`text-left rounded-xl border p-4 transition-all duration-300 hover:-translate-y-1 ${
+                i === active ? "border-copper/40 bg-copper/10" : "border-foreground/10 bg-background/40 hover:border-copper/25"
+              }`}
+            >
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-[0.6rem] font-mono tracking-[0.3em] text-copper">{c.n}</span>
+                <span className="h-px flex-1 bg-copper/25" />
               </div>
-            ))}
-          </div>
+              <div className="text-sm font-extrabold tracking-tight">{c.label}</div>
+            </button>
+          ))}
         </div>
+        <div className="p-6 border-t md:border-t-0 md:border-l border-foreground/5 flex flex-col justify-center">
+          <div className="text-[0.6rem] font-mono tracking-[0.3em] text-copper mb-3">STAGE {s.n}</div>
+          <div className="text-2xl font-extrabold tracking-tight mb-3">{s.label}</div>
+          <p className="text-sm text-muted-foreground leading-relaxed">{s.body}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
       </div>
     </section>
   );
