@@ -420,7 +420,7 @@ function Approach() {
                   <div className="shrink-0 h-11 w-11 border border-copper/50 bg-background flex items-center justify-center text-copper relative z-10 group-hover:bg-copper group-hover:text-primary-foreground transition-colors">
                     <s.icon className="h-5 w-5" strokeWidth={1.5} />
                   </div>
-                  <div className="flex-1 border border-border bg-card p-6 group-hover:border-copper/50 transition-colors">
+                  <div className="flex-1 rounded-2xl border border-foreground/10 bg-card/50 backdrop-blur-md card-lift p-6 group-hover:border-copper/50 transition-colors">
                     <div className="flex items-baseline gap-3 mb-2">
                       <span className="text-[0.6rem] tracking-[0.3em] text-copper font-semibold">STEP {s.n}</span>
                       <span className="h-px flex-1 bg-border" />
@@ -478,7 +478,7 @@ function Audiences() {
 
         <div className="grid md:grid-cols-3 gap-6">
           {audiences.map((a) => (
-            <div key={a.tag} className="group border border-border bg-card p-8 hover:border-copper/60 hover:-translate-y-1 transition-all">
+            <div key={a.tag} className="group rounded-2xl border border-foreground/10 bg-card/50 backdrop-blur-md card-lift p-8 hover:border-copper/60 hover:-translate-y-1 transition-all">
               <div className="flex items-center justify-between mb-6">
                 <div className="h-12 w-12 border border-copper/40 flex items-center justify-center text-copper group-hover:bg-copper group-hover:text-primary-foreground transition-colors">
                   <a.icon className="h-6 w-6" strokeWidth={1.5} />
@@ -784,7 +784,7 @@ function Facilitators() {
         </div>
         <div className="grid md:grid-cols-3 gap-6">
           {people.map((p) => (
-            <div key={p.name} className="border border-border bg-card p-8 hover:border-copper/50 transition-colors group">
+            <div key={p.name} className="rounded-2xl border border-foreground/10 bg-card/50 backdrop-blur-md card-lift p-8 hover:border-copper/50 transition-colors group">
               <div className="h-16 w-16 border border-copper/40 flex items-center justify-center text-copper text-lg font-bold mb-6 group-hover:bg-copper group-hover:text-primary-foreground transition-colors">
                 {p.name.split(" ").map((n) => n[0]).join("")}
               </div>

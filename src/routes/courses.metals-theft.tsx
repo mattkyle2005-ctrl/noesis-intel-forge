@@ -200,7 +200,7 @@ function Modules() {
           </div>
           <div className="space-y-4">
             {modules.map((m) => (
-              <div key={m.n} className="border border-border bg-card p-6 lg:p-8 hover:border-copper/50 transition-colors group">
+              <div key={m.n} className="rounded-2xl border border-foreground/10 bg-card/50 backdrop-blur-md card-lift p-6 lg:p-8 hover:border-copper/50 transition-colors group">
                 <div className="flex items-start gap-5">
                   <div className="shrink-0 h-11 w-11 border border-copper/50 flex items-center justify-center text-copper group-hover:bg-copper group-hover:text-primary-foreground transition-colors">
                     <m.icon className="h-5 w-5" strokeWidth={1.5} />
@@ -561,7 +561,7 @@ function EnquiryForm() {
             <li className="flex gap-3"><CheckCircle2 className="h-4 w-4 text-copper mt-0.5 shrink-0" /> Written proposal for private cohorts within two working days.</li>
           </ul>
         </div>
-        <form onSubmit={submit} noValidate className="border border-border bg-card p-6 md:p-8 space-y-5">
+        <form onSubmit={submit} noValidate className="rounded-2xl border border-foreground/10 bg-card/50 backdrop-blur-md card-lift p-6 md:p-8 space-y-5">
           <div className="grid md:grid-cols-2 gap-5">
             <EField label="Full name" value={data.name} onChange={(v) => update("name", v)} error={errors.name} maxLength={100} required />
             <EField label="Work email" type="email" value={data.email} onChange={(v) => update("email", v)} error={errors.email} maxLength={255} required />
