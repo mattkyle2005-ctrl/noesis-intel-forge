@@ -5,10 +5,10 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --radius-sm: 0px;
-  --radius-md: 1px;
-  --radius-lg: 2px;
-  --radius-xl: 2px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -36,14 +36,15 @@
   --color-bronze: var(--bronze);
   --color-sand: var(--sand);
   --color-fog: var(--fog);
-  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, monospace;
 }
 
 :root {
-  --radius: 0px;
+  --radius: 10px;
 
-  /* Intelligence palette — hex, no gradients */
+  /* Intelligence palette */
   --navy: #020A15;
   --slate-brand: #172433;
   --steel: #324050;
@@ -75,12 +76,11 @@
   --input: #172433;
   --ring: #D47452;
 
-  /* Gradients kept as solid copper — retained for backwards compatibility */
-  --gradient-hero: #020A15;
-  --gradient-copper: #D47452;
+  --gradient-hero: linear-gradient(180deg, #050F1C 0%, #020A15 60%);
+  --gradient-copper: linear-gradient(100deg, #F0A183 0%, #D47452 45%, #9E4F3B 100%);
   --gradient-fade-bottom: linear-gradient(180deg, transparent 0%, #020A15 100%);
-  --shadow-copper: none;
-  --shadow-elevated: none;
+  --shadow-copper: 0 0 25px rgba(212, 116, 82, 0.30);
+  --shadow-elevated: 0 20px 50px -20px rgba(0, 0, 0, 0.75);
   --grid-line: rgba(212, 116, 82, 0.05);
   --schematic-line: rgba(142, 152, 166, 0.06);
 }
@@ -93,15 +93,23 @@
   @media (min-width: 1024px) { padding-inline: 3rem; }
 }
 
-/* Solid copper text — no gradient */
+/* Gradient-clipped copper text */
 @utility text-gradient-copper {
-  color: var(--copper);
-  background: none;
-  -webkit-background-clip: initial;
-  background-clip: initial;
+  background: var(--gradient-copper);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-/* Subtle intelligence-interface schematic: engineering grid + coordinate marks */
+/* Ambient dark backdrop with accent radial spotlights */
+@utility bg-spotlight {
+  background-image:
+    radial-gradient(60rem 32rem at 78% 8%, rgba(212, 116, 82, 0.16), transparent 65%),
+    radial-gradient(48rem 28rem at 8% 42%, rgba(50, 64, 80, 0.35), transparent 70%),
+    var(--gradient-hero);
+}
+
+/* Subtle engineering grid */
 @utility bg-grid {
   background-image:
     linear-gradient(var(--schematic-line) 1px, transparent 1px),
@@ -111,20 +119,60 @@
   background-position: 0 0, 0 0, 40px 40px;
 }
 
-/* Hairline copper divider */
 @utility divider-copper {
   height: 1px;
-  background: var(--copper);
-  opacity: 0.35;
+  background: var(--gradient-copper);
+  opacity: 0.4;
 }
 
-/* Outlined primary button */
+@utility section-rule {
+  border-top: 1px solid rgba(243, 245, 248, 0.05);
+}
+
+/* Magnetic glow for primary CTAs */
+@utility glow-cta {
+  box-shadow: 0 0 25px rgba(212, 116, 82, 0.30);
+  transition: box-shadow 300ms ease, transform 300ms ease, background-color 200ms ease;
+  &:hover {
+    box-shadow: 0 0 40px rgba(212, 116, 82, 0.45);
+    transform: translateY(-2px);
+  }
+}
+
+/* Glass card surface */
+@utility glass-panel {
+  background: rgba(11, 21, 34, 0.55);
+  border: 1px solid rgba(243, 245, 248, 0.10);
+  backdrop-filter: blur(12px) saturate(140%);
+}
+
+@utility card-lift {
+  transition: transform 300ms ease, border-color 300ms ease, box-shadow 300ms ease;
+  &:hover {
+    transform: translateY(-4px);
+    border-color: rgba(212, 116, 82, 0.40);
+    box-shadow: 0 18px 45px -22px rgba(212, 116, 82, 0.55);
+  }
+}
+
+@utility icon-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem;
+  border-radius: 0.75rem;
+  background: rgba(212, 116, 82, 0.10);
+  color: var(--copper);
+  border: 1px solid rgba(212, 116, 82, 0.20);
+}
+
 @utility btn-outline {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
   padding: 0.9rem 1.5rem;
-  border: 1px solid var(--copper);
+  border-radius: 999px;
+  border: 1px solid rgba(212, 116, 82, 0.5);
   color: var(--foreground);
   background: transparent;
   font-size: 0.8rem;
@@ -155,18 +203,20 @@
   from { transform: scaleX(0); transform-origin: left; }
   to { transform: scaleX(1); transform-origin: left; }
 }
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 116, 82, 0.35); }
+  50% { box-shadow: 0 0 22px 2px rgba(212, 116, 82, 0.28); }
+}
 
 @utility animate-scan { animation: scan 4s ease-in-out infinite; }
 @utility animate-marquee { animation: marquee 50s linear infinite; }
 @utility animate-fade-up { animation: fade-up 0.7s ease-out both; }
 @utility animate-line-draw { animation: line-draw 1.2s ease-out both; }
-/* Neutralised — no glow */
-@utility animate-pulse-glow { animation: none; }
+@utility animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
 
 @layer base {
   * {
     border-color: var(--color-border);
-    border-radius: 0 !important;
   }
   html { scroll-behavior: smooth; }
   body {
@@ -174,20 +224,13 @@
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
-    font-feature-settings: "ss01", "cv11";
   }
   h1, h2, h3, h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.015em;
-    font-weight: 700;
+    font-weight: 800;
+    letter-spacing: -0.03em;
   }
-  /* Global neutralisation to enforce restraint */
-  [class*="bg-gradient-"] { background-image: none !important; }
-  [class*="blur-"] { filter: none !important; }
-  [class*="shadow-"] { box-shadow: none !important; }
-  [class*="backdrop-blur"] { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
-  /* Kill translate-y hover bounce */
-  .hover\:-translate-y-1:hover { transform: none !important; }
-  /* Keep the small live-dot square, not a pill */
-  .rounded-full { border-radius: 0 !important; }
+  h1 { line-height: 1.02; }
+  h2 { line-height: 1.06; }
+  code, pre, .font-mono { font-family: var(--font-mono); }
 }

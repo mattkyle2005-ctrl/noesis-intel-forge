@@ -74,37 +74,39 @@ function Logo({ className = "" }: { className?: string }) {
 function Header() {
   const [open, setOpen] = useState(false);
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-xl bg-background/70 border-b border-border">
-      <div className="container-x flex items-center justify-between h-20">
-        <Logo />
-        <nav className="hidden lg:flex items-center gap-8 text-sm">
-          {nav.map((n) => (
-            <a key={n.href} href={n.href} className="text-muted-foreground hover:text-copper transition-colors relative group">
-              {n.label}
-              <span className="absolute -bottom-1 left-0 h-px w-0 bg-copper transition-all group-hover:w-full" />
-            </a>
-          ))}
-        </nav>
-        <div className="hidden sm:flex items-center gap-3">
-          <a href="/noesis-brochure.pdf" download className="inline-flex items-center gap-2 border border-border px-4 py-2.5 text-xs font-semibold tracking-wide text-foreground hover:border-copper hover:text-copper transition-colors">
-            <Download className="h-3.5 w-3.5" /> BROCHURE
-          </a>
-          <a href="#contact" className="group inline-flex items-center gap-2 bg-copper text-primary-foreground px-5 py-2.5 text-sm font-semibold tracking-wide hover:bg-bronze transition-colors">
-            ENQUIRE <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </a>
-        </div>
-        <button onClick={() => setOpen(!open)} className="lg:hidden text-foreground" aria-label="Menu"><Menu /></button>
-      </div>
-      {open && (
-        <div className="lg:hidden border-t border-border bg-background/95 backdrop-blur-xl">
-          <div className="container-x py-4 flex flex-col gap-3">
+    <header className="fixed top-4 inset-x-0 z-50 px-4">
+      <div className="mx-auto max-w-[1400px] rounded-full backdrop-blur-md bg-background/40 border border-foreground/10 shadow-[0_10px_40px_-24px_rgba(0,0,0,0.9)]">
+        <div className="flex items-center justify-between h-16 pl-5 pr-3">
+          <Logo />
+          <nav className="hidden xl:flex items-center gap-7 text-sm">
             {nav.map((n) => (
-              <a key={n.href} href={n.href} onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-copper py-1.5">{n.label}</a>
+              <a key={n.href} href={n.href} className="text-muted-foreground hover:text-copper transition-colors relative group">
+                {n.label}
+                <span className="absolute -bottom-1 left-0 h-px w-0 bg-copper transition-all group-hover:w-full" />
+              </a>
             ))}
-            <a href="/noesis-brochure.pdf" download className="text-sm text-copper font-semibold mt-2 inline-flex items-center gap-2"><Download className="h-4 w-4" /> Download brochure</a>
+          </nav>
+          <div className="hidden sm:flex items-center gap-2">
+            <a href="/noesis-brochure.pdf" download className="inline-flex items-center gap-2 rounded-full border border-foreground/10 px-4 py-2.5 text-xs font-semibold tracking-wide text-foreground hover:border-copper/50 hover:text-copper transition-colors">
+              <Download className="h-3.5 w-3.5" /> BROCHURE
+            </a>
+            <a href="#contact" className="group inline-flex items-center gap-2 rounded-full bg-copper text-primary-foreground px-5 py-2.5 text-sm font-semibold tracking-wide hover:bg-bronze glow-cta">
+              ENQUIRE <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </a>
           </div>
+          <button onClick={() => setOpen(!open)} className="xl:hidden text-foreground p-2" aria-label="Menu"><Menu /></button>
         </div>
-      )}
+        {open && (
+          <div className="xl:hidden border-t border-foreground/10 px-5">
+            <div className="py-4 flex flex-col gap-3">
+              {nav.map((n) => (
+                <a key={n.href} href={n.href} onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-copper py-1.5">{n.label}</a>
+              ))}
+              <a href="/noesis-brochure.pdf" download className="text-sm text-copper font-semibold mt-2 inline-flex items-center gap-2"><Download className="h-4 w-4" /> Download brochure</a>
+            </div>
+          </div>
+        )}
+      </div>
     </header>
   );
 }
@@ -118,53 +120,57 @@ const cycle = [
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden bg-spotlight">
       <div className="absolute inset-0 bg-grid opacity-40" />
-      <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 70% 30%, transparent 30%, var(--background) 85%)" }} />
-      <div className="container-x relative pt-16 lg:pt-24 pb-20">
+      <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 70% 30%, transparent 35%, var(--background) 90%)" }} />
+      <div className="container-x relative pt-32 lg:pt-40 pb-20">
         <div className="grid lg:grid-cols-[1.15fr_1fr] gap-12 lg:gap-16 items-center">
           <div className="animate-fade-up">
-            <div className="inline-flex items-center gap-3 mb-8">
-              <span className="h-px w-10 bg-copper" />
-              <span className="text-copper text-xs font-semibold tracking-[0.3em]">INTELLIGENCE · INSIGHT · IMPACT</span>
+            <div className="inline-flex items-center gap-2 mb-7 rounded-full border border-copper/25 bg-copper/10 px-4 py-1.5 text-xs font-medium text-copper animate-pulse-glow">
+              <span aria-hidden>✨</span> Noesis Intel Forge 2.0 is live
             </div>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.03] mb-6">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="h-px w-10 bg-copper" />
+              <span className="text-copper text-xs font-mono font-semibold tracking-[0.3em]">INTELLIGENCE · INSIGHT · IMPACT</span>
+            </div>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6">
               EMPOWERING <span className="text-gradient-copper">PROFESSIONALS.</span><br />
-              PROTECTING COMMUNITIES.
+              PROTECTING <span className="text-gradient-copper">COMMUNITIES.</span>
             </h1>
             <div className="flex items-center gap-3 mb-6">
               <span className="h-px w-8 bg-copper/60" />
-              <span className="text-copper text-sm font-semibold tracking-[0.2em]">FROM CABLE TO COURTROOM</span>
+              <span className="text-copper text-sm font-mono font-semibold tracking-[0.2em]">FROM CABLE TO COURTROOM</span>
             </div>
             <p className="text-muted-foreground text-lg max-w-xl mb-10 leading-relaxed">
               Noesis trains South Africa's investigators, enforcers and risk professionals in the full operational cycle of intelligence-led work — starting with the R45-billion crime nobody is trained to get ahead of.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link to="/courses/metals-theft" className="group inline-flex items-center gap-3 bg-copper text-primary-foreground px-7 py-4 text-sm font-semibold tracking-wide hover:bg-bronze transition-colors shadow-[var(--shadow-copper)]">
+              <Link to="/courses/metals-theft" className="group inline-flex items-center gap-3 rounded-full bg-copper text-primary-foreground px-7 py-4 text-sm font-semibold tracking-wide hover:bg-bronze glow-cta">
                 EXPLORE THE FLAGSHIP COURSE <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
-              <a href="/noesis-brochure.pdf" download className="inline-flex items-center gap-3 border border-copper/60 px-7 py-4 text-sm font-semibold tracking-wide text-foreground hover:bg-copper/10 hover:text-copper transition-colors">
+              <a href="/noesis-brochure.pdf" download className="inline-flex items-center gap-3 rounded-full border border-copper/50 px-7 py-4 text-sm font-semibold tracking-wide text-foreground hover:bg-copper/10 hover:text-copper transition-colors">
                 <Download className="h-4 w-4" /> DOWNLOAD BROCHURE
               </a>
+
             </div>
           </div>
 
           <div className="relative animate-fade-up" style={{ animationDelay: "0.15s" }}>
-            <div className="absolute -inset-4 bg-gradient-to-br from-copper/15 to-transparent blur-3xl" />
-            <div className="relative overflow-hidden border border-copper/30">
+            <div className="absolute -inset-6 bg-[radial-gradient(closest-side,rgba(212,116,82,0.22),transparent)] blur-2xl" />
+            <div className="relative overflow-hidden rounded-2xl border border-foreground/10">
               <img src={heroImg} alt="Analysts working a link chart during a briefing" className="w-full h-[520px] object-cover" width={1600} height={1200} />
               <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
-              <div className="absolute top-4 left-4 flex items-center gap-2 text-[0.6rem] tracking-[0.3em] text-copper bg-background/70 backdrop-blur px-3 py-1.5 border border-copper/40">
+              <div className="absolute top-4 left-4 flex items-center gap-2 text-[0.6rem] font-mono tracking-[0.3em] text-copper bg-background/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-copper/30">
                 <span className="h-1.5 w-1.5 bg-copper animate-pulse rounded-full" /> OPERATIONAL CYCLE
               </div>
               <div className="absolute inset-x-0 h-24 bg-gradient-to-b from-transparent via-copper/10 to-transparent pointer-events-none animate-scan" />
               <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
                 <div>
-                  <div className="text-[0.6rem] tracking-[0.3em] text-copper">LIVE OPS</div>
+                  <div className="text-[0.6rem] font-mono tracking-[0.3em] text-copper">LIVE OPS</div>
                   <div className="text-sm font-bold">Link-chart briefing</div>
                 </div>
                 <div className="text-right">
-                  <div className="text-[0.6rem] tracking-[0.3em] text-copper">GRADING</div>
+                  <div className="text-[0.6rem] font-mono tracking-[0.3em] text-copper">GRADING</div>
                   <div className="text-sm font-bold">5 × 5 × 5</div>
                 </div>
               </div>
@@ -172,24 +178,51 @@ function Hero() {
           </div>
         </div>
 
-        {/* Cycle strip */}
-        <div className="mt-16 lg:mt-20 border-t border-border pt-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border">
-            {cycle.map((s, i) => (
-              <div key={s.n} className="bg-background p-6 relative group hover:bg-secondary/40 transition-colors">
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="text-[0.6rem] tracking-[0.3em] text-copper font-semibold">{s.n}</span>
-                  <span className="h-px flex-1 bg-copper/30" />
-                  {i < cycle.length - 1 && <ArrowRight className="h-3 w-3 text-copper/60 hidden md:block" />}
-                </div>
-                <div className="text-sm font-bold tracking-[0.25em] mb-2">{s.label}</div>
-                <p className="text-xs text-muted-foreground leading-relaxed">{s.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+        {/* Interactive cycle preview */}
+        <CyclePreview />
       </div>
     </section>
+  );
+}
+
+function CyclePreview() {
+  const [active, setActive] = useState(0);
+  const s = cycle[active];
+  return (
+    <div className="mt-16 lg:mt-20 rounded-2xl border border-foreground/10 bg-card/50 backdrop-blur-md hover:border-copper/40 transition-all duration-300 overflow-hidden">
+      <div className="flex items-center gap-2 px-5 py-3 border-b border-foreground/5">
+        <span className="h-2 w-2 rounded-full bg-copper/70" />
+        <span className="h-2 w-2 rounded-full bg-foreground/15" />
+        <span className="h-2 w-2 rounded-full bg-foreground/15" />
+        <span className="ml-3 text-[0.65rem] font-mono tracking-[0.25em] text-muted-foreground">noesis://operational-cycle</span>
+      </div>
+      <div className="grid md:grid-cols-[1.2fr_1fr]">
+        <div className="grid grid-cols-2 gap-3 p-5">
+          {cycle.map((c, i) => (
+            <button
+              key={c.n}
+              onMouseEnter={() => setActive(i)}
+              onFocus={() => setActive(i)}
+              onClick={() => setActive(i)}
+              className={`text-left rounded-xl border p-4 transition-all duration-300 hover:-translate-y-1 ${
+                i === active ? "border-copper/40 bg-copper/10" : "border-foreground/10 bg-background/40 hover:border-copper/25"
+              }`}
+            >
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-[0.6rem] font-mono tracking-[0.3em] text-copper">{c.n}</span>
+                <span className="h-px flex-1 bg-copper/25" />
+              </div>
+              <div className="text-sm font-extrabold tracking-tight">{c.label}</div>
+            </button>
+          ))}
+        </div>
+        <div className="p-6 border-t md:border-t-0 md:border-l border-foreground/5 flex flex-col justify-center">
+          <div className="text-[0.6rem] font-mono tracking-[0.3em] text-copper mb-3">STAGE {s.n}</div>
+          <div className="text-2xl font-extrabold tracking-tight mb-3">{s.label}</div>
+          <p className="text-sm text-muted-foreground leading-relaxed">{s.body}</p>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -387,7 +420,7 @@ function Approach() {
                   <div className="shrink-0 h-11 w-11 border border-copper/50 bg-background flex items-center justify-center text-copper relative z-10 group-hover:bg-copper group-hover:text-primary-foreground transition-colors">
                     <s.icon className="h-5 w-5" strokeWidth={1.5} />
                   </div>
-                  <div className="flex-1 border border-border bg-card p-6 group-hover:border-copper/50 transition-colors">
+                  <div className="flex-1 rounded-2xl border border-foreground/10 bg-card/50 backdrop-blur-md card-lift p-6 group-hover:border-copper/50 transition-colors">
                     <div className="flex items-baseline gap-3 mb-2">
                       <span className="text-[0.6rem] tracking-[0.3em] text-copper font-semibold">STEP {s.n}</span>
                       <span className="h-px flex-1 bg-border" />
@@ -428,7 +461,7 @@ const audiences = [
 
 function Audiences() {
   return (
-    <section id="audiences" className="py-24 lg:py-32">
+    <section id="audiences" className="py-24 lg:py-32 section-rule">
       <div className="container-x">
         <div className="flex flex-wrap items-end justify-between gap-6 mb-14">
           <div>
@@ -445,7 +478,7 @@ function Audiences() {
 
         <div className="grid md:grid-cols-3 gap-6">
           {audiences.map((a) => (
-            <div key={a.tag} className="group border border-border bg-card p-8 hover:border-copper/60 hover:-translate-y-1 transition-all">
+            <div key={a.tag} className="group rounded-2xl border border-foreground/10 bg-card/50 backdrop-blur-md card-lift p-8 hover:border-copper/60 hover:-translate-y-1 transition-all">
               <div className="flex items-center justify-between mb-6">
                 <div className="h-12 w-12 border border-copper/40 flex items-center justify-center text-copper group-hover:bg-copper group-hover:text-primary-foreground transition-colors">
                   <a.icon className="h-6 w-6" strokeWidth={1.5} />
@@ -643,35 +676,72 @@ const differentiators = [
 
 function WhyNoesis() {
   return (
-    <section className="py-24 lg:py-32">
-      <div className="container-x grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-20 items-start">
-        <div className="relative">
-          <div className="absolute -inset-6 bg-gradient-to-tr from-copper/15 to-transparent blur-3xl" />
-          <div className="relative border border-border overflow-hidden">
-            <img src={trainingImg} alt="Delegates working geospatial maps in a briefing room" className="w-full h-[480px] object-cover" width={1400} height={1000} loading="lazy" />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
-            <div className="absolute bottom-6 left-6 right-6">
-              <div className="text-copper text-[0.6rem] tracking-[0.3em]">METHOD-LED</div>
-              <div className="text-2xl font-bold mt-1">From the desk to the operation.</div>
+    <section className="py-24 lg:py-32 section-rule">
+      <div className="container-x">
+        <div className="max-w-3xl mb-12">
+          <div className="inline-flex items-center gap-3 mb-6">
+            <span className="h-px w-10 bg-copper" />
+            <span className="text-copper text-xs font-mono font-semibold tracking-[0.3em]">WHY NOESIS</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
+            The only training that goes from <span className="text-gradient-copper">community tip to conviction.</span>
+          </h2>
+        </div>
+
+        <div className="grid lg:grid-cols-3 gap-5">
+          {/* Wide feature card */}
+          <div className="lg:col-span-2 rounded-2xl border border-foreground/10 bg-card/50 backdrop-blur-md card-lift overflow-hidden">
+            <div className="grid md:grid-cols-2">
+              <div className="p-8 flex flex-col justify-center">
+                <span className="icon-chip mb-5 w-fit"><Network className="h-5 w-5" /></span>
+                <span className="inline-flex w-fit items-center rounded-full border border-copper/20 bg-copper/10 px-2.5 py-0.5 text-[0.6rem] font-mono tracking-[0.2em] text-copper mb-4">FULL CYCLE</span>
+                <h3 className="text-2xl font-extrabold tracking-tight mb-3">{differentiators[2].title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{differentiators[2].body}</p>
+              </div>
+              <div className="relative min-h-[300px] border-t md:border-t-0 md:border-l border-foreground/5 p-6 bg-background/40">
+                <div className="text-[0.6rem] font-mono tracking-[0.3em] text-muted-foreground mb-4">METHOD · TRACE</div>
+                <div className="space-y-3 font-mono text-xs">
+                  {[
+                    ["01", "SOURCE", "informant · OSINT"],
+                    ["02", "GRADE", "5×5×5 evaluation"],
+                    ["03", "LINK", "syndicate mapping"],
+                    ["04", "ORDER", "warrant · tactical plan"],
+                    ["05", "DOCKET", "POCA · court-ready"],
+                  ].map(([n, k, v]) => (
+                    <div key={n} className="flex items-center gap-3 rounded-lg border border-foreground/10 bg-card/60 px-3 py-2 hover:border-copper/40 transition-all duration-300">
+                      <span className="text-copper">{n}</span>
+                      <span className="font-semibold tracking-[0.15em]">{k}</span>
+                      <span className="ml-auto text-muted-foreground">{v}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-copper/5 to-transparent pointer-events-none" />
+              </div>
             </div>
+          </div>
+
+          {/* Compact cards */}
+          <div className="grid gap-5">
+            {[
+              { d: differentiators[0], Icon: Scale, badge: "NOT FRAUD 101" },
+              { d: differentiators[1], Icon: Target, badge: "DEPTH > BREADTH" },
+            ].map(({ d, Icon, badge }) => (
+              <div key={d.title} className="rounded-2xl border border-foreground/10 bg-card/50 backdrop-blur-md p-7 card-lift">
+                <span className="icon-chip mb-5"><Icon className="h-5 w-5" /></span>
+                <span className="ml-3 inline-flex items-center rounded-full border border-copper/20 bg-copper/10 px-2.5 py-0.5 text-[0.6rem] font-mono tracking-[0.2em] text-copper align-top mt-3">{badge}</span>
+                <h3 className="text-lg font-extrabold tracking-tight mb-2 mt-4">{d.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{d.body}</p>
+              </div>
+            ))}
           </div>
         </div>
 
-        <div>
-          <div className="inline-flex items-center gap-3 mb-6">
-            <span className="h-px w-10 bg-copper" />
-            <span className="text-copper text-xs font-semibold tracking-[0.3em]">WHY NOESIS</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-8">
-            The only training that goes from <span className="text-gradient-copper">community tip to conviction.</span>
-          </h2>
-          <div className="space-y-6">
-            {differentiators.map((d) => (
-              <div key={d.title} className="border-l-2 border-copper pl-5">
-                <h3 className="text-lg font-bold mb-2">{d.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{d.body}</p>
-              </div>
-            ))}
+        <div className="mt-6 relative rounded-2xl border border-foreground/10 overflow-hidden card-lift">
+          <img src={trainingImg} alt="Delegates working geospatial maps in a briefing room" className="w-full h-[320px] object-cover" width={1400} height={1000} loading="lazy" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+          <div className="absolute bottom-6 left-6 right-6">
+            <div className="text-copper text-[0.6rem] font-mono tracking-[0.3em]">METHOD-LED</div>
+            <div className="text-2xl font-extrabold tracking-tight mt-1">From the desk to the operation.</div>
           </div>
         </div>
       </div>
@@ -714,7 +784,7 @@ function Facilitators() {
         </div>
         <div className="grid md:grid-cols-3 gap-6">
           {people.map((p) => (
-            <div key={p.name} className="border border-border bg-card p-8 hover:border-copper/50 transition-colors group">
+            <div key={p.name} className="rounded-2xl border border-foreground/10 bg-card/50 backdrop-blur-md card-lift p-8 hover:border-copper/50 transition-colors group">
               <div className="h-16 w-16 border border-copper/40 flex items-center justify-center text-copper text-lg font-bold mb-6 group-hover:bg-copper group-hover:text-primary-foreground transition-colors">
                 {p.name.split(" ").map((n) => n[0]).join("")}
               </div>

@@ -113,7 +113,7 @@ function CourseHero() {
           The full operational cycle — understand, collect, analyse, plan, execute, prosecute — taught as one connected method. Built for SAPS, metro law enforcement, and SOE risk divisions who are done reacting.
         </p>
         <div className="flex flex-wrap gap-4">
-          <a href="/noesis-brochure.pdf" download className="group inline-flex items-center gap-3 bg-copper text-primary-foreground px-7 py-4 text-sm font-semibold tracking-wide hover:bg-bronze transition-colors shadow-[var(--shadow-copper)]">
+          <a href="/noesis-brochure.pdf" download className="group inline-flex items-center gap-3 rounded-full bg-copper text-primary-foreground px-7 py-4 text-sm font-semibold tracking-wide hover:bg-bronze glow-cta shadow-[var(--shadow-copper)]">
             <Download className="h-4 w-4" /> DOWNLOAD BROCHURE
           </a>
           <Link to="/" hash="contact" className="inline-flex items-center gap-3 border border-copper/60 px-7 py-4 text-sm font-semibold tracking-wide text-foreground hover:bg-copper/10 hover:text-copper transition-colors">
@@ -200,7 +200,7 @@ function Modules() {
           </div>
           <div className="space-y-4">
             {modules.map((m) => (
-              <div key={m.n} className="border border-border bg-card p-6 lg:p-8 hover:border-copper/50 transition-colors group">
+              <div key={m.n} className="rounded-2xl border border-foreground/10 bg-card/50 backdrop-blur-md card-lift p-6 lg:p-8 hover:border-copper/50 transition-colors group">
                 <div className="flex items-start gap-5">
                   <div className="shrink-0 h-11 w-11 border border-copper/50 flex items-center justify-center text-copper group-hover:bg-copper group-hover:text-primary-foreground transition-colors">
                     <m.icon className="h-5 w-5" strokeWidth={1.5} />
@@ -282,7 +282,7 @@ function Enrol() {
           Cohort delivery for individual delegates. Private in-house delivery for units and SOE divisions. Direct contracts for embedded methodology across an internal investigations function.
         </p>
         <div className="flex flex-wrap gap-4 justify-center mb-10">
-          <a href="/noesis-brochure.pdf" download className="group inline-flex items-center gap-3 bg-copper text-primary-foreground px-7 py-4 text-sm font-semibold tracking-wide hover:bg-bronze transition-colors shadow-[var(--shadow-copper)]">
+          <a href="/noesis-brochure.pdf" download className="group inline-flex items-center gap-3 rounded-full bg-copper text-primary-foreground px-7 py-4 text-sm font-semibold tracking-wide hover:bg-bronze glow-cta shadow-[var(--shadow-copper)]">
             <Download className="h-4 w-4" /> DOWNLOAD BROCHURE
           </a>
           <Link to="/" hash="contact" className="inline-flex items-center gap-3 border border-copper/60 px-7 py-4 text-sm font-semibold tracking-wide hover:bg-copper/10 hover:text-copper transition-colors">
@@ -561,7 +561,7 @@ function EnquiryForm() {
             <li className="flex gap-3"><CheckCircle2 className="h-4 w-4 text-copper mt-0.5 shrink-0" /> Written proposal for private cohorts within two working days.</li>
           </ul>
         </div>
-        <form onSubmit={submit} noValidate className="border border-border bg-card p-6 md:p-8 space-y-5">
+        <form onSubmit={submit} noValidate className="rounded-2xl border border-foreground/10 bg-card/50 backdrop-blur-md card-lift p-6 md:p-8 space-y-5">
           <div className="grid md:grid-cols-2 gap-5">
             <EField label="Full name" value={data.name} onChange={(v) => update("name", v)} error={errors.name} maxLength={100} required />
             <EField label="Work email" type="email" value={data.email} onChange={(v) => update("email", v)} error={errors.email} maxLength={255} required />
@@ -625,7 +625,7 @@ function EnquiryForm() {
           <button
             type="submit"
             disabled={status === "sending"}
-            className="w-full group inline-flex items-center justify-center gap-3 bg-copper text-primary-foreground px-7 py-4 text-sm font-semibold tracking-wide hover:bg-bronze transition-colors shadow-[var(--shadow-copper)] disabled:opacity-70"
+            className="w-full group inline-flex items-center justify-center gap-3 rounded-full bg-copper text-primary-foreground px-7 py-4 text-sm font-semibold tracking-wide hover:bg-bronze glow-cta shadow-[var(--shadow-copper)] disabled:opacity-70"
           >
             {status === "sending" ? (
               <><Loader2 className="h-4 w-4 animate-spin" /> SENDING…</>
