@@ -74,37 +74,39 @@ function Logo({ className = "" }: { className?: string }) {
 function Header() {
   const [open, setOpen] = useState(false);
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-xl bg-background/70 border-b border-border">
-      <div className="container-x flex items-center justify-between h-20">
-        <Logo />
-        <nav className="hidden lg:flex items-center gap-8 text-sm">
-          {nav.map((n) => (
-            <a key={n.href} href={n.href} className="text-muted-foreground hover:text-copper transition-colors relative group">
-              {n.label}
-              <span className="absolute -bottom-1 left-0 h-px w-0 bg-copper transition-all group-hover:w-full" />
-            </a>
-          ))}
-        </nav>
-        <div className="hidden sm:flex items-center gap-3">
-          <a href="/noesis-brochure.pdf" download className="inline-flex items-center gap-2 border border-border px-4 py-2.5 text-xs font-semibold tracking-wide text-foreground hover:border-copper hover:text-copper transition-colors">
-            <Download className="h-3.5 w-3.5" /> BROCHURE
-          </a>
-          <a href="#contact" className="group inline-flex items-center gap-2 bg-copper text-primary-foreground px-5 py-2.5 text-sm font-semibold tracking-wide hover:bg-bronze transition-colors">
-            ENQUIRE <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </a>
-        </div>
-        <button onClick={() => setOpen(!open)} className="lg:hidden text-foreground" aria-label="Menu"><Menu /></button>
-      </div>
-      {open && (
-        <div className="lg:hidden border-t border-border bg-background/95 backdrop-blur-xl">
-          <div className="container-x py-4 flex flex-col gap-3">
+    <header className="fixed top-4 inset-x-0 z-50 px-4">
+      <div className="mx-auto max-w-[1400px] rounded-full backdrop-blur-md bg-background/40 border border-foreground/10 shadow-[0_10px_40px_-24px_rgba(0,0,0,0.9)]">
+        <div className="flex items-center justify-between h-16 pl-5 pr-3">
+          <Logo />
+          <nav className="hidden xl:flex items-center gap-7 text-sm">
             {nav.map((n) => (
-              <a key={n.href} href={n.href} onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-copper py-1.5">{n.label}</a>
+              <a key={n.href} href={n.href} className="text-muted-foreground hover:text-copper transition-colors relative group">
+                {n.label}
+                <span className="absolute -bottom-1 left-0 h-px w-0 bg-copper transition-all group-hover:w-full" />
+              </a>
             ))}
-            <a href="/noesis-brochure.pdf" download className="text-sm text-copper font-semibold mt-2 inline-flex items-center gap-2"><Download className="h-4 w-4" /> Download brochure</a>
+          </nav>
+          <div className="hidden sm:flex items-center gap-2">
+            <a href="/noesis-brochure.pdf" download className="inline-flex items-center gap-2 rounded-full border border-foreground/10 px-4 py-2.5 text-xs font-semibold tracking-wide text-foreground hover:border-copper/50 hover:text-copper transition-colors">
+              <Download className="h-3.5 w-3.5" /> BROCHURE
+            </a>
+            <a href="#contact" className="group inline-flex items-center gap-2 rounded-full bg-copper text-primary-foreground px-5 py-2.5 text-sm font-semibold tracking-wide hover:bg-bronze glow-cta">
+              ENQUIRE <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </a>
           </div>
+          <button onClick={() => setOpen(!open)} className="xl:hidden text-foreground p-2" aria-label="Menu"><Menu /></button>
         </div>
-      )}
+        {open && (
+          <div className="xl:hidden border-t border-foreground/10 px-5">
+            <div className="py-4 flex flex-col gap-3">
+              {nav.map((n) => (
+                <a key={n.href} href={n.href} onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-copper py-1.5">{n.label}</a>
+              ))}
+              <a href="/noesis-brochure.pdf" download className="text-sm text-copper font-semibold mt-2 inline-flex items-center gap-2"><Download className="h-4 w-4" /> Download brochure</a>
+            </div>
+          </div>
+        )}
+      </div>
     </header>
   );
 }
