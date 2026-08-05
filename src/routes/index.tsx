@@ -225,10 +225,6 @@ function CyclePreview() {
     </div>
   );
 }
-      </div>
-    </section>
-  );
-}
 
 function MeaningStrip() {
   return (
