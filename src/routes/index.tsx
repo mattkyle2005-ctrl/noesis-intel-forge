@@ -676,35 +676,72 @@ const differentiators = [
 
 function WhyNoesis() {
   return (
-    <section className="py-24 lg:py-32">
-      <div className="container-x grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-20 items-start">
-        <div className="relative">
-          <div className="absolute -inset-6 bg-gradient-to-tr from-copper/15 to-transparent blur-3xl" />
-          <div className="relative border border-border overflow-hidden">
-            <img src={trainingImg} alt="Delegates working geospatial maps in a briefing room" className="w-full h-[480px] object-cover" width={1400} height={1000} loading="lazy" />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
-            <div className="absolute bottom-6 left-6 right-6">
-              <div className="text-copper text-[0.6rem] tracking-[0.3em]">METHOD-LED</div>
-              <div className="text-2xl font-bold mt-1">From the desk to the operation.</div>
+    <section className="py-24 lg:py-32 section-rule">
+      <div className="container-x">
+        <div className="max-w-3xl mb-12">
+          <div className="inline-flex items-center gap-3 mb-6">
+            <span className="h-px w-10 bg-copper" />
+            <span className="text-copper text-xs font-mono font-semibold tracking-[0.3em]">WHY NOESIS</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
+            The only training that goes from <span className="text-gradient-copper">community tip to conviction.</span>
+          </h2>
+        </div>
+
+        <div className="grid lg:grid-cols-3 gap-5">
+          {/* Wide feature card */}
+          <div className="lg:col-span-2 rounded-2xl border border-foreground/10 bg-card/50 backdrop-blur-md card-lift overflow-hidden">
+            <div className="grid md:grid-cols-2">
+              <div className="p-8 flex flex-col justify-center">
+                <span className="icon-chip mb-5 w-fit"><Network className="h-5 w-5" /></span>
+                <span className="inline-flex w-fit items-center rounded-full border border-copper/20 bg-copper/10 px-2.5 py-0.5 text-[0.6rem] font-mono tracking-[0.2em] text-copper mb-4">FULL CYCLE</span>
+                <h3 className="text-2xl font-extrabold tracking-tight mb-3">{differentiators[2].title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{differentiators[2].body}</p>
+              </div>
+              <div className="relative min-h-[300px] border-t md:border-t-0 md:border-l border-foreground/5 p-6 bg-background/40">
+                <div className="text-[0.6rem] font-mono tracking-[0.3em] text-muted-foreground mb-4">METHOD · TRACE</div>
+                <div className="space-y-3 font-mono text-xs">
+                  {[
+                    ["01", "SOURCE", "informant · OSINT"],
+                    ["02", "GRADE", "5×5×5 evaluation"],
+                    ["03", "LINK", "syndicate mapping"],
+                    ["04", "ORDER", "warrant · tactical plan"],
+                    ["05", "DOCKET", "POCA · court-ready"],
+                  ].map(([n, k, v]) => (
+                    <div key={n} className="flex items-center gap-3 rounded-lg border border-foreground/10 bg-card/60 px-3 py-2 hover:border-copper/40 transition-all duration-300">
+                      <span className="text-copper">{n}</span>
+                      <span className="font-semibold tracking-[0.15em]">{k}</span>
+                      <span className="ml-auto text-muted-foreground">{v}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-copper/5 to-transparent pointer-events-none" />
+              </div>
             </div>
+          </div>
+
+          {/* Compact cards */}
+          <div className="grid gap-5">
+            {[
+              { d: differentiators[0], Icon: Scale, badge: "NOT FRAUD 101" },
+              { d: differentiators[1], Icon: Target, badge: "DEPTH > BREADTH" },
+            ].map(({ d, Icon, badge }) => (
+              <div key={d.title} className="rounded-2xl border border-foreground/10 bg-card/50 backdrop-blur-md p-7 card-lift">
+                <span className="icon-chip mb-5"><Icon className="h-5 w-5" /></span>
+                <span className="ml-3 inline-flex items-center rounded-full border border-copper/20 bg-copper/10 px-2.5 py-0.5 text-[0.6rem] font-mono tracking-[0.2em] text-copper align-top mt-3">{badge}</span>
+                <h3 className="text-lg font-extrabold tracking-tight mb-2 mt-4">{d.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{d.body}</p>
+              </div>
+            ))}
           </div>
         </div>
 
-        <div>
-          <div className="inline-flex items-center gap-3 mb-6">
-            <span className="h-px w-10 bg-copper" />
-            <span className="text-copper text-xs font-semibold tracking-[0.3em]">WHY NOESIS</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-8">
-            The only training that goes from <span className="text-gradient-copper">community tip to conviction.</span>
-          </h2>
-          <div className="space-y-6">
-            {differentiators.map((d) => (
-              <div key={d.title} className="border-l-2 border-copper pl-5">
-                <h3 className="text-lg font-bold mb-2">{d.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{d.body}</p>
-              </div>
-            ))}
+        <div className="mt-6 relative rounded-2xl border border-foreground/10 overflow-hidden card-lift">
+          <img src={trainingImg} alt="Delegates working geospatial maps in a briefing room" className="w-full h-[320px] object-cover" width={1400} height={1000} loading="lazy" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+          <div className="absolute bottom-6 left-6 right-6">
+            <div className="text-copper text-[0.6rem] font-mono tracking-[0.3em]">METHOD-LED</div>
+            <div className="text-2xl font-extrabold tracking-tight mt-1">From the desk to the operation.</div>
           </div>
         </div>
       </div>
