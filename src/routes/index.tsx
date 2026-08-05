@@ -461,7 +461,7 @@ const audiences = [
 
 function Audiences() {
   return (
-    <section id="audiences" className="py-24 lg:py-32">
+    <section id="audiences" className="py-24 lg:py-32 section-rule">
       <div className="container-x">
         <div className="flex flex-wrap items-end justify-between gap-6 mb-14">
           <div>
