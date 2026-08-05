@@ -120,34 +120,38 @@ const cycle = [
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden bg-spotlight">
       <div className="absolute inset-0 bg-grid opacity-40" />
-      <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 70% 30%, transparent 30%, var(--background) 85%)" }} />
-      <div className="container-x relative pt-16 lg:pt-24 pb-20">
+      <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 70% 30%, transparent 35%, var(--background) 90%)" }} />
+      <div className="container-x relative pt-32 lg:pt-40 pb-20">
         <div className="grid lg:grid-cols-[1.15fr_1fr] gap-12 lg:gap-16 items-center">
           <div className="animate-fade-up">
-            <div className="inline-flex items-center gap-3 mb-8">
-              <span className="h-px w-10 bg-copper" />
-              <span className="text-copper text-xs font-semibold tracking-[0.3em]">INTELLIGENCE · INSIGHT · IMPACT</span>
+            <div className="inline-flex items-center gap-2 mb-7 rounded-full border border-copper/25 bg-copper/10 px-4 py-1.5 text-xs font-medium text-copper animate-pulse-glow">
+              <span aria-hidden>✨</span> Noesis Intel Forge 2.0 is live
             </div>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.03] mb-6">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="h-px w-10 bg-copper" />
+              <span className="text-copper text-xs font-mono font-semibold tracking-[0.3em]">INTELLIGENCE · INSIGHT · IMPACT</span>
+            </div>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6">
               EMPOWERING <span className="text-gradient-copper">PROFESSIONALS.</span><br />
-              PROTECTING COMMUNITIES.
+              PROTECTING <span className="text-gradient-copper">COMMUNITIES.</span>
             </h1>
             <div className="flex items-center gap-3 mb-6">
               <span className="h-px w-8 bg-copper/60" />
-              <span className="text-copper text-sm font-semibold tracking-[0.2em]">FROM CABLE TO COURTROOM</span>
+              <span className="text-copper text-sm font-mono font-semibold tracking-[0.2em]">FROM CABLE TO COURTROOM</span>
             </div>
             <p className="text-muted-foreground text-lg max-w-xl mb-10 leading-relaxed">
               Noesis trains South Africa's investigators, enforcers and risk professionals in the full operational cycle of intelligence-led work — starting with the R45-billion crime nobody is trained to get ahead of.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link to="/courses/metals-theft" className="group inline-flex items-center gap-3 bg-copper text-primary-foreground px-7 py-4 text-sm font-semibold tracking-wide hover:bg-bronze transition-colors shadow-[var(--shadow-copper)]">
+              <Link to="/courses/metals-theft" className="group inline-flex items-center gap-3 rounded-full bg-copper text-primary-foreground px-7 py-4 text-sm font-semibold tracking-wide hover:bg-bronze glow-cta">
                 EXPLORE THE FLAGSHIP COURSE <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
-              <a href="/noesis-brochure.pdf" download className="inline-flex items-center gap-3 border border-copper/60 px-7 py-4 text-sm font-semibold tracking-wide text-foreground hover:bg-copper/10 hover:text-copper transition-colors">
+              <a href="/noesis-brochure.pdf" download className="inline-flex items-center gap-3 rounded-full border border-copper/50 px-7 py-4 text-sm font-semibold tracking-wide text-foreground hover:bg-copper/10 hover:text-copper transition-colors">
                 <Download className="h-4 w-4" /> DOWNLOAD BROCHURE
               </a>
+
             </div>
           </div>
 
