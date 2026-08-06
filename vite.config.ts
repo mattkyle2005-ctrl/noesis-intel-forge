@@ -12,4 +12,11 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // Defaults to Nitro's "cloudflare-module" preset (Lovable's own deploy target).
+  // "static" hit a build error here (the custom SSR server entry above conflicts
+  // with Nitro's static-prerender crawler) -- "vercel" is Nitro's most mature,
+  // officially-supported preset and builds cleanly with the custom entry intact.
+  nitro: {
+    preset: "vercel",
+  },
 });
