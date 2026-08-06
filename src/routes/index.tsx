@@ -134,7 +134,7 @@ function Hero() {
             [ FORGE ENGINE v2.4 • LIVE TELEMETRY ]
           </div>
           <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-foreground mb-6">
-            Synthesize Thought into Autonomous Workflows.
+            Empowering Professionals.<br />Protecting Communities.
           </h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
             Noesis turns raw signal into court-ready action — collection, analysis, planning and execution running as one continuous intelligence loop.
@@ -932,9 +932,9 @@ function FinalCTA() {
           <div className="absolute left-1/2 top-0 -translate-x-1/2 h-[28rem] w-[28rem] bg-primary/10 blur-[120px] rounded-full pointer-events-none" />
           <div className="absolute inset-0 bg-grid opacity-20" />
           <div className="relative max-w-2xl mx-auto">
-            <div className="font-mono text-[0.6rem] tracking-[0.3em] text-primary mb-4">FORGE ENGINE · EARLY ACCESS</div>
+            <div className="font-mono text-[0.6rem] tracking-[0.3em] text-primary mb-4">FLAGSHIP PROGRAMME · ENQUIRIES OPEN</div>
             <h3 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-8">
-              Ready to Forge Autonomous Intelligence?
+              Ready to build the intelligence-to-conviction pipeline?
             </h3>
             <form onSubmit={(e) => e.preventDefault()} className="relative mx-auto max-w-xl">
               <input
@@ -945,11 +945,11 @@ function FinalCTA() {
                 className="w-full rounded-full border border-foreground/15 bg-background/60 backdrop-blur-md py-4 pl-6 pr-44 text-sm outline-none focus:border-primary/50 transition-colors"
               />
               <button type="submit" className="absolute right-1.5 top-1.5 bottom-1.5 rounded-full bg-copper px-5 text-xs font-semibold tracking-wide text-primary-foreground hover:bg-bronze glow-cta">
-                GET EARLY ACCESS ⌘
+                REQUEST DETAILS
               </button>
             </form>
             <p className="mt-4 font-mono text-[0.65rem] tracking-[0.15em] text-muted-foreground">
-              Deploy in &lt; 5 minutes • Zero configuration required • Open Source Core
+              Cohort or in-house delivery • NQF-aligned • Response within two working days
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <a href="/noesis-brochure.pdf" download className="inline-flex items-center gap-3 rounded-full border border-copper/50 px-6 py-3.5 text-sm font-semibold tracking-wide hover:bg-copper/10 hover:text-copper transition-colors">
