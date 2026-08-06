@@ -75,7 +75,7 @@ function Header() {
   const [open, setOpen] = useState(false);
   return (
     <header className="fixed top-4 inset-x-0 z-50 px-4">
-      <div className="mx-auto max-w-[1400px] rounded-full backdrop-blur-xl bg-black/50 border border-foreground/10 shadow-2xl py-3 px-6">
+      <div className="mx-auto max-w-[1400px] rounded-full backdrop-blur-xl bg-background/70 border border-white/10 shadow-2xl py-2.5 px-6">
         <div className="flex items-center justify-between">
 
           <Logo />
@@ -123,17 +123,17 @@ function Hero() {
   return (
     <section className="relative overflow-hidden bg-spotlight">
       <div className="absolute inset-0 bg-grid opacity-40" />
-      <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(6,182,212,0.10), transparent 60%)" }} />
+      <div className="absolute left-1/2 top-0 -translate-x-1/2 h-[32rem] w-[32rem] bg-primary/10 blur-[120px] rounded-full pointer-events-none" />
       <div className="container-x relative pt-36 lg:pt-44 pb-20">
         <div className="max-w-4xl mx-auto text-center animate-fade-up">
-          <div className="inline-flex items-center gap-2 mb-8 rounded-full border border-foreground/10 bg-background/50 backdrop-blur-xl px-4 py-1.5 font-mono text-[0.7rem] tracking-[0.2em] text-muted-foreground">
+          <div className="inline-flex items-center gap-2 mb-8 rounded-full border border-primary/20 bg-primary/10 backdrop-blur-xl px-4 py-1.5 font-mono text-xs text-primary">
             <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+              <span className="absolute inline-flex h-full w-full rounded-full bg-primary opacity-75 animate-ping" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
             </span>
             [ FORGE ENGINE v2.4 • LIVE TELEMETRY ]
           </div>
-          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-zinc-200 to-zinc-500 mb-6">
+          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-foreground mb-6">
             Synthesize Thought into Autonomous Workflows.
           </h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
@@ -206,21 +206,21 @@ function TerminalSim() {
   }, []);
 
   return (
-    <div className="mt-16 lg:mt-20 max-w-4xl mx-auto rounded-xl border border-cyan-500/30 bg-black/80 backdrop-blur-md shadow-[0_0_50px_rgba(6,182,212,0.15)] overflow-hidden">
-      <div className="flex items-center gap-2 px-4 py-3 border-b border-cyan-500/20">
-        <span className="h-2 w-2 rounded-full bg-cyan-400/70" />
+    <div className="mt-16 lg:mt-20 max-w-4xl mx-auto rounded-xl border border-primary/20 bg-black/60 backdrop-blur-md shadow-[0_0_50px_rgba(212,116,82,0.15)] overflow-hidden">
+      <div className="flex items-center gap-2 px-4 py-3 border-b border-primary/20">
+        <span className="h-2 w-2 rounded-full bg-primary/70" />
         <span className="h-2 w-2 rounded-full bg-foreground/15" />
         <span className="h-2 w-2 rounded-full bg-foreground/15" />
-        <span className="ml-3 font-mono text-[0.65rem] tracking-[0.25em] text-cyan-400/70">noesis://forge/telemetry</span>
+        <span className="ml-3 font-mono text-[0.65rem] tracking-[0.25em] text-primary/70">noesis://forge/telemetry</span>
         <span className="ml-auto font-mono text-[0.6rem] tracking-[0.2em] text-muted-foreground">STREAMING</span>
       </div>
-      <div className="p-4 font-mono text-xs text-cyan-400 h-[248px] overflow-hidden">
+      <div className="p-5 font-mono text-xs text-muted-foreground h-[248px] overflow-hidden">
         {shown.map((l, i) => (
           <div key={`${l}-${i}`} className="leading-6 whitespace-pre-wrap opacity-70">{l}</div>
         ))}
-        <div className="leading-6 whitespace-pre-wrap">
+        <div className="leading-6 whitespace-pre-wrap text-primary">
           {typed}
-          <span className="inline-block w-2 h-3.5 translate-y-0.5 bg-cyan-400 animate-pulse ml-0.5" />
+          <span className="inline-block w-2 h-3.5 translate-y-0.5 bg-primary animate-pulse ml-0.5" />
         </div>
       </div>
     </div>
@@ -540,7 +540,7 @@ function Programme() {
           </div>
 
           <div className="flex flex-wrap gap-4">
-            <Link to="/courses/metals-theft" className="group inline-flex items-center gap-3 bg-copper text-primary-foreground px-6 py-4 text-sm font-semibold tracking-wide hover:bg-bronze transition-colors shadow-[var(--shadow-copper)]">
+            <Link to="/courses/metals-theft" className="group inline-flex items-center gap-3 bg-copper text-primary-foreground px-6 py-4 text-sm font-semibold tracking-wide hover:bg-bronze glow-cta">
               <BookOpen className="h-4 w-4" /> VIEW FULL COURSE PAGE
             </Link>
             <a href="/noesis-brochure.pdf" download className="group inline-flex items-center gap-3 border border-copper/60 px-6 py-4 text-sm font-semibold tracking-wide hover:bg-copper/10 hover:text-copper transition-colors">
@@ -566,7 +566,7 @@ function Programme() {
               </li>
             ))}
           </ul>
-          <a href="#contact" className="group w-full inline-flex items-center justify-between gap-3 bg-copper text-primary-foreground px-6 py-4 text-sm font-semibold tracking-wide hover:bg-bronze transition-colors">
+          <a href="#contact" className="group w-full inline-flex items-center justify-between gap-3 bg-copper text-primary-foreground px-6 py-4 text-sm font-semibold tracking-wide hover:bg-bronze glow-cta">
             REQUEST THE FULL PROGRAMME OUTLINE <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </a>
         </div>
@@ -715,7 +715,7 @@ function KnowledgeGraph() {
           const dx = (a.x - b.x) * w, dy = (a.y - b.y) * h;
           const d = Math.hypot(dx, dy);
           if (d < 150) {
-            ctx.strokeStyle = `rgba(6,182,212,${0.28 * (1 - d / 150)})`;
+            ctx.strokeStyle = `rgba(212,116,82,${0.28 * (1 - d / 150)})`;
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(a.x * w, a.y * h);
@@ -729,7 +729,7 @@ function KnowledgeGraph() {
         ctx.beginPath();
         ctx.arc(n.x * w, n.y * h, n.r, 0, Math.PI * 2);
         ctx.fill();
-        ctx.fillStyle = "rgba(6,182,212,0.12)";
+        ctx.fillStyle = "rgba(212,116,82,0.12)";
         ctx.beginPath();
         ctx.arc(n.x * w, n.y * h, n.r * 4, 0, Math.PI * 2);
         ctx.fill();
@@ -755,10 +755,10 @@ function TelemetryBars() {
       {["CPU", "GPU", "I/O"].map((k, i) => (
         <div key={k}>
           <div className="flex justify-between font-mono text-[0.6rem] tracking-[0.2em] text-muted-foreground mb-1.5">
-            <span>{k}</span><span className="text-cyan-400">{vals[i].toFixed(0)}%</span>
+            <span>{k}</span><span className="text-primary">{vals[i].toFixed(0)}%</span>
           </div>
           <div className="h-1.5 w-full bg-foreground/10 rounded-full overflow-hidden">
-            <div className="h-full bg-cyan-400/70 transition-all duration-1000 ease-out" style={{ width: `${vals[i]}%` }} />
+            <div className="h-full bg-primary/70 transition-all duration-1000 ease-out" style={{ width: `${vals[i]}%` }} />
           </div>
         </div>
       ))}
@@ -781,25 +781,25 @@ function DropZone() {
         onDragOver={(e) => { e.preventDefault(); setOver(true); }}
         onDragLeave={() => setOver(false)}
         onDrop={(e) => { e.preventDefault(); setOver(false); }}
-        className={`flex flex-col items-center justify-center rounded-xl border border-dashed p-8 text-center transition-all duration-300 ${over ? "border-cyan-500/60 bg-cyan-500/5" : "border-foreground/15"}`}
+        className={`flex flex-col items-center justify-center rounded-xl border border-dashed p-8 text-center transition-all duration-300 ${over ? "border-primary/60 bg-primary/5" : "border-foreground/15"}`}
       >
-        <Download className="h-6 w-6 text-cyan-400 mb-3" strokeWidth={1.5} />
+        <Download className="h-6 w-6 text-primary mb-3" strokeWidth={1.5} />
         <div className="text-sm font-semibold">Drop dockets, CDRs, SCADA logs</div>
         <div className="text-xs text-muted-foreground mt-1 font-mono">PDF · CSV · JSON · SHP</div>
       </div>
       <div className="rounded-xl border border-foreground/10 bg-black/60 overflow-hidden">
         <div className="flex border-b border-foreground/10">
           {Object.keys(snippets).map((k) => (
-            <button key={k} onClick={() => setTab(k)} className={`px-3 py-2 font-mono text-[0.65rem] tracking-[0.15em] transition-colors ${tab === k ? "text-cyan-400 border-b border-cyan-400" : "text-muted-foreground hover:text-foreground"}`}>{k.toUpperCase()}</button>
+            <button key={k} onClick={() => setTab(k)} className={`px-3 py-2 font-mono text-[0.65rem] tracking-[0.15em] transition-colors ${tab === k ? "text-primary border-b border-primary" : "text-muted-foreground hover:text-foreground"}`}>{k.toUpperCase()}</button>
           ))}
         </div>
-        <pre className="p-4 font-mono text-xs text-cyan-400/90 whitespace-pre-wrap leading-6">{snippets[tab]}</pre>
+        <pre className="p-4 font-mono text-xs text-primary/90 whitespace-pre-wrap leading-6">{snippets[tab]}</pre>
       </div>
     </div>
   );
 }
 
-const bentoCard = "rounded-2xl border border-foreground/10 bg-card/40 backdrop-blur-md hover:border-cyan-500/40 transition-all duration-300 p-6";
+const bentoCard = "bg-white/[0.03] backdrop-blur-md border border-white/10 hover:border-primary/40 transition-all duration-300 rounded-2xl p-6";
 
 function WhyNoesis() {
   return (
@@ -815,8 +815,8 @@ function WhyNoesis() {
           </h2>
         </div>
 
-        <div className="grid lg:grid-cols-4 gap-5">
-          <div className={`${bentoCard} lg:col-span-2 lg:row-span-2 relative overflow-hidden min-h-[420px] flex flex-col`}>
+        <div className="grid grid-cols-12 gap-5">
+          <div className={`${bentoCard} col-span-12 md:col-span-8 relative overflow-hidden min-h-[420px] flex flex-col`}>
             <div className="absolute inset-0 opacity-70"><KnowledgeGraph /></div>
             <div className="relative mt-auto">
               <span className="icon-chip mb-4 w-fit"><Network className="h-5 w-5" strokeWidth={1.5} /></span>
@@ -825,31 +825,33 @@ function WhyNoesis() {
             </div>
           </div>
 
-          <div className={`${bentoCard} lg:col-span-2`}>
-            <div className="flex items-start justify-between gap-6">
-              <div>
-                <span className="icon-chip mb-4 w-fit"><Zap className="h-5 w-5" strokeWidth={1.5} /></span>
-                <h3 className="text-lg font-extrabold tracking-tight mb-1">Zero-Latency Agent Swarm</h3>
-                <div className="font-mono text-2xl text-cyan-400 mb-2">0.04ms <span className="text-xs text-muted-foreground">execution</span></div>
+          <div className="col-span-12 md:col-span-4 flex flex-col gap-5">
+            <div className={`${bentoCard} flex-1`}>
+              <div className="flex items-start justify-between gap-6">
+                <div>
+                  <span className="icon-chip mb-4 w-fit"><Zap className="h-5 w-5" strokeWidth={1.5} /></span>
+                  <h3 className="text-lg font-extrabold tracking-tight mb-1">Zero-Latency Agent Swarm</h3>
+                  <div className="font-mono text-2xl text-primary mb-2">0.04ms <span className="text-xs text-muted-foreground">execution</span></div>
+                </div>
+                <div className="w-28 shrink-0"><TelemetryBars /></div>
               </div>
-              <div className="w-40 shrink-0"><TelemetryBars /></div>
+              <p className="text-sm text-muted-foreground leading-relaxed mt-3">{differentiators[0].body}</p>
             </div>
-            <p className="text-sm text-muted-foreground leading-relaxed mt-3">{differentiators[0].body}</p>
+
+            <div className={`${bentoCard} flex-1`}>
+              <div className="flex items-center gap-4 mb-4">
+                <span className="relative icon-chip">
+                  <span className="absolute inset-0 rounded-xl bg-primary/20 animate-pulse" />
+                  <ShieldCheck className="relative h-5 w-5" strokeWidth={1.5} />
+                </span>
+                <span className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-2.5 py-0.5 font-mono text-[0.6rem] tracking-[0.2em] text-primary">ZERO-TRUST VERIFIED</span>
+              </div>
+              <h3 className="text-lg font-extrabold tracking-tight mb-2">Enterprise Security Guardrails</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">{differentiators[1].body}</p>
+            </div>
           </div>
 
-          <div className={`${bentoCard} lg:col-span-2`}>
-            <div className="flex items-center gap-4 mb-4">
-              <span className="relative icon-chip">
-                <span className="absolute inset-0 rounded-xl bg-cyan-500/20 animate-pulse" />
-                <ShieldCheck className="relative h-5 w-5" strokeWidth={1.5} />
-              </span>
-              <span className="inline-flex items-center rounded-full border border-cyan-500/30 bg-cyan-500/10 px-2.5 py-0.5 font-mono text-[0.6rem] tracking-[0.2em] text-cyan-400">ZERO-TRUST VERIFIED</span>
-            </div>
-            <h3 className="text-lg font-extrabold tracking-tight mb-2">Enterprise Security Guardrails</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">{differentiators[1].body}</p>
-          </div>
-
-          <div className={`${bentoCard} lg:col-span-4`}>
+          <div className={`${bentoCard} col-span-12`}>
             <div className="flex items-center gap-3 mb-5">
               <span className="icon-chip"><ClipboardList className="h-5 w-5" strokeWidth={1.5} /></span>
               <h3 className="text-lg font-extrabold tracking-tight">Multi-Modal Data Ingestion</h3>
@@ -927,10 +929,10 @@ function FinalCTA() {
     <section className="py-20 lg:py-28">
       <div className="container-x">
         <div className="relative overflow-hidden rounded-2xl border border-foreground/10 bg-black/70 px-6 py-16 lg:py-20 text-center">
-          <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(40rem 22rem at 50% 0%, rgba(6,182,212,0.16), transparent 65%), radial-gradient(34rem 20rem at 80% 100%, rgba(212,116,82,0.18), transparent 70%)" }} />
+          <div className="absolute left-1/2 top-0 -translate-x-1/2 h-[28rem] w-[28rem] bg-primary/10 blur-[120px] rounded-full pointer-events-none" />
           <div className="absolute inset-0 bg-grid opacity-20" />
           <div className="relative max-w-2xl mx-auto">
-            <div className="font-mono text-[0.6rem] tracking-[0.3em] text-cyan-400 mb-4">FORGE ENGINE · EARLY ACCESS</div>
+            <div className="font-mono text-[0.6rem] tracking-[0.3em] text-primary mb-4">FORGE ENGINE · EARLY ACCESS</div>
             <h3 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-8">
               Ready to Forge Autonomous Intelligence?
             </h3>
@@ -940,7 +942,7 @@ function FinalCTA() {
                 required
                 placeholder="you@organisation.gov.za"
                 aria-label="Email address"
-                className="w-full rounded-full border border-foreground/15 bg-background/60 backdrop-blur-md py-4 pl-6 pr-44 text-sm outline-none focus:border-cyan-500/50 transition-colors"
+                className="w-full rounded-full border border-foreground/15 bg-background/60 backdrop-blur-md py-4 pl-6 pr-44 text-sm outline-none focus:border-primary/50 transition-colors"
               />
               <button type="submit" className="absolute right-1.5 top-1.5 bottom-1.5 rounded-full bg-copper px-5 text-xs font-semibold tracking-wide text-primary-foreground hover:bg-bronze glow-cta">
                 GET EARLY ACCESS ⌘
@@ -953,7 +955,7 @@ function FinalCTA() {
               <a href="/noesis-brochure.pdf" download className="inline-flex items-center gap-3 rounded-full border border-copper/50 px-6 py-3.5 text-sm font-semibold tracking-wide hover:bg-copper/10 hover:text-copper transition-colors">
                 <Download className="h-4 w-4" /> DOWNLOAD BROCHURE
               </a>
-              <a href="#contact" className="inline-flex items-center gap-3 rounded-full border border-foreground/15 px-6 py-3.5 text-sm font-semibold tracking-wide hover:border-cyan-500/40 transition-colors">
+              <a href="#contact" className="inline-flex items-center gap-3 rounded-full border border-foreground/15 px-6 py-3.5 text-sm font-semibold tracking-wide hover:border-primary/40 transition-colors">
                 REQUEST A BRIEFING <ArrowRight className="h-4 w-4" />
               </a>
             </div>
@@ -1023,7 +1025,7 @@ function Contact() {
               </p>
               <button
                 type="submit"
-                className="group w-full inline-flex items-center justify-between gap-3 bg-copper text-primary-foreground px-6 py-4 text-sm font-semibold tracking-wide hover:bg-bronze transition-colors"
+                className="group w-full inline-flex items-center justify-between gap-3 bg-copper text-primary-foreground px-6 py-4 text-sm font-semibold tracking-wide hover:bg-bronze glow-cta"
               >
                 SEND ENQUIRY <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </button>
