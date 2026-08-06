@@ -675,6 +675,131 @@ const differentiators = [
   { title: "The full cycle, taught as one method.", body: "Understand the crime. Collect. Analyse. Plan and execute. Prosecute. No other South African provider teaches all five as one connected operational cycle." },
 ];
 
+function KnowledgeGraph() {
+  const ref = useRef<HTMLCanvasElement | null>(null);
+  useEffect(() => {
+    const canvas = ref.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+    let raf = 0;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const resize = () => {
+      const r = canvas.getBoundingClientRect();
+      canvas.width = r.width * dpr;
+      canvas.height = r.height * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+    resize();
+    window.addEventListener("resize", resize);
+    const nodes = Array.from({ length: 22 }, () => ({
+      x: Math.random(),
+      y: Math.random(),
+      vx: (Math.random() - 0.5) * 0.0008,
+      vy: (Math.random() - 0.5) * 0.0008,
+      r: 1.5 + Math.random() * 2,
+    }));
+    const draw = () => {
+      const w = canvas.clientWidth;
+      const h = canvas.clientHeight;
+      ctx.clearRect(0, 0, w, h);
+      nodes.forEach((n) => {
+        n.x += n.vx; n.y += n.vy;
+        if (n.x < 0 || n.x > 1) n.vx *= -1;
+        if (n.y < 0 || n.y > 1) n.vy *= -1;
+      });
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const a = nodes[i], b = nodes[j];
+          const dx = (a.x - b.x) * w, dy = (a.y - b.y) * h;
+          const d = Math.hypot(dx, dy);
+          if (d < 150) {
+            ctx.strokeStyle = `rgba(6,182,212,${0.28 * (1 - d / 150)})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(a.x * w, a.y * h);
+            ctx.lineTo(b.x * w, b.y * h);
+            ctx.stroke();
+          }
+        }
+      }
+      nodes.forEach((n) => {
+        ctx.fillStyle = "rgba(212,116,82,0.9)";
+        ctx.beginPath();
+        ctx.arc(n.x * w, n.y * h, n.r, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = "rgba(6,182,212,0.12)";
+        ctx.beginPath();
+        ctx.arc(n.x * w, n.y * h, n.r * 4, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      raf = requestAnimationFrame(draw);
+    };
+    raf = requestAnimationFrame(draw);
+    return () => { cancelAnimationFrame(raf); window.removeEventListener("resize", resize); };
+  }, []);
+  return <canvas ref={ref} className="absolute inset-0 h-full w-full" aria-hidden />;
+}
+
+function TelemetryBars() {
+  const [vals, setVals] = useState([62, 41, 78]);
+  useEffect(() => {
+    const id = window.setInterval(() => {
+      setVals([30 + Math.random() * 60, 25 + Math.random() * 55, 45 + Math.random() * 50]);
+    }, 1200);
+    return () => window.clearInterval(id);
+  }, []);
+  return (
+    <div className="space-y-3">
+      {["CPU", "GPU", "I/O"].map((k, i) => (
+        <div key={k}>
+          <div className="flex justify-between font-mono text-[0.6rem] tracking-[0.2em] text-muted-foreground mb-1.5">
+            <span>{k}</span><span className="text-cyan-400">{vals[i].toFixed(0)}%</span>
+          </div>
+          <div className="h-1.5 w-full bg-foreground/10 rounded-full overflow-hidden">
+            <div className="h-full bg-cyan-400/70 transition-all duration-1000 ease-out" style={{ width: `${vals[i]}%` }} />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+const snippets: Record<string, string> = {
+  Python: "forge.ingest('docket.pdf')\nforge.grade(scale='5x5x5')\nforge.link().export('court')",
+  TypeScript: "await forge.ingest(file)\nawait forge.grade({ scale: '5x5x5' })\nawait forge.link().export()",
+  Rust: "forge.ingest(&file)?;\nforge.grade(Scale::FiveByFive)?;\nforge.link().export()?;",
+};
+
+function DropZone() {
+  const [tab, setTab] = useState<string>("Python");
+  const [over, setOver] = useState(false);
+  return (
+    <div className="grid md:grid-cols-2 gap-5">
+      <div
+        onDragOver={(e) => { e.preventDefault(); setOver(true); }}
+        onDragLeave={() => setOver(false)}
+        onDrop={(e) => { e.preventDefault(); setOver(false); }}
+        className={`flex flex-col items-center justify-center rounded-xl border border-dashed p-8 text-center transition-all duration-300 ${over ? "border-cyan-500/60 bg-cyan-500/5" : "border-foreground/15"}`}
+      >
+        <Download className="h-6 w-6 text-cyan-400 mb-3" strokeWidth={1.5} />
+        <div className="text-sm font-semibold">Drop dockets, CDRs, SCADA logs</div>
+        <div className="text-xs text-muted-foreground mt-1 font-mono">PDF · CSV · JSON · SHP</div>
+      </div>
+      <div className="rounded-xl border border-foreground/10 bg-black/60 overflow-hidden">
+        <div className="flex border-b border-foreground/10">
+          {Object.keys(snippets).map((k) => (
+            <button key={k} onClick={() => setTab(k)} className={`px-3 py-2 font-mono text-[0.65rem] tracking-[0.15em] transition-colors ${tab === k ? "text-cyan-400 border-b border-cyan-400" : "text-muted-foreground hover:text-foreground"}`}>{k.toUpperCase()}</button>
+          ))}
+        </div>
+        <pre className="p-4 font-mono text-xs text-cyan-400/90 whitespace-pre-wrap leading-6">{snippets[tab]}</pre>
+      </div>
+    </div>
+  );
+}
+
+const bentoCard = "rounded-2xl border border-foreground/10 bg-card/40 backdrop-blur-md hover:border-cyan-500/40 transition-all duration-300 p-6";
+
 function WhyNoesis() {
   return (
     <section className="py-24 lg:py-32 section-rule">
@@ -682,58 +807,53 @@ function WhyNoesis() {
         <div className="max-w-3xl mb-12">
           <div className="inline-flex items-center gap-3 mb-6">
             <span className="h-px w-10 bg-copper" />
-            <span className="text-copper text-xs font-mono font-semibold tracking-[0.3em]">WHY NOESIS</span>
+            <span className="text-copper text-xs font-mono font-semibold tracking-[0.3em]">CAPABILITIES</span>
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
-            The only training that goes from <span className="text-gradient-copper">community tip to conviction.</span>
+            The only method that goes from <span className="text-gradient-copper">community tip to conviction.</span>
           </h2>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-5">
-          {/* Wide feature card */}
-          <div className="lg:col-span-2 rounded-2xl border border-foreground/10 bg-card/50 backdrop-blur-md card-lift overflow-hidden">
-            <div className="grid md:grid-cols-2">
-              <div className="p-8 flex flex-col justify-center">
-                <span className="icon-chip mb-5 w-fit"><Network className="h-5 w-5" /></span>
-                <span className="inline-flex w-fit items-center rounded-full border border-copper/20 bg-copper/10 px-2.5 py-0.5 text-[0.6rem] font-mono tracking-[0.2em] text-copper mb-4">FULL CYCLE</span>
-                <h3 className="text-2xl font-extrabold tracking-tight mb-3">{differentiators[2].title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{differentiators[2].body}</p>
-              </div>
-              <div className="relative min-h-[300px] border-t md:border-t-0 md:border-l border-foreground/5 p-6 bg-background/40">
-                <div className="text-[0.6rem] font-mono tracking-[0.3em] text-muted-foreground mb-4">METHOD · TRACE</div>
-                <div className="space-y-3 font-mono text-xs">
-                  {[
-                    ["01", "SOURCE", "informant · OSINT"],
-                    ["02", "GRADE", "5×5×5 evaluation"],
-                    ["03", "LINK", "syndicate mapping"],
-                    ["04", "ORDER", "warrant · tactical plan"],
-                    ["05", "DOCKET", "POCA · court-ready"],
-                  ].map(([n, k, v]) => (
-                    <div key={n} className="flex items-center gap-3 rounded-lg border border-foreground/10 bg-card/60 px-3 py-2 hover:border-copper/40 transition-all duration-300">
-                      <span className="text-copper">{n}</span>
-                      <span className="font-semibold tracking-[0.15em]">{k}</span>
-                      <span className="ml-auto text-muted-foreground">{v}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-copper/5 to-transparent pointer-events-none" />
-              </div>
+        <div className="grid lg:grid-cols-4 gap-5">
+          <div className={`${bentoCard} lg:col-span-2 lg:row-span-2 relative overflow-hidden min-h-[420px] flex flex-col`}>
+            <div className="absolute inset-0 opacity-70"><KnowledgeGraph /></div>
+            <div className="relative mt-auto">
+              <span className="icon-chip mb-4 w-fit"><Network className="h-5 w-5" strokeWidth={1.5} /></span>
+              <h3 className="text-2xl font-extrabold tracking-tight mb-2">Neural Knowledge Graph</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed max-w-md">{differentiators[2].body}</p>
             </div>
           </div>
 
-          {/* Compact cards */}
-          <div className="grid gap-5">
-            {[
-              { d: differentiators[0], Icon: Scale, badge: "NOT FRAUD 101" },
-              { d: differentiators[1], Icon: Target, badge: "DEPTH > BREADTH" },
-            ].map(({ d, Icon, badge }) => (
-              <div key={d.title} className="rounded-2xl border border-foreground/10 bg-card/50 backdrop-blur-md p-7 card-lift">
-                <span className="icon-chip mb-5"><Icon className="h-5 w-5" /></span>
-                <span className="ml-3 inline-flex items-center rounded-full border border-copper/20 bg-copper/10 px-2.5 py-0.5 text-[0.6rem] font-mono tracking-[0.2em] text-copper align-top mt-3">{badge}</span>
-                <h3 className="text-lg font-extrabold tracking-tight mb-2 mt-4">{d.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{d.body}</p>
+          <div className={`${bentoCard} lg:col-span-2`}>
+            <div className="flex items-start justify-between gap-6">
+              <div>
+                <span className="icon-chip mb-4 w-fit"><Zap className="h-5 w-5" strokeWidth={1.5} /></span>
+                <h3 className="text-lg font-extrabold tracking-tight mb-1">Zero-Latency Agent Swarm</h3>
+                <div className="font-mono text-2xl text-cyan-400 mb-2">0.04ms <span className="text-xs text-muted-foreground">execution</span></div>
               </div>
-            ))}
+              <div className="w-40 shrink-0"><TelemetryBars /></div>
+            </div>
+            <p className="text-sm text-muted-foreground leading-relaxed mt-3">{differentiators[0].body}</p>
+          </div>
+
+          <div className={`${bentoCard} lg:col-span-2`}>
+            <div className="flex items-center gap-4 mb-4">
+              <span className="relative icon-chip">
+                <span className="absolute inset-0 rounded-xl bg-cyan-500/20 animate-pulse" />
+                <ShieldCheck className="relative h-5 w-5" strokeWidth={1.5} />
+              </span>
+              <span className="inline-flex items-center rounded-full border border-cyan-500/30 bg-cyan-500/10 px-2.5 py-0.5 font-mono text-[0.6rem] tracking-[0.2em] text-cyan-400">ZERO-TRUST VERIFIED</span>
+            </div>
+            <h3 className="text-lg font-extrabold tracking-tight mb-2">Enterprise Security Guardrails</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">{differentiators[1].body}</p>
+          </div>
+
+          <div className={`${bentoCard} lg:col-span-4`}>
+            <div className="flex items-center gap-3 mb-5">
+              <span className="icon-chip"><ClipboardList className="h-5 w-5" strokeWidth={1.5} /></span>
+              <h3 className="text-lg font-extrabold tracking-tight">Multi-Modal Data Ingestion</h3>
+            </div>
+            <DropZone />
           </div>
         </div>
 
@@ -749,6 +869,7 @@ function WhyNoesis() {
     </section>
   );
 }
+
 
 function Facilitators() {
   const people = [
