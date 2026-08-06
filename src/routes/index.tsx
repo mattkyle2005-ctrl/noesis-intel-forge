@@ -122,109 +122,110 @@ function Hero() {
   return (
     <section className="relative overflow-hidden bg-spotlight">
       <div className="absolute inset-0 bg-grid opacity-40" />
-      <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 70% 30%, transparent 35%, var(--background) 90%)" }} />
-      <div className="container-x relative pt-32 lg:pt-40 pb-20">
-        <div className="grid lg:grid-cols-[1.15fr_1fr] gap-12 lg:gap-16 items-center">
-          <div className="animate-fade-up">
-            <div className="inline-flex items-center gap-2 mb-7 rounded-full border border-copper/25 bg-copper/10 px-4 py-1.5 text-xs font-medium text-copper animate-pulse-glow">
-              <span aria-hidden>✨</span> Noesis Intel Forge 2.0 is live
-            </div>
-            <div className="flex items-center gap-3 mb-6">
-              <span className="h-px w-10 bg-copper" />
-              <span className="text-copper text-xs font-mono font-semibold tracking-[0.3em]">INTELLIGENCE · INSIGHT · IMPACT</span>
-            </div>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6">
-              EMPOWERING <span className="text-gradient-copper">PROFESSIONALS.</span><br />
-              PROTECTING <span className="text-gradient-copper">COMMUNITIES.</span>
-            </h1>
-            <div className="flex items-center gap-3 mb-6">
-              <span className="h-px w-8 bg-copper/60" />
-              <span className="text-copper text-sm font-mono font-semibold tracking-[0.2em]">FROM CABLE TO COURTROOM</span>
-            </div>
-            <p className="text-muted-foreground text-lg max-w-xl mb-10 leading-relaxed">
-              Noesis trains South Africa's investigators, enforcers and risk professionals in the full operational cycle of intelligence-led work — starting with the R45-billion crime nobody is trained to get ahead of.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Link to="/courses/metals-theft" className="group inline-flex items-center gap-3 rounded-full bg-copper text-primary-foreground px-7 py-4 text-sm font-semibold tracking-wide hover:bg-bronze glow-cta">
-                EXPLORE THE FLAGSHIP COURSE <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-              <a href="/noesis-brochure.pdf" download className="inline-flex items-center gap-3 rounded-full border border-copper/50 px-7 py-4 text-sm font-semibold tracking-wide text-foreground hover:bg-copper/10 hover:text-copper transition-colors">
-                <Download className="h-4 w-4" /> DOWNLOAD BROCHURE
-              </a>
-
-            </div>
+      <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(6,182,212,0.10), transparent 60%)" }} />
+      <div className="container-x relative pt-36 lg:pt-44 pb-20">
+        <div className="max-w-4xl mx-auto text-center animate-fade-up">
+          <div className="inline-flex items-center gap-2 mb-8 rounded-full border border-foreground/10 bg-background/50 backdrop-blur-xl px-4 py-1.5 font-mono text-[0.7rem] tracking-[0.2em] text-muted-foreground">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+            </span>
+            [ FORGE ENGINE v2.4 • LIVE TELEMETRY ]
           </div>
-
-          <div className="relative animate-fade-up" style={{ animationDelay: "0.15s" }}>
-            <div className="absolute -inset-6 bg-[radial-gradient(closest-side,rgba(212,116,82,0.22),transparent)] blur-2xl" />
-            <div className="relative overflow-hidden rounded-2xl border border-foreground/10">
-              <img src={heroImg} alt="Analysts working a link chart during a briefing" className="w-full h-[520px] object-cover" width={1600} height={1200} />
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
-              <div className="absolute top-4 left-4 flex items-center gap-2 text-[0.6rem] font-mono tracking-[0.3em] text-copper bg-background/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-copper/30">
-                <span className="h-1.5 w-1.5 bg-copper animate-pulse rounded-full" /> OPERATIONAL CYCLE
-              </div>
-              <div className="absolute inset-x-0 h-24 bg-gradient-to-b from-transparent via-copper/10 to-transparent pointer-events-none animate-scan" />
-              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-                <div>
-                  <div className="text-[0.6rem] font-mono tracking-[0.3em] text-copper">LIVE OPS</div>
-                  <div className="text-sm font-bold">Link-chart briefing</div>
-                </div>
-                <div className="text-right">
-                  <div className="text-[0.6rem] font-mono tracking-[0.3em] text-copper">GRADING</div>
-                  <div className="text-sm font-bold">5 × 5 × 5</div>
-                </div>
-              </div>
-            </div>
+          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-zinc-200 to-zinc-500 mb-6">
+            Synthesize Thought into Autonomous Workflows.
+          </h1>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+            Noesis turns raw signal into court-ready action — collection, analysis, planning and execution running as one continuous intelligence loop.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link to="/courses/metals-theft" className="group inline-flex items-center gap-3 rounded-full bg-copper text-primary-foreground px-7 py-4 text-sm font-semibold tracking-wide hover:bg-bronze glow-cta">
+              EXPLORE THE FLAGSHIP PROGRAMME <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+            <a href="/noesis-brochure.pdf" download className="inline-flex items-center gap-3 rounded-full border border-copper/50 px-7 py-4 text-sm font-semibold tracking-wide text-foreground hover:bg-copper/10 hover:text-copper transition-colors">
+              <Download className="h-4 w-4" /> DOWNLOAD BROCHURE
+            </a>
           </div>
         </div>
 
-        {/* Interactive cycle preview */}
-        <CyclePreview />
+        <TerminalSim />
       </div>
     </section>
   );
 }
 
-function CyclePreview() {
-  const [active, setActive] = useState(0);
-  const s = cycle[active];
+const terminalLines = [
+  "$ forge init --node ZA-GAUTENG-04",
+  "» ingest: SAPS docket stream ......... OK",
+  "» ingest: substation SCADA telemetry . OK",
+  "» grade: 5x5x5 source evaluation ..... B/2/2",
+  "» link: syndicate cluster resolved ... 14 nodes / 31 edges",
+  "» geo: incident heatmap rendered ..... 2,041 points",
+  "» plan: operational order drafted .... warrant attached",
+  "» execute: chain of custody sealed ... POCA-ready",
+  "✓ workflow synthesised in 0.04ms",
+];
+
+function TerminalSim() {
+  const [shown, setShown] = useState<string[]>([]);
+  const [typed, setTyped] = useState("");
+
+  useEffect(() => {
+    let line = 0;
+    let char = 0;
+    let cancelled = false;
+    const tick = () => {
+      if (cancelled) return;
+      const current = terminalLines[line];
+      if (char < current.length) {
+        char += 1;
+        setTyped(current.slice(0, char));
+        window.setTimeout(tick, 18);
+      } else {
+        setShown((prev) => [...prev, current].slice(-9));
+        setTyped("");
+        char = 0;
+        line = (line + 1) % terminalLines.length;
+        if (line === 0) {
+          window.setTimeout(() => {
+            if (cancelled) return;
+            setShown([]);
+            tick();
+          }, 1600);
+        } else {
+          window.setTimeout(tick, 320);
+        }
+      }
+    };
+    const start = window.setTimeout(tick, 500);
+    return () => {
+      cancelled = true;
+      window.clearTimeout(start);
+    };
+  }, []);
+
   return (
-    <div className="mt-16 lg:mt-20 rounded-2xl border border-foreground/10 bg-card/50 backdrop-blur-md hover:border-copper/40 transition-all duration-300 overflow-hidden">
-      <div className="flex items-center gap-2 px-5 py-3 border-b border-foreground/5">
-        <span className="h-2 w-2 rounded-full bg-copper/70" />
+    <div className="mt-16 lg:mt-20 max-w-4xl mx-auto rounded-xl border border-cyan-500/30 bg-black/80 backdrop-blur-md shadow-[0_0_50px_rgba(6,182,212,0.15)] overflow-hidden">
+      <div className="flex items-center gap-2 px-4 py-3 border-b border-cyan-500/20">
+        <span className="h-2 w-2 rounded-full bg-cyan-400/70" />
         <span className="h-2 w-2 rounded-full bg-foreground/15" />
         <span className="h-2 w-2 rounded-full bg-foreground/15" />
-        <span className="ml-3 text-[0.65rem] font-mono tracking-[0.25em] text-muted-foreground">noesis://operational-cycle</span>
+        <span className="ml-3 font-mono text-[0.65rem] tracking-[0.25em] text-cyan-400/70">noesis://forge/telemetry</span>
+        <span className="ml-auto font-mono text-[0.6rem] tracking-[0.2em] text-muted-foreground">STREAMING</span>
       </div>
-      <div className="grid md:grid-cols-[1.2fr_1fr]">
-        <div className="grid grid-cols-2 gap-3 p-5">
-          {cycle.map((c, i) => (
-            <button
-              key={c.n}
-              onMouseEnter={() => setActive(i)}
-              onFocus={() => setActive(i)}
-              onClick={() => setActive(i)}
-              className={`text-left rounded-xl border p-4 transition-all duration-300 hover:-translate-y-1 ${
-                i === active ? "border-copper/40 bg-copper/10" : "border-foreground/10 bg-background/40 hover:border-copper/25"
-              }`}
-            >
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-[0.6rem] font-mono tracking-[0.3em] text-copper">{c.n}</span>
-                <span className="h-px flex-1 bg-copper/25" />
-              </div>
-              <div className="text-sm font-extrabold tracking-tight">{c.label}</div>
-            </button>
-          ))}
-        </div>
-        <div className="p-6 border-t md:border-t-0 md:border-l border-foreground/5 flex flex-col justify-center">
-          <div className="text-[0.6rem] font-mono tracking-[0.3em] text-copper mb-3">STAGE {s.n}</div>
-          <div className="text-2xl font-extrabold tracking-tight mb-3">{s.label}</div>
-          <p className="text-sm text-muted-foreground leading-relaxed">{s.body}</p>
+      <div className="p-4 font-mono text-xs text-cyan-400 h-[248px] overflow-hidden">
+        {shown.map((l, i) => (
+          <div key={`${l}-${i}`} className="leading-6 whitespace-pre-wrap opacity-70">{l}</div>
+        ))}
+        <div className="leading-6 whitespace-pre-wrap">
+          {typed}
+          <span className="inline-block w-2 h-3.5 translate-y-0.5 bg-cyan-400 animate-pulse ml-0.5" />
         </div>
       </div>
     </div>
   );
 }
+
 
 function MeaningStrip() {
   return (
