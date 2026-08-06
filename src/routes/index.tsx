@@ -923,27 +923,46 @@ function Facilitators() {
 
 function FinalCTA() {
   return (
-    <section className="py-20 lg:py-24 relative overflow-hidden border-y border-copper/30">
-      <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, color-mix(in oklab, var(--copper) 18%, transparent) 0%, transparent 60%)" }} />
-      <div className="container-x relative flex flex-wrap items-center justify-between gap-8">
-        <div className="max-w-2xl">
-          <div className="text-[0.6rem] tracking-[0.3em] text-copper font-semibold mb-3">READY TO GET AHEAD OF IT?</div>
-          <h3 className="text-3xl md:text-4xl font-bold leading-tight">
-            Stop reacting. <span className="text-gradient-copper">Start investigating.</span>
-          </h3>
-        </div>
-        <div className="flex flex-wrap gap-4">
-          <a href="/noesis-brochure.pdf" download className="group inline-flex items-center gap-3 bg-copper text-primary-foreground px-6 py-4 text-sm font-semibold tracking-wide hover:bg-bronze transition-colors shadow-[var(--shadow-copper)]">
-            <Download className="h-4 w-4" /> DOWNLOAD BROCHURE
-          </a>
-          <a href="#contact" className="inline-flex items-center gap-3 border border-copper/60 px-6 py-4 text-sm font-semibold tracking-wide hover:bg-copper/10 hover:text-copper transition-colors">
-            REQUEST A BRIEFING <ArrowRight className="h-4 w-4" />
-          </a>
+    <section className="py-20 lg:py-28">
+      <div className="container-x">
+        <div className="relative overflow-hidden rounded-2xl border border-foreground/10 bg-black/70 px-6 py-16 lg:py-20 text-center">
+          <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(40rem 22rem at 50% 0%, rgba(6,182,212,0.16), transparent 65%), radial-gradient(34rem 20rem at 80% 100%, rgba(212,116,82,0.18), transparent 70%)" }} />
+          <div className="absolute inset-0 bg-grid opacity-20" />
+          <div className="relative max-w-2xl mx-auto">
+            <div className="font-mono text-[0.6rem] tracking-[0.3em] text-cyan-400 mb-4">FORGE ENGINE · EARLY ACCESS</div>
+            <h3 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-8">
+              Ready to Forge Autonomous Intelligence?
+            </h3>
+            <form onSubmit={(e) => e.preventDefault()} className="relative mx-auto max-w-xl">
+              <input
+                type="email"
+                required
+                placeholder="you@organisation.gov.za"
+                aria-label="Email address"
+                className="w-full rounded-full border border-foreground/15 bg-background/60 backdrop-blur-md py-4 pl-6 pr-44 text-sm outline-none focus:border-cyan-500/50 transition-colors"
+              />
+              <button type="submit" className="absolute right-1.5 top-1.5 bottom-1.5 rounded-full bg-copper px-5 text-xs font-semibold tracking-wide text-primary-foreground hover:bg-bronze glow-cta">
+                GET EARLY ACCESS ⌘
+              </button>
+            </form>
+            <p className="mt-4 font-mono text-[0.65rem] tracking-[0.15em] text-muted-foreground">
+              Deploy in &lt; 5 minutes • Zero configuration required • Open Source Core
+            </p>
+            <div className="mt-8 flex flex-wrap justify-center gap-4">
+              <a href="/noesis-brochure.pdf" download className="inline-flex items-center gap-3 rounded-full border border-copper/50 px-6 py-3.5 text-sm font-semibold tracking-wide hover:bg-copper/10 hover:text-copper transition-colors">
+                <Download className="h-4 w-4" /> DOWNLOAD BROCHURE
+              </a>
+              <a href="#contact" className="inline-flex items-center gap-3 rounded-full border border-foreground/15 px-6 py-3.5 text-sm font-semibold tracking-wide hover:border-cyan-500/40 transition-colors">
+                REQUEST A BRIEFING <ArrowRight className="h-4 w-4" />
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
 }
+
 
 function Contact() {
   const [sent, setSent] = useState(false);
