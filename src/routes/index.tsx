@@ -5,7 +5,7 @@ import {
   ShieldCheck, Building2, Landmark, ArrowRight, Menu,
   Phone, Mail, MapPinned, AlertTriangle, FileWarning,
   TrainFront, Zap, Target, CheckCircle2, Download, BookOpen,
-  Brain, Quote,
+  Brain, Quote, Gauge, Clock,
 } from "lucide-react";
 import heroImg from "@/assets/hero-v2.jpg";
 import aboutImg from "@/assets/about.jpg";
@@ -32,6 +32,7 @@ const nav = [
   { label: "The Problem", href: "#problem" },
   { label: "Approach", href: "#approach" },
   { label: "Who It's For", href: "#audiences" },
+  { label: "Estimator", href: "#estimator" },
   { label: "Programme", href: "#programme" },
   { label: "Credibility", href: "#credibility" },
   { label: "About", href: "#about" },
@@ -48,8 +49,10 @@ function Landing() {
       <Problem />
       <Approach />
       <Audiences />
+      <RiskEstimator />
       <Programme />
       <Credibility />
+      <Standards />
       <WhyNoesis />
       <Facilitators />
       <FinalCTA />
@@ -497,6 +500,117 @@ function Audiences() {
   );
 }
 
+const riskSectors = [
+  { key: "Mining", exposure: 2.4, downtime: 3, compliance: 40 },
+  { key: "Energy", exposure: 6.1, downtime: 9, compliance: 55 },
+  { key: "Telecoms", exposure: 1.8, downtime: 4, compliance: 35 },
+  { key: "Rail", exposure: 4.5, downtime: 7, compliance: 50 },
+  { key: "Scrap Logistics", exposure: 0.9, downtime: 1, compliance: 70 },
+] as const;
+
+const riskLevels = ["Low", "Guarded", "Elevated", "High", "Critical"] as const;
+const riskMultiplier = [0.6, 0.85, 1.0, 1.3, 1.7];
+
+function RiskEstimator() {
+  const [sectorKey, setSectorKey] = useState<(typeof riskSectors)[number]["key"]>("Energy");
+  const [riskIdx, setRiskIdx] = useState(2);
+
+  const sector = riskSectors.find((s) => s.key === sectorKey)!;
+  const mult = riskMultiplier[riskIdx];
+  const exposure = (sector.exposure * mult).toFixed(1);
+  const downtime = Math.round(sector.downtime * mult);
+  const compliance = Math.min(100, Math.round(sector.compliance + riskIdx * 8));
+
+  return (
+    <section id="estimator" className="py-24 lg:py-32 bg-secondary/20 border-y border-border relative overflow-hidden">
+      <div className="absolute -top-40 -left-40 h-96 w-96 rounded-full bg-copper/10 blur-3xl" />
+      <div className="absolute inset-0 bg-grid opacity-20" />
+      <div className="container-x relative">
+        <div className="max-w-3xl mb-14">
+          <div className="inline-flex items-center gap-3 mb-6">
+            <span className="h-px w-10 bg-copper" />
+            <span className="text-copper text-xs font-semibold tracking-[0.3em]">KNOW YOUR EXPOSURE</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-6">
+            SA Infrastructure <span className="text-gradient-copper">Loss Estimator.</span>
+          </h2>
+          <p className="text-muted-foreground text-lg leading-relaxed">
+            An illustrative planning tool for municipal managers and security heads — not an audited figure. Select a sector and site risk level to see indicative exposure.
+          </p>
+        </div>
+
+        <div className="rounded-2xl border border-foreground/10 bg-card/50 backdrop-blur-md overflow-hidden card-lift">
+          <div className="grid md:grid-cols-2 gap-10 p-8 lg:p-10 border-b border-border">
+            <div>
+              <div className="text-[0.6rem] tracking-[0.3em] text-copper font-semibold mb-4">SECTOR</div>
+              <div className="grid grid-cols-2 gap-3">
+                {riskSectors.map((s) => (
+                  <button
+                    key={s.key}
+                    onClick={() => setSectorKey(s.key)}
+                    className={`px-4 py-3 text-left text-sm font-mono border rounded-lg transition-colors ${
+                      sectorKey === s.key
+                        ? "border-copper bg-copper/10 text-copper"
+                        : "border-foreground/10 text-muted-foreground hover:border-copper/40 hover:text-foreground"
+                    }`}
+                  >
+                    {s.key}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <div className="text-[0.6rem] tracking-[0.3em] text-copper font-semibold mb-4">
+                SITE RISK LEVEL — <span className="text-foreground">{riskLevels[riskIdx].toUpperCase()}</span>
+              </div>
+              <input
+                type="range"
+                min={0}
+                max={4}
+                step={1}
+                value={riskIdx}
+                onChange={(e) => setRiskIdx(Number(e.target.value))}
+                className="w-full accent-copper"
+                aria-label="Site risk level"
+              />
+              <div className="flex justify-between font-mono text-[0.6rem] tracking-[0.1em] text-muted-foreground mt-3">
+                {riskLevels.map((r) => (
+                  <span key={r}>{r.toUpperCase()}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="grid sm:grid-cols-3 gap-px bg-border">
+            <div className="bg-background p-6 lg:p-8">
+              <div className="flex items-center gap-2 text-[0.6rem] tracking-[0.3em] text-copper font-semibold mb-3">
+                <Gauge className="h-3.5 w-3.5" /> ANNUAL EXPOSURE
+              </div>
+              <div className="text-3xl font-bold text-gradient-copper">R{exposure}M</div>
+            </div>
+            <div className="bg-background p-6 lg:p-8">
+              <div className="text-[0.6rem] tracking-[0.3em] text-copper font-semibold mb-3">DOWNTIME IMPACT</div>
+              <div className="text-3xl font-bold text-gradient-copper">{downtime} days/yr</div>
+            </div>
+            <div className="bg-background p-6 lg:p-8">
+              <div className="text-[0.6rem] tracking-[0.3em] text-copper font-semibold mb-3">COMPLIANCE RISK</div>
+              <div className="text-3xl font-bold text-gradient-copper">{compliance}/100</div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-8 flex items-center gap-3">
+          <AlertTriangle className="h-4 w-4 text-copper shrink-0" />
+          <a href="#contact" className="text-sm text-copper font-semibold hover:text-bronze transition-colors">
+            Discuss your site's actual exposure with us →
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 const programmeFacts = [
   { label: "DURATION", value: "5 days" },
   { label: "FORMAT", value: "In-person, cohort" },
@@ -664,6 +778,87 @@ function Credibility() {
               <span key={c} className="px-4 py-2 border border-border text-sm text-muted-foreground hover:border-copper hover:text-copper transition-colors cursor-default">{c}</span>
             ))}
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const standards = [
+  { framework: "NQF Alignment", status: "ALIGNED", note: "5-day programme structured to NQF standards" },
+  { framework: "SASSETA Accreditation", status: "IN PROGRESS", note: "Non-standard learning programme pathway — not yet accredited" },
+  { framework: "Second-Hand Goods Act 6 of 2009", status: "REFERENCE", note: "s21 record-keeping, s25 registration, s32 penalties" },
+  { framework: "Prevention of Organised Crime Act 121 of 1998", status: "REFERENCE", note: "Racketeering, money laundering, asset forfeiture" },
+  { framework: "Criminal Matters Amendment Act 18 of 2015", status: "REFERENCE", note: "Essential infrastructure, minimum sentencing" },
+  { framework: "Financial Intelligence Centre Act 38 of 2001", status: "REFERENCE", note: "Cash threshold and suspicious-transaction reporting" },
+];
+
+const trustFacts = [
+  { label: "DELIVERY MODEL", value: "5-day, cohort or in-house" },
+  { label: "FACILITATOR BASIS", value: "Practitioner-led, applied instruction" },
+  { label: "IMPACT TRACKING", value: "Begins Year 1 — no completed cohorts yet" },
+];
+
+function Standards() {
+  return (
+    <section className="py-24 lg:py-32 border-b border-border relative">
+      <div className="container-x relative">
+        <div className="max-w-3xl mb-14">
+          <div className="inline-flex items-center gap-3 mb-6">
+            <span className="h-px w-10 bg-copper" />
+            <span className="text-copper text-xs font-semibold tracking-[0.3em]">STANDARDS &amp; COMPLIANCE</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-6">
+            Alignment we can prove.<br /><span className="text-gradient-copper">Not credentials we can't.</span>
+          </h2>
+          <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl">
+            Noesis is pursuing SASSETA accreditation as a non-standard learning programme and is not yet accredited. Every legal framework below is cited by section number and checked against the actual Act text.
+          </p>
+        </div>
+
+        <div className="overflow-x-auto border border-border rounded-xl mb-8">
+          <table className="w-full text-sm border-collapse min-w-[640px]">
+            <thead>
+              <tr className="border-b border-border bg-secondary/30">
+                <th className="text-left text-[0.6rem] tracking-[0.2em] text-copper font-semibold px-6 py-4">FRAMEWORK</th>
+                <th className="text-left text-[0.6rem] tracking-[0.2em] text-copper font-semibold px-6 py-4">STATUS</th>
+                <th className="text-left text-[0.6rem] tracking-[0.2em] text-copper font-semibold px-6 py-4">DETAIL</th>
+              </tr>
+            </thead>
+            <tbody>
+              {standards.map((s) => (
+                <tr key={s.framework} className="border-b border-border last:border-b-0 hover:bg-secondary/30 transition-colors">
+                  <td className="px-6 py-5 text-foreground font-semibold">{s.framework}</td>
+                  <td className="px-6 py-5">
+                    <span
+                      className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 font-mono text-[0.6rem] tracking-[0.15em] ${
+                        s.status === "ALIGNED"
+                          ? "border-copper/40 bg-copper/10 text-copper"
+                          : s.status === "IN PROGRESS"
+                          ? "border-border text-foreground"
+                          : "border-border text-muted-foreground"
+                      }`}
+                    >
+                      {s.status === "ALIGNED" && <CheckCircle2 className="h-3 w-3" />}
+                      {s.status}
+                    </span>
+                  </td>
+                  <td className="px-6 py-5 text-muted-foreground">{s.note}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div className="grid sm:grid-cols-3 gap-px bg-border border border-border">
+          {trustFacts.map((f) => (
+            <div key={f.label} className="bg-background p-6">
+              <div className="flex items-center gap-2 text-[0.6rem] tracking-[0.3em] text-copper font-semibold mb-3">
+                <Clock className="h-3.5 w-3.5" /> {f.label}
+              </div>
+              <div className="text-foreground font-medium leading-snug">{f.value}</div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
