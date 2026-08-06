@@ -75,8 +75,9 @@ function Header() {
   const [open, setOpen] = useState(false);
   return (
     <header className="fixed top-4 inset-x-0 z-50 px-4">
-      <div className="mx-auto max-w-[1400px] rounded-full backdrop-blur-md bg-background/40 border border-foreground/10 shadow-[0_10px_40px_-24px_rgba(0,0,0,0.9)]">
-        <div className="flex items-center justify-between h-16 pl-5 pr-3">
+      <div className="mx-auto max-w-[1400px] rounded-full backdrop-blur-xl bg-black/50 border border-foreground/10 shadow-2xl py-3 px-6">
+        <div className="flex items-center justify-between">
+
           <Logo />
           <nav className="hidden xl:flex items-center gap-7 text-sm">
             {nav.map((n) => (
