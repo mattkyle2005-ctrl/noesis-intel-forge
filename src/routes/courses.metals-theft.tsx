@@ -104,7 +104,7 @@ function CourseHero() {
       <div className="container-x relative py-28 lg:py-36 max-w-4xl">
         <div className="inline-flex items-center gap-3 mb-8">
           <span className="h-px w-10 bg-copper" />
-          <span className="text-copper text-xs font-semibold tracking-[0.3em]">FLAGSHIP PROGRAMME · 5 DAYS</span>
+          <span className="text-copper text-sm font-semibold tracking-[0.3em]">FLAGSHIP PROGRAMME · 5 DAYS</span>
         </div>
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.03] mb-8">
           Intelligence-Led Metals Theft <span className="text-gradient-copper">Investigations & Enforcement.</span>
@@ -132,7 +132,7 @@ function WhyNow() {
         <div className="max-w-3xl mb-16">
           <div className="inline-flex items-center gap-3 mb-8">
             <span className="h-px w-10 bg-copper" />
-            <span className="text-copper text-xs font-semibold tracking-[0.3em]">WHY NOW</span>
+            <span className="text-copper text-sm font-semibold tracking-[0.3em]">WHY NOW</span>
           </div>
           <h2 className="text-3xl md:text-5xl leading-[1.05] mb-8">
             The infrastructure is <span className="text-gradient-copper">bleeding out.</span>
@@ -187,7 +187,7 @@ function Modules() {
           <div className="lg:sticky lg:top-28 self-start">
             <div className="inline-flex items-center gap-3 mb-8">
               <span className="h-px w-10 bg-copper" />
-              <span className="text-copper text-xs font-semibold tracking-[0.3em]">MODULE BREAKDOWN</span>
+              <span className="text-copper text-sm font-semibold tracking-[0.3em]">MODULE BREAKDOWN</span>
             </div>
             <h2 className="text-3xl md:text-5xl leading-[1.05] mb-8">
               Five days.<br /><span className="text-gradient-copper">Five modules. One method.</span>
@@ -235,7 +235,7 @@ function Outcomes() {
         <div>
           <div className="inline-flex items-center gap-3 mb-8">
             <span className="h-px w-10 bg-copper" />
-            <span className="text-copper text-xs font-semibold tracking-[0.3em]">LEARNING OUTCOMES</span>
+            <span className="text-copper text-sm font-semibold tracking-[0.3em]">LEARNING OUTCOMES</span>
           </div>
           <h2 className="text-3xl md:text-5xl leading-[1.05] mb-8">On day six, they can <span className="text-gradient-copper">do this.</span></h2>
           <p className="text-muted-foreground leading-relaxed mb-8">
@@ -272,7 +272,7 @@ function Enrol() {
       <div className="container-x relative max-w-3xl text-center">
         <div className="inline-flex items-center gap-3 mb-8 justify-center">
           <span className="h-px w-10 bg-copper" />
-          <span className="text-copper text-xs font-semibold tracking-[0.3em]">ENROL A COHORT</span>
+          <span className="text-copper text-sm font-semibold tracking-[0.3em]">ENROL A COHORT</span>
           <span className="h-px w-10 bg-copper" />
         </div>
         <h2 className="text-4xl md:text-6xl leading-[1.05] mb-8">
@@ -332,7 +332,7 @@ function DynamicCycle() {
         <div className="max-w-3xl mb-16">
           <div className="inline-flex items-center gap-3 mb-8">
             <span className="h-px w-10 bg-copper" />
-            <span className="text-copper text-xs font-semibold tracking-[0.3em]">THE METHOD · LIVE CYCLE</span>
+            <span className="text-copper text-sm font-semibold tracking-[0.3em]">THE METHOD · LIVE CYCLE</span>
           </div>
           <h2 className="text-3xl md:text-5xl leading-[1.05] mb-4">
             Collect. Analyse. Plan. <span className="text-gradient-copper">Execute.</span>
@@ -405,7 +405,7 @@ function FAQ() {
         <div>
           <div className="inline-flex items-center gap-3 mb-8">
             <span className="h-px w-10 bg-copper" />
-            <span className="text-copper text-xs font-semibold tracking-[0.3em]">FAQ</span>
+            <span className="text-copper text-sm font-semibold tracking-[0.3em]">FAQ</span>
           </div>
           <h2 className="text-3xl md:text-5xl leading-[1.05] mb-8">
             The questions <span className="text-gradient-copper">commanders ask.</span>
@@ -547,7 +547,7 @@ function EnquiryForm() {
         <div>
           <div className="inline-flex items-center gap-3 mb-8">
             <span className="h-px w-10 bg-copper" />
-            <span className="text-copper text-xs font-semibold tracking-[0.3em]">COURSE ENQUIRY</span>
+            <span className="text-copper text-sm font-semibold tracking-[0.3em]">COURSE ENQUIRY</span>
           </div>
           <h2 className="text-3xl md:text-5xl leading-[1.05] mb-8">
             Tell us who's coming. <span className="text-gradient-copper">We'll shape the cohort.</span>
