@@ -233,7 +233,7 @@ function TerminalSim() {
 
 function MeaningStrip() {
   return (
-    <section className="py-20 lg:py-28 border-y border-border bg-secondary/20 relative overflow-hidden">
+    <section className="py-28 lg:py-36 border-y border-border bg-secondary/20 relative overflow-hidden">
       <div className="absolute inset-0 bg-grid opacity-20" />
       <div className="container-x relative grid md:grid-cols-[auto_1fr] gap-10 lg:gap-16 items-center">
         <div className="flex items-center gap-5">
@@ -310,7 +310,7 @@ const problems = [
 
 function Problem() {
   return (
-    <section id="problem" className="py-24 lg:py-32 border-t border-border relative">
+    <section id="problem" className="py-28 lg:py-40 border-t border-border relative">
       <div className="absolute inset-0 pointer-events-none opacity-30">
         <img src={impactImg} alt="" aria-hidden className="absolute right-0 top-0 h-full w-1/2 object-cover" width={1000} height={1000} loading="lazy" />
         <div className="absolute inset-0" style={{ background: "linear-gradient(90deg, var(--background) 45%, transparent 100%)" }} />
@@ -396,7 +396,7 @@ const steps = [
 
 function Approach() {
   return (
-    <section id="approach" className="py-24 lg:py-32 bg-secondary/30 border-y border-border relative">
+    <section id="approach" className="py-28 lg:py-40 bg-secondary/30 border-y border-border relative">
       <div className="absolute inset-0 bg-grid opacity-20" />
       <div className="container-x relative">
         <div className="grid lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20">
@@ -466,7 +466,7 @@ const audiences = [
 
 function Audiences() {
   return (
-    <section id="audiences" className="py-24 lg:py-32 section-rule">
+    <section id="audiences" className="py-28 lg:py-40 section-rule">
       <div className="container-x">
         <div className="flex flex-wrap items-end justify-between gap-6 mb-14">
           <div>
@@ -522,7 +522,7 @@ function RiskEstimator() {
   const compliance = Math.min(100, Math.round(sector.compliance + riskIdx * 8));
 
   return (
-    <section id="estimator" className="py-24 lg:py-32 bg-secondary/20 border-y border-border relative overflow-hidden">
+    <section id="estimator" className="py-28 lg:py-40 bg-secondary/20 border-y border-border relative overflow-hidden">
       <div className="absolute -top-40 -left-40 h-96 w-96 rounded-full bg-copper/10 blur-3xl" />
       <div className="absolute inset-0 bg-grid opacity-20" />
       <div className="container-x relative">
@@ -629,7 +629,7 @@ const programmeIncludes = [
 
 function Programme() {
   return (
-    <section id="programme" className="py-24 lg:py-32 border-y border-border bg-secondary/20 relative overflow-hidden">
+    <section id="programme" className="py-28 lg:py-40 border-y border-border bg-secondary/20 relative overflow-hidden">
       <div className="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-copper/10 blur-3xl" />
       <div className="container-x relative grid lg:grid-cols-[1.1fr_1fr] gap-12 lg:gap-20 items-start">
         <div>
@@ -724,7 +724,7 @@ function Credibility() {
   }, []);
 
   return (
-    <section id="credibility" className="py-24 lg:py-32 relative overflow-hidden border-b border-border">
+    <section id="credibility" className="py-28 lg:py-40 relative overflow-hidden border-b border-border">
       <div className="absolute inset-0 opacity-25">
         <img src={cableCourtImg} alt="" aria-hidden className="h-full w-full object-cover" width={1600} height={800} loading="lazy" />
         <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, var(--background) 0%, transparent 40%, var(--background) 100%)" }} />
@@ -801,7 +801,7 @@ const trustFacts = [
 
 function Standards() {
   return (
-    <section className="py-24 lg:py-32 border-b border-border relative">
+    <section className="py-28 lg:py-40 border-b border-border relative">
       <div className="container-x relative">
         <div className="max-w-3xl mb-14">
           <div className="inline-flex items-center gap-3 mb-6">
@@ -998,7 +998,7 @@ const bentoCard = "bg-white/[0.03] backdrop-blur-md border border-white/10 hover
 
 function WhyNoesis() {
   return (
-    <section className="py-24 lg:py-32 section-rule">
+    <section className="py-28 lg:py-40 section-rule">
       <div className="container-x">
         <div className="max-w-3xl mb-12">
           <div className="inline-flex items-center gap-3 mb-6">
@@ -1088,7 +1088,7 @@ function Facilitators() {
     },
   ];
   return (
-    <section id="about" className="py-24 lg:py-32 border-y border-border bg-secondary/20">
+    <section id="about" className="py-28 lg:py-40 border-y border-border bg-secondary/20">
       <div className="container-x">
         <div className="max-w-3xl mb-12">
           <div className="inline-flex items-center gap-3 mb-6">
@@ -1121,9 +1121,9 @@ function Facilitators() {
 
 function FinalCTA() {
   return (
-    <section className="py-20 lg:py-28">
+    <section className="py-28 lg:py-36">
       <div className="container-x">
-        <div className="relative overflow-hidden rounded-2xl border border-foreground/10 bg-black/70 px-6 py-16 lg:py-20 text-center">
+        <div className="relative overflow-hidden rounded-2xl border border-foreground/10 bg-black/70 px-6 py-20 lg:py-20 text-center">
           <div className="absolute left-1/2 top-0 -translate-x-1/2 h-[28rem] w-[28rem] bg-primary/10 blur-[120px] rounded-full pointer-events-none" />
           <div className="absolute inset-0 bg-grid opacity-20" />
           <div className="relative max-w-2xl mx-auto">
@@ -1165,7 +1165,7 @@ function FinalCTA() {
 function Contact() {
   const [sent, setSent] = useState(false);
   return (
-    <section id="contact" className="py-24 lg:py-32 relative overflow-hidden">
+    <section id="contact" className="py-28 lg:py-40 relative overflow-hidden">
       <div className="absolute inset-0 bg-grid opacity-25" />
       <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at center, color-mix(in oklab, var(--copper) 12%, transparent) 0%, transparent 65%)" }} />
       <div className="container-x relative grid lg:grid-cols-[1fr_1fr] gap-12 lg:gap-20 items-start">
@@ -1252,7 +1252,7 @@ function Field({ label, name, type = "text", required, maxLength }: { label: str
 
 function Footer() {
   return (
-    <footer className="border-t border-border bg-background pt-16 pb-8">
+    <footer className="border-t border-border bg-background pt-20 pb-10">
       <div className="container-x grid lg:grid-cols-[1.4fr_1fr_1fr_1fr] gap-12 mb-12">
         <div>
           <Logo />
