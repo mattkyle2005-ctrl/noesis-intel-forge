@@ -127,19 +127,19 @@ function Hero() {
     <section className="relative overflow-hidden bg-spotlight">
       <div className="absolute inset-0 bg-grid opacity-40" />
       <div className="absolute left-1/2 top-0 -translate-x-1/2 h-[32rem] w-[32rem] bg-primary/10 blur-[120px] rounded-full pointer-events-none" />
-      <div className="container-x relative pt-36 lg:pt-44 pb-20">
+      <div className="container-x relative pt-44 lg:pt-56 pb-28">
         <div className="max-w-4xl mx-auto text-center animate-fade-up">
-          <div className="inline-flex items-center gap-2 mb-8 rounded-full border border-primary/20 bg-primary/10 backdrop-blur-xl px-4 py-1.5 font-mono text-xs text-primary">
+          <div className="inline-flex items-center gap-2 mb-10 rounded-full border border-primary/20 bg-primary/10 backdrop-blur-xl px-4 py-1.5 font-mono text-xs text-primary">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full rounded-full bg-primary opacity-75 animate-ping" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
             </span>
             [ FORGE ENGINE v2.4 • LIVE TELEMETRY ]
           </div>
-          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-foreground mb-6">
+          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-foreground mb-8">
             Empowering Professionals.<br />Protecting Communities.
           </h1>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+          <p className="text-muted-foreground text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
             Noesis turns raw signal into court-ready action — collection, analysis, planning and execution running as one continuous intelligence loop.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
@@ -233,9 +233,9 @@ function TerminalSim() {
 
 function MeaningStrip() {
   return (
-    <section className="py-16 lg:py-20 border-y border-border bg-secondary/20 relative overflow-hidden">
+    <section className="py-28 lg:py-36 border-y border-border bg-secondary/20 relative overflow-hidden">
       <div className="absolute inset-0 bg-grid opacity-20" />
-      <div className="container-x relative grid md:grid-cols-[auto_1fr] gap-8 lg:gap-14 items-center">
+      <div className="container-x relative grid md:grid-cols-[auto_1fr] gap-10 lg:gap-16 items-center">
         <div className="flex items-center gap-5">
           <div className="h-16 w-16 border border-copper/50 flex items-center justify-center text-copper">
             <Brain className="h-7 w-7" strokeWidth={1.5} />
@@ -247,7 +247,7 @@ function MeaningStrip() {
         </div>
         <p className="text-lg md:text-2xl leading-relaxed text-foreground">
           <span className="text-muted-foreground">Noun.</span> The act of thinking, the process of understanding, <span className="text-gradient-copper font-semibold">and pure cognition.</span>
-          <span className="block text-sm text-muted-foreground mt-3">
+          <span className="block text-sm text-muted-foreground mt-4">
             The name is the method. Before the raid, before the arrest, before the docket — thinking.
           </span>
         </p>
@@ -268,7 +268,7 @@ const tickerFacts = [
 
 function UrgencyTicker() {
   return (
-    <div className="border-b border-border bg-background overflow-hidden relative py-4">
+    <div className="border-b border-border bg-background overflow-hidden relative py-5">
       <div className="flex gap-14 animate-marquee whitespace-nowrap">
         {[...tickerFacts, ...tickerFacts].map((f, i) => (
           <div key={i} className="flex items-center gap-3 text-sm">
@@ -310,18 +310,18 @@ const problems = [
 
 function Problem() {
   return (
-    <section id="problem" className="py-24 lg:py-32 border-t border-border relative">
+    <section id="problem" className="py-28 lg:py-40 border-t border-border relative">
       <div className="absolute inset-0 pointer-events-none opacity-30">
         <img src={impactImg} alt="" aria-hidden className="absolute right-0 top-0 h-full w-1/2 object-cover" width={1000} height={1000} loading="lazy" />
         <div className="absolute inset-0" style={{ background: "linear-gradient(90deg, var(--background) 45%, transparent 100%)" }} />
       </div>
       <div className="container-x relative">
-        <div className="max-w-3xl mb-14">
-          <div className="inline-flex items-center gap-3 mb-6">
+        <div className="max-w-3xl mb-16">
+          <div className="inline-flex items-center gap-3 mb-8">
             <span className="h-px w-10 bg-copper" />
             <span className="text-copper text-xs font-semibold tracking-[0.3em]">WHERE THE WORLD IS RIGHT NOW</span>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-6">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-8">
             R45 BILLION LOST A YEAR.<br />
             <span className="text-gradient-copper">Everyone is reacting.</span>
           </h2>
@@ -345,7 +345,7 @@ function Problem() {
           ))}
         </div>
 
-        <div className="mt-10 flex flex-wrap items-center justify-between gap-6 max-w-5xl">
+        <div className="mt-10 flex flex-wrap items-center justify-between gap-8 max-w-5xl">
           <div className="flex items-start gap-4 max-w-2xl">
             <AlertTriangle className="h-5 w-5 text-copper mt-1 shrink-0" />
             <p className="text-sm text-muted-foreground leading-relaxed">
@@ -396,16 +396,16 @@ const steps = [
 
 function Approach() {
   return (
-    <section id="approach" className="py-24 lg:py-32 bg-secondary/30 border-y border-border relative">
+    <section id="approach" className="py-28 lg:py-40 bg-secondary/30 border-y border-border relative">
       <div className="absolute inset-0 bg-grid opacity-20" />
       <div className="container-x relative">
-        <div className="grid lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20">
+        <div className="grid lg:grid-cols-[1fr_1.4fr] gap-16 lg:gap-20">
           <div className="lg:sticky lg:top-28 self-start">
-            <div className="inline-flex items-center gap-3 mb-6">
+            <div className="inline-flex items-center gap-3 mb-8">
               <span className="h-px w-10 bg-copper" />
               <span className="text-copper text-xs font-semibold tracking-[0.3em]">THE NOESIS APPROACH</span>
             </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-6">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-8">
               One connected<br />
               <span className="text-gradient-copper">operational cycle.</span>
             </h2>
@@ -419,9 +419,9 @@ function Approach() {
 
           <div className="relative">
             <div className="absolute left-[22px] top-4 bottom-4 w-px bg-copper/30 hidden md:block" />
-            <div className="space-y-6">
+            <div className="space-y-8">
               {steps.map((s) => (
-                <div key={s.n} className="relative flex gap-6 group">
+                <div key={s.n} className="relative flex gap-8 group">
                   <div className="shrink-0 h-11 w-11 border border-copper/50 bg-background flex items-center justify-center text-copper relative z-10 group-hover:bg-copper group-hover:text-primary-foreground transition-colors">
                     <s.icon className="h-5 w-5" strokeWidth={1.5} />
                   </div>
@@ -466,9 +466,9 @@ const audiences = [
 
 function Audiences() {
   return (
-    <section id="audiences" className="py-24 lg:py-32 section-rule">
+    <section id="audiences" className="py-28 lg:py-40 section-rule">
       <div className="container-x">
-        <div className="flex flex-wrap items-end justify-between gap-6 mb-14">
+        <div className="flex flex-wrap items-end justify-between gap-8 mb-16">
           <div>
             <div className="inline-flex items-center gap-3 mb-4">
               <span className="h-px w-10 bg-copper" />
@@ -481,10 +481,10 @@ function Audiences() {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-8">
           {audiences.map((a) => (
             <div key={a.tag} className="group rounded-2xl border border-foreground/10 bg-card/50 backdrop-blur-md card-lift p-8 hover:border-copper/60 hover:-translate-y-1 transition-all">
-              <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center justify-between mb-8">
                 <div className="h-12 w-12 border border-copper/40 flex items-center justify-center text-copper group-hover:bg-copper group-hover:text-primary-foreground transition-colors">
                   <a.icon className="h-6 w-6" strokeWidth={1.5} />
                 </div>
@@ -522,16 +522,16 @@ function RiskEstimator() {
   const compliance = Math.min(100, Math.round(sector.compliance + riskIdx * 8));
 
   return (
-    <section id="estimator" className="py-24 lg:py-32 bg-secondary/20 border-y border-border relative overflow-hidden">
+    <section id="estimator" className="py-28 lg:py-40 bg-secondary/20 border-y border-border relative overflow-hidden">
       <div className="absolute -top-40 -left-40 h-96 w-96 rounded-full bg-copper/10 blur-3xl" />
       <div className="absolute inset-0 bg-grid opacity-20" />
       <div className="container-x relative">
-        <div className="max-w-3xl mb-14">
-          <div className="inline-flex items-center gap-3 mb-6">
+        <div className="max-w-3xl mb-16">
+          <div className="inline-flex items-center gap-3 mb-8">
             <span className="h-px w-10 bg-copper" />
             <span className="text-copper text-xs font-semibold tracking-[0.3em]">KNOW YOUR EXPOSURE</span>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-6">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-8">
             SA Infrastructure <span className="text-gradient-copper">Loss Estimator.</span>
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed">
@@ -629,22 +629,22 @@ const programmeIncludes = [
 
 function Programme() {
   return (
-    <section id="programme" className="py-24 lg:py-32 border-y border-border bg-secondary/20 relative overflow-hidden">
+    <section id="programme" className="py-28 lg:py-40 border-y border-border bg-secondary/20 relative overflow-hidden">
       <div className="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-copper/10 blur-3xl" />
-      <div className="container-x relative grid lg:grid-cols-[1.1fr_1fr] gap-12 lg:gap-20 items-start">
+      <div className="container-x relative grid lg:grid-cols-[1.1fr_1fr] gap-16 lg:gap-20 items-start">
         <div>
-          <div className="inline-flex items-center gap-3 mb-6">
+          <div className="inline-flex items-center gap-3 mb-8">
             <span className="h-px w-10 bg-copper" />
             <span className="text-copper text-xs font-semibold tracking-[0.3em]">FLAGSHIP PROGRAMME</span>
           </div>
-          <h2 className="text-3xl md:text-5xl leading-[1.05] mb-6">
+          <h2 className="text-3xl md:text-5xl leading-[1.05] mb-8">
             Intelligence-Led Metals Theft <span className="text-gradient-copper">Investigations & Enforcement.</span>
           </h2>
-          <p className="text-muted-foreground text-lg leading-relaxed mb-10">
+          <p className="text-muted-foreground text-lg leading-relaxed mb-12">
             A 5-day, NQF-aligned programme. The first Noesis programme to reach cohort delivery, and the operational blueprint for everything that follows.
           </p>
 
-          <div className="grid grid-cols-2 gap-px bg-border border border-border mb-10">
+          <div className="grid grid-cols-2 gap-px bg-border border border-border mb-16">
             {programmeFacts.map((f) => (
               <div key={f.label} className="bg-background p-5">
                 <div className="text-[0.6rem] tracking-[0.3em] text-copper font-semibold mb-2">{f.label}</div>
@@ -668,11 +668,11 @@ function Programme() {
         </div>
 
         <div className="border border-copper/40 bg-card p-8 lg:p-10">
-          <div className="flex items-center gap-3 mb-6">
+          <div className="flex items-center gap-3 mb-8">
             <Target className="h-5 w-5 text-copper" />
             <div className="text-[0.65rem] tracking-[0.3em] text-copper font-semibold">WHAT'S COVERED</div>
           </div>
-          <ul className="space-y-4 mb-8">
+          <ul className="space-y-5 mb-8">
             {programmeIncludes.map((i) => (
               <li key={i} className="flex items-start gap-3">
                 <CheckCircle2 className="h-5 w-5 text-copper mt-0.5 shrink-0" strokeWidth={1.5} />
@@ -724,18 +724,18 @@ function Credibility() {
   }, []);
 
   return (
-    <section id="credibility" className="py-24 lg:py-32 relative overflow-hidden border-b border-border">
+    <section id="credibility" className="py-28 lg:py-40 relative overflow-hidden border-b border-border">
       <div className="absolute inset-0 opacity-25">
         <img src={cableCourtImg} alt="" aria-hidden className="h-full w-full object-cover" width={1600} height={800} loading="lazy" />
         <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, var(--background) 0%, transparent 40%, var(--background) 100%)" }} />
       </div>
       <div ref={ref} className="container-x relative">
-        <div className="max-w-3xl mb-14">
-          <div className="inline-flex items-center gap-3 mb-6">
+        <div className="max-w-3xl mb-16">
+          <div className="inline-flex items-center gap-3 mb-8">
             <span className="h-px w-10 bg-copper" />
             <span className="text-copper text-xs font-semibold tracking-[0.3em]">CREDIBILITY</span>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-6">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-8">
             Built by practitioners.<br />
             <span className="text-gradient-copper">Written for the courtroom.</span>
           </h2>
@@ -744,7 +744,7 @@ function Credibility() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border border border-border mb-14">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border border border-border mb-16">
           {credStats.map((s) => {
             const v = useCountUp(s.n, visible);
             return (
@@ -758,14 +758,14 @@ function Credibility() {
           })}
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-8">
           {[
             { q: "The training gap in South Africa isn't tactical. It's the intelligence-to-conviction pipeline. Noesis is built to close it.", who: "Programme design principle" },
             { q: "You cannot raid your way out of a R45-billion syndicated economy. You have to investigate it as a value chain.", who: "Course methodology" },
           ].map((t) => (
             <div key={t.who} className="border border-copper/30 bg-card/60 backdrop-blur p-8 relative">
               <Quote className="absolute top-4 right-4 h-8 w-8 text-copper/30" />
-              <p className="text-lg leading-relaxed mb-6 pr-8">{t.q}</p>
+              <p className="text-lg leading-relaxed mb-8 pr-8">{t.q}</p>
               <div className="text-[0.6rem] tracking-[0.3em] text-copper font-semibold">— {t.who.toUpperCase()}</div>
             </div>
           ))}
@@ -801,14 +801,14 @@ const trustFacts = [
 
 function Standards() {
   return (
-    <section className="py-24 lg:py-32 border-b border-border relative">
+    <section className="py-28 lg:py-40 border-b border-border relative">
       <div className="container-x relative">
-        <div className="max-w-3xl mb-14">
-          <div className="inline-flex items-center gap-3 mb-6">
+        <div className="max-w-3xl mb-16">
+          <div className="inline-flex items-center gap-3 mb-8">
             <span className="h-px w-10 bg-copper" />
             <span className="text-copper text-xs font-semibold tracking-[0.3em]">STANDARDS &amp; COMPLIANCE</span>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-6">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-8">
             Alignment we can prove.<br /><span className="text-gradient-copper">Not credentials we can't.</span>
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl">
@@ -998,10 +998,10 @@ const bentoCard = "bg-white/[0.03] backdrop-blur-md border border-white/10 hover
 
 function WhyNoesis() {
   return (
-    <section className="py-24 lg:py-32 section-rule">
+    <section className="py-28 lg:py-40 section-rule">
       <div className="container-x">
-        <div className="max-w-3xl mb-12">
-          <div className="inline-flex items-center gap-3 mb-6">
+        <div className="max-w-3xl mb-16">
+          <div className="inline-flex items-center gap-3 mb-8">
             <span className="h-px w-10 bg-copper" />
             <span className="text-copper text-xs font-mono font-semibold tracking-[0.3em]">CAPABILITIES</span>
           </div>
@@ -1022,7 +1022,7 @@ function WhyNoesis() {
 
           <div className="col-span-12 md:col-span-4 flex flex-col gap-5">
             <div className={`${bentoCard} flex-1`}>
-              <div className="flex items-start justify-between gap-6">
+              <div className="flex items-start justify-between gap-8">
                 <div>
                   <span className="icon-chip mb-4 w-fit"><Zap className="h-5 w-5" strokeWidth={1.5} /></span>
                   <h3 className="text-lg font-extrabold tracking-tight mb-1">Zero-Latency Agent Swarm</h3>
@@ -1088,24 +1088,24 @@ function Facilitators() {
     },
   ];
   return (
-    <section id="about" className="py-24 lg:py-32 border-y border-border bg-secondary/20">
+    <section id="about" className="py-28 lg:py-40 border-y border-border bg-secondary/20">
       <div className="container-x">
-        <div className="max-w-3xl mb-12">
-          <div className="inline-flex items-center gap-3 mb-6">
+        <div className="max-w-3xl mb-16">
+          <div className="inline-flex items-center gap-3 mb-8">
             <span className="h-px w-10 bg-copper" />
             <span className="text-copper text-xs font-semibold tracking-[0.3em]">ABOUT · CO-FOUNDERS</span>
           </div>
-          <h2 className="text-4xl md:text-5xl leading-[1.05] mb-6">
+          <h2 className="text-4xl md:text-5xl leading-[1.05] mb-8">
             Built by practitioners. <span className="text-gradient-copper">Taught by them too.</span>
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed">
             Noesis Training was founded by three operators who have worked the full arc of infrastructure crime — from first informant to final conviction. Every module is written from that experience.
           </p>
         </div>
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-8">
           {people.map((p) => (
             <div key={p.name} className="rounded-2xl border border-foreground/10 bg-card/50 backdrop-blur-md card-lift p-8 hover:border-copper/50 transition-colors group">
-              <div className="h-16 w-16 border border-copper/40 flex items-center justify-center text-copper text-lg font-bold mb-6 group-hover:bg-copper group-hover:text-primary-foreground transition-colors">
+              <div className="h-16 w-16 border border-copper/40 flex items-center justify-center text-copper text-lg font-bold mb-8 group-hover:bg-copper group-hover:text-primary-foreground transition-colors">
                 {p.name.split(" ").map((n) => n[0]).join("")}
               </div>
               <div className="text-xl font-bold">{p.name}</div>
@@ -1121,9 +1121,9 @@ function Facilitators() {
 
 function FinalCTA() {
   return (
-    <section className="py-20 lg:py-28">
+    <section className="py-28 lg:py-36">
       <div className="container-x">
-        <div className="relative overflow-hidden rounded-2xl border border-foreground/10 bg-black/70 px-6 py-16 lg:py-20 text-center">
+        <div className="relative overflow-hidden rounded-2xl border border-foreground/10 bg-black/70 px-6 py-20 lg:py-20 text-center">
           <div className="absolute left-1/2 top-0 -translate-x-1/2 h-[28rem] w-[28rem] bg-primary/10 blur-[120px] rounded-full pointer-events-none" />
           <div className="absolute inset-0 bg-grid opacity-20" />
           <div className="relative max-w-2xl mx-auto">
@@ -1165,19 +1165,19 @@ function FinalCTA() {
 function Contact() {
   const [sent, setSent] = useState(false);
   return (
-    <section id="contact" className="py-24 lg:py-32 relative overflow-hidden">
+    <section id="contact" className="py-28 lg:py-40 relative overflow-hidden">
       <div className="absolute inset-0 bg-grid opacity-25" />
       <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at center, color-mix(in oklab, var(--copper) 12%, transparent) 0%, transparent 65%)" }} />
-      <div className="container-x relative grid lg:grid-cols-[1fr_1fr] gap-12 lg:gap-20 items-start">
+      <div className="container-x relative grid lg:grid-cols-[1fr_1fr] gap-16 lg:gap-20 items-start">
         <div>
-          <div className="inline-flex items-center gap-3 mb-6">
+          <div className="inline-flex items-center gap-3 mb-8">
             <span className="h-px w-10 bg-copper" />
             <span className="text-copper text-xs font-semibold tracking-[0.3em]">ENQUIRE</span>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-6">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-8">
             Request a programme <span className="text-gradient-copper">briefing.</span>
           </h2>
-          <p className="text-muted-foreground text-lg leading-relaxed mb-10">
+          <p className="text-muted-foreground text-lg leading-relaxed mb-12">
             Tell us about your unit, division or organisation. We'll come back with dates, a full outline, and cohort or in-house options.
           </p>
           <ul className="space-y-3 text-sm text-muted-foreground">
@@ -1252,8 +1252,8 @@ function Field({ label, name, type = "text", required, maxLength }: { label: str
 
 function Footer() {
   return (
-    <footer className="border-t border-border bg-background pt-16 pb-8">
-      <div className="container-x grid lg:grid-cols-[1.4fr_1fr_1fr_1fr] gap-12 mb-12">
+    <footer className="border-t border-border bg-background pt-20 pb-10">
+      <div className="container-x grid lg:grid-cols-[1.4fr_1fr_1fr_1fr] gap-16 mb-16">
         <div>
           <Logo />
           <p className="text-sm text-muted-foreground mt-6 max-w-sm leading-relaxed">
@@ -1284,10 +1284,10 @@ function Footer() {
         </div>
       </div>
       <div className="container-x">
-        <div className="divider-copper mb-6" />
+        <div className="divider-copper mb-8" />
         <div className="flex flex-wrap items-center justify-between gap-4 text-xs text-muted-foreground">
           <div>© {new Date().getFullYear()} Noesis. All rights reserved. SASSETA accreditation in progress.</div>
-          <div className="flex gap-6">
+          <div className="flex gap-8">
             <a href="#" className="hover:text-copper transition-colors">Privacy (POPIA)</a>
             <a href="#" className="hover:text-copper transition-colors">Terms</a>
           </div>
