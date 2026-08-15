@@ -278,7 +278,7 @@ function Enrol() {
         <h2 className="text-4xl md:text-6xl leading-[1.05] mb-8">
           Book seats, commission a private cohort, or <span className="text-gradient-copper">embed the method.</span>
         </h2>
-        <p className="text-muted-foreground text-lg mb-16 leading-relaxed">
+        <p className="text-muted-foreground text-lg mb-12 leading-relaxed">
           Cohort delivery for individual delegates. Private in-house delivery for units and SOE divisions. Direct contracts for embedded methodology across an internal investigations function.
         </p>
         <div className="flex flex-wrap gap-4 justify-center mb-16">
