@@ -109,7 +109,7 @@ function CourseHero() {
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.03] mb-8">
           Intelligence-Led Metals Theft <span className="text-gradient-copper">Investigations & Enforcement.</span>
         </h1>
-        <p className="text-muted-foreground text-lg lg:text-xl max-w-2xl mb-16 leading-relaxed">
+        <p className="text-muted-foreground text-lg lg:text-xl max-w-2xl mb-12 leading-relaxed">
           The full operational cycle — understand, collect, analyse, plan, execute, prosecute — taught as one connected method. Built for SAPS, metro law enforcement, and SOE risk divisions who are done reacting.
         </p>
         <div className="flex flex-wrap gap-4">
