@@ -102,14 +102,14 @@ function CourseHero() {
       </div>
       <div className="absolute inset-0 bg-grid opacity-30" />
       <div className="container-x relative py-28 lg:py-36 max-w-4xl">
-        <div className="inline-flex items-center gap-3 mb-6">
+        <div className="inline-flex items-center gap-3 mb-8">
           <span className="h-px w-10 bg-copper" />
           <span className="text-copper text-xs font-semibold tracking-[0.3em]">FLAGSHIP PROGRAMME · 5 DAYS</span>
         </div>
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.03] mb-6">
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.03] mb-8">
           Intelligence-Led Metals Theft <span className="text-gradient-copper">Investigations & Enforcement.</span>
         </h1>
-        <p className="text-muted-foreground text-lg lg:text-xl max-w-2xl mb-10 leading-relaxed">
+        <p className="text-muted-foreground text-lg lg:text-xl max-w-2xl mb-16 leading-relaxed">
           The full operational cycle — understand, collect, analyse, plan, execute, prosecute — taught as one connected method. Built for SAPS, metro law enforcement, and SOE risk divisions who are done reacting.
         </p>
         <div className="flex flex-wrap gap-4">
@@ -129,12 +129,12 @@ function WhyNow() {
   return (
     <section className="py-28 lg:py-36 bg-secondary/30 border-b border-border">
       <div className="container-x">
-        <div className="max-w-3xl mb-12">
-          <div className="inline-flex items-center gap-3 mb-6">
+        <div className="max-w-3xl mb-16">
+          <div className="inline-flex items-center gap-3 mb-8">
             <span className="h-px w-10 bg-copper" />
             <span className="text-copper text-xs font-semibold tracking-[0.3em]">WHY NOW</span>
           </div>
-          <h2 className="text-3xl md:text-5xl leading-[1.05] mb-6">
+          <h2 className="text-3xl md:text-5xl leading-[1.05] mb-8">
             The infrastructure is <span className="text-gradient-copper">bleeding out.</span>
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed">
@@ -162,7 +162,7 @@ function WhyNow() {
 function FactsBar() {
   return (
     <section className="py-20 border-b border-border">
-      <div className="container-x grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div className="container-x grid grid-cols-2 md:grid-cols-4 gap-8">
         {facts.map((f) => (
           <div key={f.label} className="flex items-start gap-4">
             <div className="h-11 w-11 border border-copper/40 flex items-center justify-center text-copper shrink-0">
@@ -183,13 +183,13 @@ function Modules() {
   return (
     <section className="py-28 lg:py-40 border-b border-border">
       <div className="container-x">
-        <div className="grid lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20">
+        <div className="grid lg:grid-cols-[1fr_1.4fr] gap-16 lg:gap-20">
           <div className="lg:sticky lg:top-28 self-start">
-            <div className="inline-flex items-center gap-3 mb-6">
+            <div className="inline-flex items-center gap-3 mb-8">
               <span className="h-px w-10 bg-copper" />
               <span className="text-copper text-xs font-semibold tracking-[0.3em]">MODULE BREAKDOWN</span>
             </div>
-            <h2 className="text-3xl md:text-5xl leading-[1.05] mb-6">
+            <h2 className="text-3xl md:text-5xl leading-[1.05] mb-8">
               Five days.<br /><span className="text-gradient-copper">Five modules. One method.</span>
             </h2>
             <div className="relative border border-copper/40 overflow-hidden mt-8">
@@ -198,7 +198,7 @@ function Modules() {
               <div className="absolute bottom-4 left-4 text-copper text-[0.6rem] tracking-[0.3em]">CABLE → COURTROOM</div>
             </div>
           </div>
-          <div className="space-y-4">
+          <div className="space-y-5">
             {modules.map((m) => (
               <div key={m.n} className="rounded-2xl border border-foreground/10 bg-card/50 backdrop-blur-md card-lift p-6 lg:p-8 hover:border-copper/50 transition-colors group">
                 <div className="flex items-start gap-5">
@@ -231,13 +231,13 @@ function Outcomes() {
   return (
     <section className="py-28 lg:py-40 bg-secondary/20 border-b border-border relative">
       <div className="absolute inset-0 bg-grid opacity-20" />
-      <div className="container-x relative grid lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-20 items-start">
+      <div className="container-x relative grid lg:grid-cols-[1fr_1.1fr] gap-16 lg:gap-20 items-start">
         <div>
-          <div className="inline-flex items-center gap-3 mb-6">
+          <div className="inline-flex items-center gap-3 mb-8">
             <span className="h-px w-10 bg-copper" />
             <span className="text-copper text-xs font-semibold tracking-[0.3em]">LEARNING OUTCOMES</span>
           </div>
-          <h2 className="text-3xl md:text-5xl leading-[1.05] mb-6">On day six, they can <span className="text-gradient-copper">do this.</span></h2>
+          <h2 className="text-3xl md:text-5xl leading-[1.05] mb-8">On day six, they can <span className="text-gradient-copper">do this.</span></h2>
           <p className="text-muted-foreground leading-relaxed mb-8">
             Every module ends with an applied exercise. Delegates leave with a workbook, templates for grading and operational orders, and a docket structure they can use on the first case back.
           </p>
@@ -247,11 +247,11 @@ function Outcomes() {
           </div>
         </div>
         <div className="border border-copper/40 bg-card p-8 lg:p-10">
-          <div className="flex items-center gap-3 mb-6">
+          <div className="flex items-center gap-3 mb-8">
             <Target className="h-5 w-5 text-copper" />
             <div className="text-[0.65rem] tracking-[0.3em] text-copper font-semibold">DELEGATES WILL BE ABLE TO</div>
           </div>
-          <ul className="space-y-4">
+          <ul className="space-y-5">
             {outcomes.map((o) => (
               <li key={o} className="flex gap-3">
                 <CheckCircle2 className="h-5 w-5 text-copper mt-0.5 shrink-0" strokeWidth={1.5} />
@@ -270,18 +270,18 @@ function Enrol() {
     <section className="py-28 lg:py-40 relative overflow-hidden">
       <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at center, color-mix(in oklab, var(--copper) 15%, transparent) 0%, transparent 65%)" }} />
       <div className="container-x relative max-w-3xl text-center">
-        <div className="inline-flex items-center gap-3 mb-6 justify-center">
+        <div className="inline-flex items-center gap-3 mb-8 justify-center">
           <span className="h-px w-10 bg-copper" />
           <span className="text-copper text-xs font-semibold tracking-[0.3em]">ENROL A COHORT</span>
           <span className="h-px w-10 bg-copper" />
         </div>
-        <h2 className="text-4xl md:text-6xl leading-[1.05] mb-6">
+        <h2 className="text-4xl md:text-6xl leading-[1.05] mb-8">
           Book seats, commission a private cohort, or <span className="text-gradient-copper">embed the method.</span>
         </h2>
-        <p className="text-muted-foreground text-lg mb-10 leading-relaxed">
+        <p className="text-muted-foreground text-lg mb-16 leading-relaxed">
           Cohort delivery for individual delegates. Private in-house delivery for units and SOE divisions. Direct contracts for embedded methodology across an internal investigations function.
         </p>
-        <div className="flex flex-wrap gap-4 justify-center mb-10">
+        <div className="flex flex-wrap gap-4 justify-center mb-16">
           <a href="/noesis-brochure.pdf" download className="group inline-flex items-center gap-3 rounded-full bg-copper text-primary-foreground px-7 py-4 text-sm font-semibold tracking-wide hover:bg-bronze glow-cta shadow-[var(--shadow-copper)]">
             <Download className="h-4 w-4" /> DOWNLOAD BROCHURE
           </a>
@@ -289,7 +289,7 @@ function Enrol() {
             REQUEST A BRIEFING <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
-        <div className="flex flex-wrap gap-6 justify-center text-sm text-muted-foreground">
+        <div className="flex flex-wrap gap-8 justify-center text-sm text-muted-foreground">
           <span className="flex items-center gap-2"><Mail className="h-4 w-4 text-copper" /> info@noesis.co.za</span>
           <span className="flex items-center gap-2"><Phone className="h-4 w-4 text-copper" /> Contact to be confirmed</span>
         </div>
@@ -329,8 +329,8 @@ function DynamicCycle() {
     <section className="py-28 lg:py-40 border-b border-border relative overflow-hidden">
       <div className="absolute inset-0 bg-grid opacity-20" />
       <div className="container-x relative">
-        <div className="max-w-3xl mb-14">
-          <div className="inline-flex items-center gap-3 mb-6">
+        <div className="max-w-3xl mb-16">
+          <div className="inline-flex items-center gap-3 mb-8">
             <span className="h-px w-10 bg-copper" />
             <span className="text-copper text-xs font-semibold tracking-[0.3em]">THE METHOD · LIVE CYCLE</span>
           </div>
@@ -342,7 +342,7 @@ function DynamicCycle() {
           </p>
         </div>
         <div
-          className="grid lg:grid-cols-4 gap-3 mb-10"
+          className="grid lg:grid-cols-4 gap-3 mb-16"
           onMouseLeave={() => setPaused(false)}
         >
           {cycleSteps.map((s, i) => {
@@ -401,13 +401,13 @@ function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
   return (
     <section className="py-28 lg:py-40 bg-secondary/20 border-b border-border">
-      <div className="container-x grid lg:grid-cols-[1fr_1.6fr] gap-12 lg:gap-20">
+      <div className="container-x grid lg:grid-cols-[1fr_1.6fr] gap-16 lg:gap-20">
         <div>
-          <div className="inline-flex items-center gap-3 mb-6">
+          <div className="inline-flex items-center gap-3 mb-8">
             <span className="h-px w-10 bg-copper" />
             <span className="text-copper text-xs font-semibold tracking-[0.3em]">FAQ</span>
           </div>
-          <h2 className="text-3xl md:text-5xl leading-[1.05] mb-6">
+          <h2 className="text-3xl md:text-5xl leading-[1.05] mb-8">
             The questions <span className="text-gradient-copper">commanders ask.</span>
           </h2>
           <p className="text-muted-foreground leading-relaxed">
@@ -421,7 +421,7 @@ function FAQ() {
               <div key={f.q}>
                 <button
                   onClick={() => setOpen(isOpen ? null : i)}
-                  className="w-full flex items-center justify-between gap-6 py-5 text-left hover:text-copper transition-colors"
+                  className="w-full flex items-center justify-between gap-8 py-5 text-left hover:text-copper transition-colors"
                   aria-expanded={isOpen}
                 >
                   <span className="text-base md:text-lg font-semibold">{f.q}</span>
@@ -504,11 +504,11 @@ function EnquiryForm() {
       <section id="enquire" className="py-28 lg:py-40 border-b border-border relative overflow-hidden">
         <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at center, color-mix(in oklab, var(--copper) 12%, transparent) 0%, transparent 60%)" }} />
         <div className="container-x relative max-w-2xl text-center animate-fade-in">
-          <div className="h-16 w-16 mx-auto border border-copper bg-copper/10 flex items-center justify-center text-copper mb-6">
+          <div className="h-16 w-16 mx-auto border border-copper bg-copper/10 flex items-center justify-center text-copper mb-8">
             <CheckCircle2 className="h-8 w-8" strokeWidth={1.5} />
           </div>
           <div className="text-[0.6rem] tracking-[0.3em] text-copper font-semibold mb-3">ENQUIRY RECEIVED</div>
-          <h2 className="text-3xl md:text-5xl leading-[1.05] mb-6">
+          <h2 className="text-3xl md:text-5xl leading-[1.05] mb-8">
             Thank you, {data.name.split(" ")[0]}. <span className="text-gradient-copper">We are on it.</span>
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed mb-8">
@@ -543,13 +543,13 @@ function EnquiryForm() {
 
   return (
     <section id="enquire" className="py-28 lg:py-40 border-b border-border">
-      <div className="container-x grid lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20">
+      <div className="container-x grid lg:grid-cols-[1fr_1.4fr] gap-16 lg:gap-20">
         <div>
-          <div className="inline-flex items-center gap-3 mb-6">
+          <div className="inline-flex items-center gap-3 mb-8">
             <span className="h-px w-10 bg-copper" />
             <span className="text-copper text-xs font-semibold tracking-[0.3em]">COURSE ENQUIRY</span>
           </div>
-          <h2 className="text-3xl md:text-5xl leading-[1.05] mb-6">
+          <h2 className="text-3xl md:text-5xl leading-[1.05] mb-8">
             Tell us who's coming. <span className="text-gradient-copper">We'll shape the cohort.</span>
           </h2>
           <p className="text-muted-foreground leading-relaxed mb-8">
