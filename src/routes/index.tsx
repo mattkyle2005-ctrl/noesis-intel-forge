@@ -640,7 +640,7 @@ function Programme() {
           <h2 className="text-3xl md:text-5xl leading-[1.05] mb-8">
             Intelligence-Led Metals Theft <span className="text-gradient-copper">Investigations & Enforcement.</span>
           </h2>
-          <p className="text-muted-foreground text-lg leading-relaxed mb-16">
+          <p className="text-muted-foreground text-lg leading-relaxed mb-12">
             A 5-day, NQF-aligned programme. The first Noesis programme to reach cohort delivery, and the operational blueprint for everything that follows.
           </p>
 
@@ -1177,7 +1177,7 @@ function Contact() {
           <h2 className="text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-8">
             Request a programme <span className="text-gradient-copper">briefing.</span>
           </h2>
-          <p className="text-muted-foreground text-lg leading-relaxed mb-16">
+          <p className="text-muted-foreground text-lg leading-relaxed mb-12">
             Tell us about your unit, division or organisation. We'll come back with dates, a full outline, and cohort or in-house options.
           </p>
           <ul className="space-y-3 text-sm text-muted-foreground">
