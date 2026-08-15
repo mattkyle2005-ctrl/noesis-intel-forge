@@ -233,9 +233,9 @@ function TerminalSim() {
 
 function MeaningStrip() {
   return (
-    <section className="py-16 lg:py-20 border-y border-border bg-secondary/20 relative overflow-hidden">
+    <section className="py-20 lg:py-28 border-y border-border bg-secondary/20 relative overflow-hidden">
       <div className="absolute inset-0 bg-grid opacity-20" />
-      <div className="container-x relative grid md:grid-cols-[auto_1fr] gap-8 lg:gap-14 items-center">
+      <div className="container-x relative grid md:grid-cols-[auto_1fr] gap-10 lg:gap-16 items-center">
         <div className="flex items-center gap-5">
           <div className="h-16 w-16 border border-copper/50 flex items-center justify-center text-copper">
             <Brain className="h-7 w-7" strokeWidth={1.5} />
@@ -247,7 +247,7 @@ function MeaningStrip() {
         </div>
         <p className="text-lg md:text-2xl leading-relaxed text-foreground">
           <span className="text-muted-foreground">Noun.</span> The act of thinking, the process of understanding, <span className="text-gradient-copper font-semibold">and pure cognition.</span>
-          <span className="block text-sm text-muted-foreground mt-3">
+          <span className="block text-sm text-muted-foreground mt-4">
             The name is the method. Before the raid, before the arrest, before the docket — thinking.
           </span>
         </p>
@@ -268,7 +268,7 @@ const tickerFacts = [
 
 function UrgencyTicker() {
   return (
-    <div className="border-b border-border bg-background overflow-hidden relative py-4">
+    <div className="border-b border-border bg-background overflow-hidden relative py-5">
       <div className="flex gap-14 animate-marquee whitespace-nowrap">
         {[...tickerFacts, ...tickerFacts].map((f, i) => (
           <div key={i} className="flex items-center gap-3 text-sm">
