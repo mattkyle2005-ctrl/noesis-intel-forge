@@ -129,7 +129,7 @@ function Hero() {
       <div className="absolute left-1/2 top-0 -translate-x-1/2 h-[32rem] w-[32rem] bg-primary/10 blur-[120px] rounded-full pointer-events-none" />
       <div className="container-x relative pt-44 lg:pt-56 pb-28">
         <div className="max-w-4xl mx-auto text-center animate-fade-up">
-          <div className="inline-flex items-center gap-2 mb-16 rounded-full border border-primary/20 bg-primary/10 backdrop-blur-xl px-4 py-1.5 font-mono text-xs text-primary">
+          <div className="inline-flex items-center gap-2 mb-10 rounded-full border border-primary/20 bg-primary/10 backdrop-blur-xl px-4 py-1.5 font-mono text-xs text-primary">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full rounded-full bg-primary opacity-75 animate-ping" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
@@ -139,7 +139,7 @@ function Hero() {
           <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-foreground mb-8">
             Empowering Professionals.<br />Protecting Communities.
           </h1>
-          <p className="text-muted-foreground text-xl max-w-2xl mx-auto mb-16 leading-relaxed">
+          <p className="text-muted-foreground text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
             Noesis turns raw signal into court-ready action — collection, analysis, planning and execution running as one continuous intelligence loop.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
