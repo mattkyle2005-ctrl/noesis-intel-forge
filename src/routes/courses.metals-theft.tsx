@@ -101,7 +101,7 @@ function CourseHero() {
         <div className="absolute inset-0" style={{ background: "linear-gradient(90deg, var(--background) 20%, transparent 100%)" }} />
       </div>
       <div className="absolute inset-0 bg-grid opacity-30" />
-      <div className="container-x relative py-20 lg:py-28 max-w-4xl">
+      <div className="container-x relative py-28 lg:py-36 max-w-4xl">
         <div className="inline-flex items-center gap-3 mb-6">
           <span className="h-px w-10 bg-copper" />
           <span className="text-copper text-xs font-semibold tracking-[0.3em]">FLAGSHIP PROGRAMME · 5 DAYS</span>
@@ -127,7 +127,7 @@ function CourseHero() {
 
 function WhyNow() {
   return (
-    <section className="py-20 lg:py-28 bg-secondary/30 border-b border-border">
+    <section className="py-28 lg:py-36 bg-secondary/30 border-b border-border">
       <div className="container-x">
         <div className="max-w-3xl mb-12">
           <div className="inline-flex items-center gap-3 mb-6">
@@ -161,7 +161,7 @@ function WhyNow() {
 
 function FactsBar() {
   return (
-    <section className="py-14 border-b border-border">
+    <section className="py-20 border-b border-border">
       <div className="container-x grid grid-cols-2 md:grid-cols-4 gap-6">
         {facts.map((f) => (
           <div key={f.label} className="flex items-start gap-4">
@@ -181,7 +181,7 @@ function FactsBar() {
 
 function Modules() {
   return (
-    <section className="py-24 lg:py-32 border-b border-border">
+    <section className="py-28 lg:py-40 border-b border-border">
       <div className="container-x">
         <div className="grid lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20">
           <div className="lg:sticky lg:top-28 self-start">
@@ -229,7 +229,7 @@ function Modules() {
 
 function Outcomes() {
   return (
-    <section className="py-24 lg:py-32 bg-secondary/20 border-b border-border relative">
+    <section className="py-28 lg:py-40 bg-secondary/20 border-b border-border relative">
       <div className="absolute inset-0 bg-grid opacity-20" />
       <div className="container-x relative grid lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-20 items-start">
         <div>
@@ -267,7 +267,7 @@ function Outcomes() {
 
 function Enrol() {
   return (
-    <section className="py-24 lg:py-32 relative overflow-hidden">
+    <section className="py-28 lg:py-40 relative overflow-hidden">
       <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at center, color-mix(in oklab, var(--copper) 15%, transparent) 0%, transparent 65%)" }} />
       <div className="container-x relative max-w-3xl text-center">
         <div className="inline-flex items-center gap-3 mb-6 justify-center">
@@ -326,7 +326,7 @@ function DynamicCycle() {
   }, [paused]);
   const step = cycleSteps[active];
   return (
-    <section className="py-24 lg:py-32 border-b border-border relative overflow-hidden">
+    <section className="py-28 lg:py-40 border-b border-border relative overflow-hidden">
       <div className="absolute inset-0 bg-grid opacity-20" />
       <div className="container-x relative">
         <div className="max-w-3xl mb-14">
@@ -400,7 +400,7 @@ const faqs = [
 function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section className="py-24 lg:py-32 bg-secondary/20 border-b border-border">
+    <section className="py-28 lg:py-40 bg-secondary/20 border-b border-border">
       <div className="container-x grid lg:grid-cols-[1fr_1.6fr] gap-12 lg:gap-20">
         <div>
           <div className="inline-flex items-center gap-3 mb-6">
@@ -501,7 +501,7 @@ function EnquiryForm() {
 
   if (status === "sent") {
     return (
-      <section id="enquire" className="py-24 lg:py-32 border-b border-border relative overflow-hidden">
+      <section id="enquire" className="py-28 lg:py-40 border-b border-border relative overflow-hidden">
         <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at center, color-mix(in oklab, var(--copper) 12%, transparent) 0%, transparent 60%)" }} />
         <div className="container-x relative max-w-2xl text-center animate-fade-in">
           <div className="h-16 w-16 mx-auto border border-copper bg-copper/10 flex items-center justify-center text-copper mb-6">
@@ -542,7 +542,7 @@ function EnquiryForm() {
   }
 
   return (
-    <section id="enquire" className="py-24 lg:py-32 border-b border-border">
+    <section id="enquire" className="py-28 lg:py-40 border-b border-border">
       <div className="container-x grid lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20">
         <div>
           <div className="inline-flex items-center gap-3 mb-6">
