@@ -316,7 +316,7 @@ function Problem() {
         <div className="absolute inset-0" style={{ background: "linear-gradient(90deg, var(--background) 45%, transparent 100%)" }} />
       </div>
       <div className="container-x relative">
-        <div className="max-w-3xl mb-18">
+        <div className="max-w-3xl mb-16">
           <div className="inline-flex items-center gap-3 mb-8">
             <span className="h-px w-10 bg-copper" />
             <span className="text-copper text-xs font-semibold tracking-[0.3em]">WHERE THE WORLD IS RIGHT NOW</span>
@@ -468,7 +468,7 @@ function Audiences() {
   return (
     <section id="audiences" className="py-28 lg:py-40 section-rule">
       <div className="container-x">
-        <div className="flex flex-wrap items-end justify-between gap-8 mb-18">
+        <div className="flex flex-wrap items-end justify-between gap-8 mb-16">
           <div>
             <div className="inline-flex items-center gap-3 mb-4">
               <span className="h-px w-10 bg-copper" />
@@ -526,7 +526,7 @@ function RiskEstimator() {
       <div className="absolute -top-40 -left-40 h-96 w-96 rounded-full bg-copper/10 blur-3xl" />
       <div className="absolute inset-0 bg-grid opacity-20" />
       <div className="container-x relative">
-        <div className="max-w-3xl mb-18">
+        <div className="max-w-3xl mb-16">
           <div className="inline-flex items-center gap-3 mb-8">
             <span className="h-px w-10 bg-copper" />
             <span className="text-copper text-xs font-semibold tracking-[0.3em]">KNOW YOUR EXPOSURE</span>
@@ -730,7 +730,7 @@ function Credibility() {
         <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, var(--background) 0%, transparent 40%, var(--background) 100%)" }} />
       </div>
       <div ref={ref} className="container-x relative">
-        <div className="max-w-3xl mb-18">
+        <div className="max-w-3xl mb-16">
           <div className="inline-flex items-center gap-3 mb-8">
             <span className="h-px w-10 bg-copper" />
             <span className="text-copper text-xs font-semibold tracking-[0.3em]">CREDIBILITY</span>
@@ -744,7 +744,7 @@ function Credibility() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border border border-border mb-18">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border border border-border mb-16">
           {credStats.map((s) => {
             const v = useCountUp(s.n, visible);
             return (
@@ -803,7 +803,7 @@ function Standards() {
   return (
     <section className="py-28 lg:py-40 border-b border-border relative">
       <div className="container-x relative">
-        <div className="max-w-3xl mb-18">
+        <div className="max-w-3xl mb-16">
           <div className="inline-flex items-center gap-3 mb-8">
             <span className="h-px w-10 bg-copper" />
             <span className="text-copper text-xs font-semibold tracking-[0.3em]">STANDARDS &amp; COMPLIANCE</span>
