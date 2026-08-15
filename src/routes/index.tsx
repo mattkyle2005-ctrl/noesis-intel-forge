@@ -319,7 +319,7 @@ function Problem() {
         <div className="max-w-3xl mb-16">
           <div className="inline-flex items-center gap-3 mb-8">
             <span className="h-px w-10 bg-copper" />
-            <span className="text-copper text-xs font-semibold tracking-[0.3em]">WHERE THE WORLD IS RIGHT NOW</span>
+            <span className="text-copper text-sm font-semibold tracking-[0.3em]">WHERE THE WORLD IS RIGHT NOW</span>
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-8">
             R45 BILLION LOST A YEAR.<br />
@@ -403,7 +403,7 @@ function Approach() {
           <div className="lg:sticky lg:top-28 self-start">
             <div className="inline-flex items-center gap-3 mb-8">
               <span className="h-px w-10 bg-copper" />
-              <span className="text-copper text-xs font-semibold tracking-[0.3em]">THE NOESIS APPROACH</span>
+              <span className="text-copper text-sm font-semibold tracking-[0.3em]">THE NOESIS APPROACH</span>
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-8">
               One connected<br />
@@ -472,7 +472,7 @@ function Audiences() {
           <div>
             <div className="inline-flex items-center gap-3 mb-4">
               <span className="h-px w-10 bg-copper" />
-              <span className="text-copper text-xs font-semibold tracking-[0.3em]">WHO IT'S FOR</span>
+              <span className="text-copper text-sm font-semibold tracking-[0.3em]">WHO IT'S FOR</span>
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl leading-[1.05]">
               Three mandates.<br />
@@ -529,7 +529,7 @@ function RiskEstimator() {
         <div className="max-w-3xl mb-16">
           <div className="inline-flex items-center gap-3 mb-8">
             <span className="h-px w-10 bg-copper" />
-            <span className="text-copper text-xs font-semibold tracking-[0.3em]">KNOW YOUR EXPOSURE</span>
+            <span className="text-copper text-sm font-semibold tracking-[0.3em]">KNOW YOUR EXPOSURE</span>
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-8">
             SA Infrastructure <span className="text-gradient-copper">Loss Estimator.</span>
@@ -635,7 +635,7 @@ function Programme() {
         <div>
           <div className="inline-flex items-center gap-3 mb-8">
             <span className="h-px w-10 bg-copper" />
-            <span className="text-copper text-xs font-semibold tracking-[0.3em]">FLAGSHIP PROGRAMME</span>
+            <span className="text-copper text-sm font-semibold tracking-[0.3em]">FLAGSHIP PROGRAMME</span>
           </div>
           <h2 className="text-3xl md:text-5xl leading-[1.05] mb-8">
             Intelligence-Led Metals Theft <span className="text-gradient-copper">Investigations & Enforcement.</span>
@@ -733,7 +733,7 @@ function Credibility() {
         <div className="max-w-3xl mb-16">
           <div className="inline-flex items-center gap-3 mb-8">
             <span className="h-px w-10 bg-copper" />
-            <span className="text-copper text-xs font-semibold tracking-[0.3em]">CREDIBILITY</span>
+            <span className="text-copper text-sm font-semibold tracking-[0.3em]">CREDIBILITY</span>
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-8">
             Built by practitioners.<br />
@@ -806,7 +806,7 @@ function Standards() {
         <div className="max-w-3xl mb-16">
           <div className="inline-flex items-center gap-3 mb-8">
             <span className="h-px w-10 bg-copper" />
-            <span className="text-copper text-xs font-semibold tracking-[0.3em]">STANDARDS &amp; COMPLIANCE</span>
+            <span className="text-copper text-sm font-semibold tracking-[0.3em]">STANDARDS &amp; COMPLIANCE</span>
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-8">
             Alignment we can prove.<br /><span className="text-gradient-copper">Not credentials we can't.</span>
@@ -1003,7 +1003,7 @@ function WhyNoesis() {
         <div className="max-w-3xl mb-16">
           <div className="inline-flex items-center gap-3 mb-8">
             <span className="h-px w-10 bg-copper" />
-            <span className="text-copper text-xs font-mono font-semibold tracking-[0.3em]">CAPABILITIES</span>
+            <span className="text-copper text-sm font-mono font-semibold tracking-[0.3em]">CAPABILITIES</span>
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
             The only method that goes from <span className="text-gradient-copper">community tip to conviction.</span>
@@ -1093,7 +1093,7 @@ function Facilitators() {
         <div className="max-w-3xl mb-16">
           <div className="inline-flex items-center gap-3 mb-8">
             <span className="h-px w-10 bg-copper" />
-            <span className="text-copper text-xs font-semibold tracking-[0.3em]">ABOUT · CO-FOUNDERS</span>
+            <span className="text-copper text-sm font-semibold tracking-[0.3em]">ABOUT · CO-FOUNDERS</span>
           </div>
           <h2 className="text-4xl md:text-5xl leading-[1.05] mb-8">
             Built by practitioners. <span className="text-gradient-copper">Taught by them too.</span>
@@ -1127,7 +1127,7 @@ function FinalCTA() {
           <div className="absolute left-1/2 top-0 -translate-x-1/2 h-[28rem] w-[28rem] bg-primary/10 blur-[120px] rounded-full pointer-events-none" />
           <div className="absolute inset-0 bg-grid opacity-20" />
           <div className="relative max-w-2xl mx-auto">
-            <div className="font-mono text-[0.6rem] tracking-[0.3em] text-primary mb-4">FLAGSHIP PROGRAMME · ENQUIRIES OPEN</div>
+            <div className="font-mono text-xs tracking-[0.3em] text-primary mb-4">FLAGSHIP PROGRAMME · ENQUIRIES OPEN</div>
             <h3 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-8">
               Ready to build the intelligence-to-conviction pipeline?
             </h3>
@@ -1172,7 +1172,7 @@ function Contact() {
         <div>
           <div className="inline-flex items-center gap-3 mb-8">
             <span className="h-px w-10 bg-copper" />
-            <span className="text-copper text-xs font-semibold tracking-[0.3em]">ENQUIRE</span>
+            <span className="text-copper text-sm font-semibold tracking-[0.3em]">ENQUIRE</span>
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-8">
             Request a programme <span className="text-gradient-copper">briefing.</span>
