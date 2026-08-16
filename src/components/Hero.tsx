@@ -226,7 +226,7 @@ function Console() {
       </div>
 
       {/* floating micro-cards */}
-      <div className="hidden md:flex absolute -top-6 -right-4 lg:-right-10 items-center gap-3 rounded-full border border-white/10 bg-background/70 backdrop-blur-md px-4 py-2.5">
+      <div className="hidden md:flex absolute top-20 -right-5 lg:-right-12 items-center gap-3 rounded-full border border-white/10 bg-background/70 backdrop-blur-md px-4 py-2.5">
         <Activity className="h-4 w-4 text-copper" strokeWidth={1.5} />
         <div className="leading-tight text-left">
           <SignalCounter />
