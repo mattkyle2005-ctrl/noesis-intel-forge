@@ -7,7 +7,7 @@ import {
   TrainFront, Zap, Target, CheckCircle2, Download, BookOpen,
   Brain, Quote, Gauge, Clock,
 } from "lucide-react";
-import heroImg from "@/assets/hero-v2.jpg";
+import { Hero } from "@/components/Hero";
 import aboutImg from "@/assets/about.jpg";
 import logoImg from "@/assets/logo.png";
 import impactImg from "@/assets/impact.jpg";
@@ -123,113 +123,6 @@ const cycle = [
   { n: "04", label: "EXECUTE", body: "Coordinated operation. Chain of custody. Courtroom-ready docket." },
 ];
 
-function Hero() {
-  return (
-    <section className="relative overflow-hidden bg-spotlight">
-      <div className="absolute inset-0 bg-grid opacity-40" />
-      <div className="container-x relative pt-44 lg:pt-56 pb-28">
-        <div className="max-w-4xl mx-auto text-center animate-fade-up">
-          <div className="inline-flex items-center gap-2.5 mb-10 rounded-full border border-white/10 bg-white/[0.03] px-4 py-1.5 font-mono text-[0.7rem] tracking-[0.18em] text-muted-foreground">
-            <span className="relative flex h-1.5 w-1.5">
-              <span className="absolute inline-flex h-full w-full rounded-full bg-copper opacity-60 animate-ping" />
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-copper" />
-            </span>
-            <span className="text-copper">[SYS]</span> INTELLIGENCE-LED CAPABILITY DEVELOPMENT · SOUTH AFRICA
-          </div>
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-[-0.04em] leading-[1.05] text-foreground mb-8">
-            Empowering Professionals.<br />Protecting Communities.
-          </h1>
-          <p className="text-muted-foreground text-lg sm:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
-            Noesis turns raw signal into court-ready action — collection, analysis, planning and execution running as one continuous intelligence loop.
-          </p>
-          <div className="flex flex-wrap justify-center gap-3">
-            <Link to="/courses/metals-theft" className="group inline-flex items-center gap-3 rounded-full bg-copper text-primary-foreground px-7 py-3.5 text-sm font-semibold tracking-tight hover:bg-bronze transition-colors">
-              Explore the flagship programme <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-            <a href="/noesis-brochure.pdf" download className="inline-flex items-center gap-3 rounded-full border border-white/12 px-7 py-3.5 text-sm font-semibold tracking-tight text-muted-foreground hover:text-foreground hover:border-white/25 transition-colors">
-              <Download className="h-4 w-4" /> Download brochure
-            </a>
-          </div>
-
-        </div>
-
-        <TerminalSim />
-      </div>
-    </section>
-  );
-}
-
-const terminalLines = [
-  "$ forge init --node ZA-GAUTENG-04",
-  "» ingest: SAPS docket stream ......... OK",
-  "» ingest: substation SCADA telemetry . OK",
-  "» grade: 5x5x5 source evaluation ..... B/2/2",
-  "» link: syndicate cluster resolved ... 14 nodes / 31 edges",
-  "» geo: incident heatmap rendered ..... 2,041 points",
-  "» plan: operational order drafted .... warrant attached",
-  "» execute: chain of custody sealed ... POCA-ready",
-  "✓ workflow synthesised in 0.04ms",
-];
-
-function TerminalSim() {
-  const [shown, setShown] = useState<string[]>([]);
-  const [typed, setTyped] = useState("");
-
-  useEffect(() => {
-    let line = 0;
-    let char = 0;
-    let cancelled = false;
-    const tick = () => {
-      if (cancelled) return;
-      const current = terminalLines[line];
-      if (char < current.length) {
-        char += 1;
-        setTyped(current.slice(0, char));
-        window.setTimeout(tick, 18);
-      } else {
-        setShown((prev) => [...prev, current].slice(-9));
-        setTyped("");
-        char = 0;
-        line = (line + 1) % terminalLines.length;
-        if (line === 0) {
-          window.setTimeout(() => {
-            if (cancelled) return;
-            setShown([]);
-            tick();
-          }, 1600);
-        } else {
-          window.setTimeout(tick, 320);
-        }
-      }
-    };
-    const start = window.setTimeout(tick, 500);
-    return () => {
-      cancelled = true;
-      window.clearTimeout(start);
-    };
-  }, []);
-
-  return (
-    <div className="mt-16 lg:mt-20 max-w-4xl mx-auto rounded-xl border border-white/10 bg-black/50 backdrop-blur-md overflow-hidden">
-      <div className="flex items-center gap-2 px-4 py-3 border-b border-primary/20">
-        <span className="h-2 w-2 rounded-full bg-primary/70" />
-        <span className="h-2 w-2 rounded-full bg-foreground/15" />
-        <span className="h-2 w-2 rounded-full bg-foreground/15" />
-        <span className="ml-3 font-mono text-[0.65rem] tracking-[0.25em] text-primary/70">noesis://forge/telemetry</span>
-        <span className="ml-auto font-mono text-[0.6rem] tracking-[0.2em] text-muted-foreground">STREAMING</span>
-      </div>
-      <div className="p-5 font-mono text-xs text-muted-foreground h-[248px] overflow-hidden">
-        {shown.map((l, i) => (
-          <div key={`${l}-${i}`} className="leading-6 whitespace-pre-wrap opacity-70">{l}</div>
-        ))}
-        <div className="leading-6 whitespace-pre-wrap text-primary">
-          {typed}
-          <span className="inline-block w-2 h-3.5 translate-y-0.5 bg-primary animate-pulse ml-0.5" />
-        </div>
-      </div>
-    </div>
-  );
-}
 
 
 function MeaningStrip() {
