@@ -147,7 +147,7 @@ function Console() {
               <span className="font-mono text-[0.65rem] tracking-[0.15em] text-muted-foreground">noesis://forge/console</span>
             </div>
           </div>
-          <span className="ml-auto sm:ml-0 font-mono text-[0.65rem] tabular text-copper">14ms</span>
+          <span className="ml-auto font-mono text-[0.65rem] tabular text-copper">14ms</span>
         </div>
 
         <div className="grid sm:grid-cols-[168px_1fr]">
