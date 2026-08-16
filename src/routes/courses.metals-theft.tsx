@@ -149,7 +149,7 @@ function WhyNow() {
           ].map((s) => (
             <div key={s.label} className="bg-background p-8">
               <s.icon className="h-6 w-6 text-copper mb-4" strokeWidth={1.5} />
-              <div className="text-4xl md:text-5xl font-bold text-copper mb-2">{s.stat}</div>
+              <div className="text-4xl sm:text-5xl font-bold tracking-tight tabular text-copper mb-2">{s.stat}</div>
               <div className="text-sm text-muted-foreground">{s.label}</div>
             </div>
           ))}

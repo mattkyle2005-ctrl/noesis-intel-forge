@@ -587,15 +587,15 @@ function RiskEstimator() {
               <div className="flex items-center gap-2 text-[0.6rem] tracking-[0.3em] text-copper font-semibold mb-3">
                 <Gauge className="h-3.5 w-3.5" /> ANNUAL EXPOSURE
               </div>
-              <div className="text-3xl font-bold text-copper">R{exposure}M</div>
+              <div className="text-3xl font-bold tracking-tight tabular text-copper">R{exposure}M</div>
             </div>
             <div className="bg-background p-6 lg:p-8">
               <div className="text-[0.6rem] tracking-[0.3em] text-copper font-semibold mb-3">DOWNTIME IMPACT</div>
-              <div className="text-3xl font-bold text-copper">{downtime} days/yr</div>
+              <div className="text-3xl font-bold tracking-tight tabular text-copper">{downtime} days/yr</div>
             </div>
             <div className="bg-background p-6 lg:p-8">
               <div className="text-[0.6rem] tracking-[0.3em] text-copper font-semibold mb-3">COMPLIANCE RISK</div>
-              <div className="text-3xl font-bold text-copper">{compliance}/100</div>
+              <div className="text-3xl font-bold tracking-tight tabular text-copper">{compliance}/100</div>
             </div>
           </div>
         </div>
@@ -748,7 +748,7 @@ function Credibility() {
             const v = useCountUp(s.n, visible);
             return (
               <div key={s.label} className="bg-background p-8">
-                <div className="text-4xl md:text-5xl font-bold text-copper mb-2">
+                <div className="text-4xl sm:text-5xl font-bold tracking-tight tabular text-copper mb-2">
                   {s.prefix}{v}{s.suffix}
                 </div>
                 <div className="text-xs text-muted-foreground leading-relaxed">{s.label}</div>
