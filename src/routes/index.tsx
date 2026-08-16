@@ -8,7 +8,6 @@ import {
   Brain, Quote, Gauge, Clock,
 } from "lucide-react";
 import { Hero } from "@/components/Hero";
-import heroImg from "@/assets/hero-v2.jpg";
 import aboutImg from "@/assets/about.jpg";
 import logoImg from "@/assets/logo.png";
 import impactImg from "@/assets/impact.jpg";
