@@ -101,13 +101,13 @@ function CourseHero() {
         <div className="absolute inset-0" style={{ background: "linear-gradient(90deg, var(--background) 20%, transparent 100%)" }} />
       </div>
       <div className="absolute inset-0 bg-grid opacity-30" />
-      <div className="container-x relative py-28 lg:py-36 max-w-4xl">
+      <div className="container-x relative py-24 sm:py-32 max-w-4xl">
         <div className="inline-flex items-center gap-3 mb-8">
           <span className="h-px w-10 bg-copper" />
           <span className="text-copper text-sm font-semibold tracking-[0.3em]">FLAGSHIP PROGRAMME · 5 DAYS</span>
         </div>
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.03] mb-8">
-          Intelligence-Led Metals Theft <span className="text-gradient-copper">Investigations & Enforcement.</span>
+          Intelligence-Led Metals Theft <span className="text-copper">Investigations & Enforcement.</span>
         </h1>
         <p className="text-muted-foreground text-lg lg:text-xl max-w-2xl mb-12 leading-relaxed">
           The full operational cycle — understand, collect, analyse, plan, execute, prosecute — taught as one connected method. Built for SAPS, metro law enforcement, and SOE risk divisions who are done reacting.
@@ -127,7 +127,7 @@ function CourseHero() {
 
 function WhyNow() {
   return (
-    <section className="py-28 lg:py-36 bg-secondary/30 border-b border-border">
+    <section className="py-24 sm:py-32 bg-secondary/30 border-b border-border">
       <div className="container-x">
         <div className="max-w-3xl mb-16">
           <div className="inline-flex items-center gap-3 mb-8">
@@ -135,7 +135,7 @@ function WhyNow() {
             <span className="text-copper text-sm font-semibold tracking-[0.3em]">WHY NOW</span>
           </div>
           <h2 className="text-3xl md:text-5xl leading-[1.05] mb-8">
-            The infrastructure is <span className="text-gradient-copper">bleeding out.</span>
+            The infrastructure is <span className="text-copper">bleeding out.</span>
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed">
             Every day without trained intelligence-led investigators is another substation dark, another line down, another docket that will not survive court.
@@ -149,7 +149,7 @@ function WhyNow() {
           ].map((s) => (
             <div key={s.label} className="bg-background p-8">
               <s.icon className="h-6 w-6 text-copper mb-4" strokeWidth={1.5} />
-              <div className="text-4xl md:text-5xl font-bold text-gradient-copper mb-2">{s.stat}</div>
+              <div className="text-4xl md:text-5xl font-bold text-copper mb-2">{s.stat}</div>
               <div className="text-sm text-muted-foreground">{s.label}</div>
             </div>
           ))}
@@ -181,7 +181,7 @@ function FactsBar() {
 
 function Modules() {
   return (
-    <section className="py-28 lg:py-40 border-b border-border">
+    <section className="py-24 sm:py-32 border-b border-border">
       <div className="container-x">
         <div className="grid lg:grid-cols-[1fr_1.4fr] gap-16 lg:gap-20">
           <div className="lg:sticky lg:top-28 self-start">
@@ -190,7 +190,7 @@ function Modules() {
               <span className="text-copper text-sm font-semibold tracking-[0.3em]">MODULE BREAKDOWN</span>
             </div>
             <h2 className="text-3xl md:text-5xl leading-[1.05] mb-8">
-              Five days.<br /><span className="text-gradient-copper">Five modules. One method.</span>
+              Five days.<br /><span className="text-copper">Five modules. One method.</span>
             </h2>
             <div className="relative border border-copper/40 overflow-hidden mt-8">
               <img src={cableCourtImg} alt="Cable to courtroom" className="w-full h-64 object-cover" width={800} height={600} loading="lazy" />
@@ -200,7 +200,7 @@ function Modules() {
           </div>
           <div className="space-y-5">
             {modules.map((m) => (
-              <div key={m.n} className="rounded-2xl border border-foreground/10 bg-card/50 backdrop-blur-md card-lift p-6 lg:p-8 hover:border-copper/50 transition-colors group">
+              <div key={m.n} className="rounded-xl border border-foreground/10 bg-card/50 backdrop-blur-md card-lift p-6 lg:p-8 hover:border-copper/50 transition-colors group">
                 <div className="flex items-start gap-5">
                   <div className="shrink-0 h-11 w-11 border border-copper/50 flex items-center justify-center text-copper group-hover:bg-copper group-hover:text-primary-foreground transition-colors">
                     <m.icon className="h-5 w-5" strokeWidth={1.5} />
@@ -229,7 +229,7 @@ function Modules() {
 
 function Outcomes() {
   return (
-    <section className="py-28 lg:py-40 bg-secondary/20 border-b border-border relative">
+    <section className="py-24 sm:py-32 bg-secondary/20 border-b border-border relative">
       <div className="absolute inset-0 bg-grid opacity-20" />
       <div className="container-x relative grid lg:grid-cols-[1fr_1.1fr] gap-16 lg:gap-20 items-start">
         <div>
@@ -237,7 +237,7 @@ function Outcomes() {
             <span className="h-px w-10 bg-copper" />
             <span className="text-copper text-sm font-semibold tracking-[0.3em]">LEARNING OUTCOMES</span>
           </div>
-          <h2 className="text-3xl md:text-5xl leading-[1.05] mb-8">On day six, they can <span className="text-gradient-copper">do this.</span></h2>
+          <h2 className="text-3xl md:text-5xl leading-[1.05] mb-8">On day six, they can <span className="text-copper">do this.</span></h2>
           <p className="text-muted-foreground leading-relaxed mb-8">
             Every module ends with an applied exercise. Delegates leave with a workbook, templates for grading and operational orders, and a docket structure they can use on the first case back.
           </p>
@@ -267,7 +267,7 @@ function Outcomes() {
 
 function Enrol() {
   return (
-    <section className="py-28 lg:py-40 relative overflow-hidden">
+    <section className="py-24 sm:py-32 relative overflow-hidden">
       <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at center, color-mix(in oklab, var(--copper) 15%, transparent) 0%, transparent 65%)" }} />
       <div className="container-x relative max-w-3xl text-center">
         <div className="inline-flex items-center gap-3 mb-8 justify-center">
@@ -276,7 +276,7 @@ function Enrol() {
           <span className="h-px w-10 bg-copper" />
         </div>
         <h2 className="text-4xl md:text-6xl leading-[1.05] mb-8">
-          Book seats, commission a private cohort, or <span className="text-gradient-copper">embed the method.</span>
+          Book seats, commission a private cohort, or <span className="text-copper">embed the method.</span>
         </h2>
         <p className="text-muted-foreground text-lg mb-12 leading-relaxed">
           Cohort delivery for individual delegates. Private in-house delivery for units and SOE divisions. Direct contracts for embedded methodology across an internal investigations function.
@@ -326,7 +326,7 @@ function DynamicCycle() {
   }, [paused]);
   const step = cycleSteps[active];
   return (
-    <section className="py-28 lg:py-40 border-b border-border relative overflow-hidden">
+    <section className="py-24 sm:py-32 border-b border-border relative overflow-hidden">
       <div className="absolute inset-0 bg-grid opacity-20" />
       <div className="container-x relative">
         <div className="max-w-3xl mb-16">
@@ -335,7 +335,7 @@ function DynamicCycle() {
             <span className="text-copper text-sm font-semibold tracking-[0.3em]">THE METHOD · LIVE CYCLE</span>
           </div>
           <h2 className="text-3xl md:text-5xl leading-[1.05] mb-4">
-            Collect. Analyse. Plan. <span className="text-gradient-copper">Execute.</span>
+            Collect. Analyse. Plan. <span className="text-copper">Execute.</span>
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed">
             One continuous loop. Break any link and the case collapses. Hover a stage to hold it.
@@ -400,7 +400,7 @@ const faqs = [
 function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section className="py-28 lg:py-40 bg-secondary/20 border-b border-border">
+    <section className="py-24 sm:py-32 bg-secondary/20 border-b border-border">
       <div className="container-x grid lg:grid-cols-[1fr_1.6fr] gap-16 lg:gap-20">
         <div>
           <div className="inline-flex items-center gap-3 mb-8">
@@ -408,7 +408,7 @@ function FAQ() {
             <span className="text-copper text-sm font-semibold tracking-[0.3em]">FAQ</span>
           </div>
           <h2 className="text-3xl md:text-5xl leading-[1.05] mb-8">
-            The questions <span className="text-gradient-copper">commanders ask.</span>
+            The questions <span className="text-copper">commanders ask.</span>
           </h2>
           <p className="text-muted-foreground leading-relaxed">
             Straight answers. If something is not here, ask us directly in the enquiry form below.
@@ -501,7 +501,7 @@ function EnquiryForm() {
 
   if (status === "sent") {
     return (
-      <section id="enquire" className="py-28 lg:py-40 border-b border-border relative overflow-hidden">
+      <section id="enquire" className="py-24 sm:py-32 border-b border-border relative overflow-hidden">
         <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at center, color-mix(in oklab, var(--copper) 12%, transparent) 0%, transparent 60%)" }} />
         <div className="container-x relative max-w-2xl text-center animate-fade-in">
           <div className="h-16 w-16 mx-auto border border-copper bg-copper/10 flex items-center justify-center text-copper mb-8">
@@ -509,7 +509,7 @@ function EnquiryForm() {
           </div>
           <div className="text-[0.6rem] tracking-[0.3em] text-copper font-semibold mb-3">ENQUIRY RECEIVED</div>
           <h2 className="text-3xl md:text-5xl leading-[1.05] mb-8">
-            Thank you, {data.name.split(" ")[0]}. <span className="text-gradient-copper">We are on it.</span>
+            Thank you, {data.name.split(" ")[0]}. <span className="text-copper">We are on it.</span>
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed mb-8">
             A Noesis facilitator will respond to <span className="text-foreground font-semibold">{data.email}</span> within two working days
@@ -542,7 +542,7 @@ function EnquiryForm() {
   }
 
   return (
-    <section id="enquire" className="py-28 lg:py-40 border-b border-border">
+    <section id="enquire" className="py-24 sm:py-32 border-b border-border">
       <div className="container-x grid lg:grid-cols-[1fr_1.4fr] gap-16 lg:gap-20">
         <div>
           <div className="inline-flex items-center gap-3 mb-8">
@@ -550,7 +550,7 @@ function EnquiryForm() {
             <span className="text-copper text-sm font-semibold tracking-[0.3em]">COURSE ENQUIRY</span>
           </div>
           <h2 className="text-3xl md:text-5xl leading-[1.05] mb-8">
-            Tell us who's coming. <span className="text-gradient-copper">We'll shape the cohort.</span>
+            Tell us who's coming. <span className="text-copper">We'll shape the cohort.</span>
           </h2>
           <p className="text-muted-foreground leading-relaxed mb-8">
             Written responses within two working days. Prefer a conversation? Tick the call-back option and a facilitator will phone you directly.
@@ -561,7 +561,7 @@ function EnquiryForm() {
             <li className="flex gap-3"><CheckCircle2 className="h-4 w-4 text-copper mt-0.5 shrink-0" /> Written proposal for private cohorts within two working days.</li>
           </ul>
         </div>
-        <form onSubmit={submit} noValidate className="rounded-2xl border border-foreground/10 bg-card/50 backdrop-blur-md card-lift p-6 md:p-8 space-y-5">
+        <form onSubmit={submit} noValidate className="rounded-xl border border-foreground/10 bg-card/50 backdrop-blur-md card-lift p-6 md:p-8 space-y-5">
           <div className="grid md:grid-cols-2 gap-5">
             <EField label="Full name" value={data.name} onChange={(v) => update("name", v)} error={errors.name} maxLength={100} required />
             <EField label="Work email" type="email" value={data.email} onChange={(v) => update("email", v)} error={errors.email} maxLength={255} required />

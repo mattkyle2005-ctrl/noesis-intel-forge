@@ -126,7 +126,6 @@ function Hero() {
   return (
     <section className="relative overflow-hidden bg-spotlight">
       <div className="absolute inset-0 bg-grid opacity-40" />
-      <div className="absolute left-1/2 top-0 -translate-x-1/2 h-[32rem] w-[32rem] bg-primary/10 blur-[120px] rounded-full pointer-events-none" />
       <div className="container-x relative pt-44 lg:pt-56 pb-28">
         <div className="max-w-4xl mx-auto text-center animate-fade-up">
           <div className="inline-flex items-center gap-2 mb-10 rounded-full border border-primary/20 bg-primary/10 backdrop-blur-xl px-4 py-1.5 font-mono text-xs text-primary">
@@ -233,7 +232,7 @@ function TerminalSim() {
 
 function MeaningStrip() {
   return (
-    <section className="py-28 lg:py-36 border-y border-border bg-secondary/20 relative overflow-hidden">
+    <section className="py-24 sm:py-32 border-y border-border bg-secondary/20 relative overflow-hidden">
       <div className="absolute inset-0 bg-grid opacity-20" />
       <div className="container-x relative grid md:grid-cols-[auto_1fr] gap-10 lg:gap-16 items-center">
         <div className="flex items-center gap-5">
@@ -246,7 +245,7 @@ function MeaningStrip() {
           </div>
         </div>
         <p className="text-lg md:text-2xl leading-relaxed text-foreground">
-          <span className="text-muted-foreground">Noun.</span> The act of thinking, the process of understanding, <span className="text-gradient-copper font-semibold">and pure cognition.</span>
+          <span className="text-muted-foreground">Noun.</span> The act of thinking, the process of understanding, <span className="text-copper font-semibold">and pure cognition.</span>
           <span className="block text-sm text-muted-foreground mt-4">
             The name is the method. Before the raid, before the arrest, before the docket — thinking.
           </span>
@@ -310,7 +309,7 @@ const problems = [
 
 function Problem() {
   return (
-    <section id="problem" className="py-28 lg:py-40 border-t border-border relative">
+    <section id="problem" className="py-24 sm:py-32 border-t border-border relative">
       <div className="absolute inset-0 pointer-events-none opacity-30">
         <img src={impactImg} alt="" aria-hidden className="absolute right-0 top-0 h-full w-1/2 object-cover" width={1000} height={1000} loading="lazy" />
         <div className="absolute inset-0" style={{ background: "linear-gradient(90deg, var(--background) 45%, transparent 100%)" }} />
@@ -323,7 +322,7 @@ function Problem() {
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-8">
             R45 BILLION LOST A YEAR.<br />
-            <span className="text-gradient-copper">Everyone is reacting.</span>
+            <span className="text-copper">Everyone is reacting.</span>
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed">
             South Africa loses roughly R45 billion a year to infrastructure theft and vandalism. The figures break down differently for every audience — but the common thread is the same. Nobody is trained to get ahead of it.
@@ -396,7 +395,7 @@ const steps = [
 
 function Approach() {
   return (
-    <section id="approach" className="py-28 lg:py-40 bg-secondary/30 border-y border-border relative">
+    <section id="approach" className="py-24 sm:py-32 bg-secondary/30 border-y border-border relative">
       <div className="absolute inset-0 bg-grid opacity-20" />
       <div className="container-x relative">
         <div className="grid lg:grid-cols-[1fr_1.4fr] gap-16 lg:gap-20">
@@ -407,7 +406,7 @@ function Approach() {
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-8">
               One connected<br />
-              <span className="text-gradient-copper">operational cycle.</span>
+              <span className="text-copper">operational cycle.</span>
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed max-w-md mb-8">
               Not tactics in isolation. Not forensics in isolation. Not legal theory in isolation. The full cycle, taught as one method.
@@ -425,7 +424,7 @@ function Approach() {
                   <div className="shrink-0 h-11 w-11 border border-copper/50 bg-background flex items-center justify-center text-copper relative z-10 group-hover:bg-copper group-hover:text-primary-foreground transition-colors">
                     <s.icon className="h-5 w-5" strokeWidth={1.5} />
                   </div>
-                  <div className="flex-1 rounded-2xl border border-foreground/10 bg-card/50 backdrop-blur-md card-lift p-6 group-hover:border-copper/50 transition-colors">
+                  <div className="flex-1 rounded-xl border border-foreground/10 bg-card/50 backdrop-blur-md card-lift p-6 group-hover:border-copper/50 transition-colors">
                     <div className="flex items-baseline gap-3 mb-2">
                       <span className="text-[0.6rem] tracking-[0.3em] text-copper font-semibold">STEP {s.n}</span>
                       <span className="h-px flex-1 bg-border" />
@@ -466,7 +465,7 @@ const audiences = [
 
 function Audiences() {
   return (
-    <section id="audiences" className="py-28 lg:py-40 section-rule">
+    <section id="audiences" className="py-24 sm:py-32 section-rule">
       <div className="container-x">
         <div className="flex flex-wrap items-end justify-between gap-8 mb-16">
           <div>
@@ -476,14 +475,14 @@ function Audiences() {
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl leading-[1.05]">
               Three mandates.<br />
-              <span className="text-gradient-copper">One methodology.</span>
+              <span className="text-copper">One methodology.</span>
             </h2>
           </div>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
           {audiences.map((a) => (
-            <div key={a.tag} className="group rounded-2xl border border-foreground/10 bg-card/50 backdrop-blur-md card-lift p-8 hover:border-copper/60 hover:-translate-y-1 transition-all">
+            <div key={a.tag} className="group rounded-xl border border-foreground/10 bg-card/50 backdrop-blur-md card-lift p-8 hover:border-copper/60 hover:-translate-y-1 transition-all">
               <div className="flex items-center justify-between mb-8">
                 <div className="h-12 w-12 border border-copper/40 flex items-center justify-center text-copper group-hover:bg-copper group-hover:text-primary-foreground transition-colors">
                   <a.icon className="h-6 w-6" strokeWidth={1.5} />
@@ -522,8 +521,7 @@ function RiskEstimator() {
   const compliance = Math.min(100, Math.round(sector.compliance + riskIdx * 8));
 
   return (
-    <section id="estimator" className="py-28 lg:py-40 bg-secondary/20 border-y border-border relative overflow-hidden">
-      <div className="absolute -top-40 -left-40 h-96 w-96 rounded-full bg-copper/10 blur-3xl" />
+    <section id="estimator" className="py-24 sm:py-32 bg-secondary/20 border-y border-border relative overflow-hidden">
       <div className="absolute inset-0 bg-grid opacity-20" />
       <div className="container-x relative">
         <div className="max-w-3xl mb-16">
@@ -532,14 +530,14 @@ function RiskEstimator() {
             <span className="text-copper text-sm font-semibold tracking-[0.3em]">KNOW YOUR EXPOSURE</span>
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-8">
-            SA Infrastructure <span className="text-gradient-copper">Loss Estimator.</span>
+            SA Infrastructure <span className="text-copper">Loss Estimator.</span>
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed">
             An illustrative planning tool for municipal managers and security heads — not an audited figure. Select a sector and site risk level to see indicative exposure.
           </p>
         </div>
 
-        <div className="rounded-2xl border border-foreground/10 bg-card/50 backdrop-blur-md overflow-hidden card-lift">
+        <div className="rounded-xl border border-foreground/10 bg-card/50 backdrop-blur-md overflow-hidden card-lift">
           <div className="grid md:grid-cols-2 gap-10 p-8 lg:p-10 border-b border-border">
             <div>
               <div className="text-[0.6rem] tracking-[0.3em] text-copper font-semibold mb-4">SECTOR</div>
@@ -587,15 +585,15 @@ function RiskEstimator() {
               <div className="flex items-center gap-2 text-[0.6rem] tracking-[0.3em] text-copper font-semibold mb-3">
                 <Gauge className="h-3.5 w-3.5" /> ANNUAL EXPOSURE
               </div>
-              <div className="text-3xl font-bold text-gradient-copper">R{exposure}M</div>
+              <div className="text-3xl font-bold text-copper">R{exposure}M</div>
             </div>
             <div className="bg-background p-6 lg:p-8">
               <div className="text-[0.6rem] tracking-[0.3em] text-copper font-semibold mb-3">DOWNTIME IMPACT</div>
-              <div className="text-3xl font-bold text-gradient-copper">{downtime} days/yr</div>
+              <div className="text-3xl font-bold text-copper">{downtime} days/yr</div>
             </div>
             <div className="bg-background p-6 lg:p-8">
               <div className="text-[0.6rem] tracking-[0.3em] text-copper font-semibold mb-3">COMPLIANCE RISK</div>
-              <div className="text-3xl font-bold text-gradient-copper">{compliance}/100</div>
+              <div className="text-3xl font-bold text-copper">{compliance}/100</div>
             </div>
           </div>
         </div>
@@ -629,8 +627,7 @@ const programmeIncludes = [
 
 function Programme() {
   return (
-    <section id="programme" className="py-28 lg:py-40 border-y border-border bg-secondary/20 relative overflow-hidden">
-      <div className="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-copper/10 blur-3xl" />
+    <section id="programme" className="py-24 sm:py-32 border-y border-border bg-secondary/20 relative overflow-hidden">
       <div className="container-x relative grid lg:grid-cols-[1.1fr_1fr] gap-16 lg:gap-20 items-start">
         <div>
           <div className="inline-flex items-center gap-3 mb-8">
@@ -638,7 +635,7 @@ function Programme() {
             <span className="text-copper text-sm font-semibold tracking-[0.3em]">FLAGSHIP PROGRAMME</span>
           </div>
           <h2 className="text-3xl md:text-5xl leading-[1.05] mb-8">
-            Intelligence-Led Metals Theft <span className="text-gradient-copper">Investigations & Enforcement.</span>
+            Intelligence-Led Metals Theft <span className="text-copper">Investigations & Enforcement.</span>
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed mb-12">
             A 5-day, NQF-aligned programme. The first Noesis programme to reach cohort delivery, and the operational blueprint for everything that follows.
@@ -724,7 +721,7 @@ function Credibility() {
   }, []);
 
   return (
-    <section id="credibility" className="py-28 lg:py-40 relative overflow-hidden border-b border-border">
+    <section id="credibility" className="py-24 sm:py-32 relative overflow-hidden border-b border-border">
       <div className="absolute inset-0 opacity-25">
         <img src={cableCourtImg} alt="" aria-hidden className="h-full w-full object-cover" width={1600} height={800} loading="lazy" />
         <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, var(--background) 0%, transparent 40%, var(--background) 100%)" }} />
@@ -737,7 +734,7 @@ function Credibility() {
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-8">
             Built by practitioners.<br />
-            <span className="text-gradient-copper">Written for the courtroom.</span>
+            <span className="text-copper">Written for the courtroom.</span>
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed">
             Every module is anchored in South African law and real operational experience — the 5×5×5 grading system, POCA, chain-of-custody discipline, and dockets that have to survive cross-examination.
@@ -749,7 +746,7 @@ function Credibility() {
             const v = useCountUp(s.n, visible);
             return (
               <div key={s.label} className="bg-background p-8">
-                <div className="text-4xl md:text-5xl font-bold text-gradient-copper mb-2">
+                <div className="text-4xl md:text-5xl font-bold text-copper mb-2">
                   {s.prefix}{v}{s.suffix}
                 </div>
                 <div className="text-xs text-muted-foreground leading-relaxed">{s.label}</div>
@@ -801,7 +798,7 @@ const trustFacts = [
 
 function Standards() {
   return (
-    <section className="py-28 lg:py-40 border-b border-border relative">
+    <section className="py-24 sm:py-32 border-b border-border relative">
       <div className="container-x relative">
         <div className="max-w-3xl mb-16">
           <div className="inline-flex items-center gap-3 mb-8">
@@ -809,7 +806,7 @@ function Standards() {
             <span className="text-copper text-sm font-semibold tracking-[0.3em]">STANDARDS &amp; COMPLIANCE</span>
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-8">
-            Alignment we can prove.<br /><span className="text-gradient-copper">Not credentials we can't.</span>
+            Alignment we can prove.<br /><span className="text-copper">Not credentials we can't.</span>
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl">
             Noesis is pursuing SASSETA accreditation as a non-standard learning programme and is not yet accredited. Every legal framework below is cited by section number and checked against the actual Act text.
@@ -994,11 +991,11 @@ function DropZone() {
   );
 }
 
-const bentoCard = "bg-white/[0.03] backdrop-blur-md border border-white/10 hover:border-primary/40 transition-all duration-300 rounded-2xl p-6";
+const bentoCard = "bg-white/[0.03] backdrop-blur-md border border-white/10 hover:border-primary/40 transition-all duration-300 rounded-xl p-6";
 
 function WhyNoesis() {
   return (
-    <section className="py-28 lg:py-40 section-rule">
+    <section className="py-24 sm:py-32 section-rule">
       <div className="container-x">
         <div className="max-w-3xl mb-16">
           <div className="inline-flex items-center gap-3 mb-8">
@@ -1006,7 +1003,7 @@ function WhyNoesis() {
             <span className="text-copper text-sm font-mono font-semibold tracking-[0.3em]">CAPABILITIES</span>
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
-            The only method that goes from <span className="text-gradient-copper">community tip to conviction.</span>
+            The only method that goes from <span className="text-copper">community tip to conviction.</span>
           </h2>
         </div>
 
@@ -1055,7 +1052,7 @@ function WhyNoesis() {
           </div>
         </div>
 
-        <div className="mt-6 relative rounded-2xl border border-foreground/10 overflow-hidden card-lift">
+        <div className="mt-6 relative rounded-xl border border-foreground/10 overflow-hidden card-lift">
           <img src={trainingImg} alt="Delegates working geospatial maps in a briefing room" className="w-full h-[320px] object-cover" width={1400} height={1000} loading="lazy" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
           <div className="absolute bottom-6 left-6 right-6">
@@ -1088,7 +1085,7 @@ function Facilitators() {
     },
   ];
   return (
-    <section id="about" className="py-28 lg:py-40 border-y border-border bg-secondary/20">
+    <section id="about" className="py-24 sm:py-32 border-y border-border bg-secondary/20">
       <div className="container-x">
         <div className="max-w-3xl mb-16">
           <div className="inline-flex items-center gap-3 mb-8">
@@ -1096,7 +1093,7 @@ function Facilitators() {
             <span className="text-copper text-sm font-semibold tracking-[0.3em]">ABOUT · CO-FOUNDERS</span>
           </div>
           <h2 className="text-4xl md:text-5xl leading-[1.05] mb-8">
-            Built by practitioners. <span className="text-gradient-copper">Taught by them too.</span>
+            Built by practitioners. <span className="text-copper">Taught by them too.</span>
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed">
             Noesis Training was founded by three operators who have worked the full arc of infrastructure crime — from first informant to final conviction. Every module is written from that experience.
@@ -1104,7 +1101,7 @@ function Facilitators() {
         </div>
         <div className="grid md:grid-cols-3 gap-8">
           {people.map((p) => (
-            <div key={p.name} className="rounded-2xl border border-foreground/10 bg-card/50 backdrop-blur-md card-lift p-8 hover:border-copper/50 transition-colors group">
+            <div key={p.name} className="rounded-xl border border-foreground/10 bg-card/50 backdrop-blur-md card-lift p-8 hover:border-copper/50 transition-colors group">
               <div className="h-16 w-16 border border-copper/40 flex items-center justify-center text-copper text-lg font-bold mb-8 group-hover:bg-copper group-hover:text-primary-foreground transition-colors">
                 {p.name.split(" ").map((n) => n[0]).join("")}
               </div>
@@ -1121,10 +1118,9 @@ function Facilitators() {
 
 function FinalCTA() {
   return (
-    <section className="py-28 lg:py-36">
+    <section className="py-24 sm:py-32">
       <div className="container-x">
-        <div className="relative overflow-hidden rounded-2xl border border-foreground/10 bg-black/70 px-6 py-20 lg:py-20 text-center">
-          <div className="absolute left-1/2 top-0 -translate-x-1/2 h-[28rem] w-[28rem] bg-primary/10 blur-[120px] rounded-full pointer-events-none" />
+        <div className="relative overflow-hidden rounded-xl border border-foreground/10 bg-black/70 px-6 py-20 lg:py-20 text-center">
           <div className="absolute inset-0 bg-grid opacity-20" />
           <div className="relative max-w-2xl mx-auto">
             <div className="font-mono text-xs tracking-[0.3em] text-primary mb-4">FLAGSHIP PROGRAMME · ENQUIRIES OPEN</div>
@@ -1165,7 +1161,7 @@ function FinalCTA() {
 function Contact() {
   const [sent, setSent] = useState(false);
   return (
-    <section id="contact" className="py-28 lg:py-40 relative overflow-hidden">
+    <section id="contact" className="py-24 sm:py-32 relative overflow-hidden">
       <div className="absolute inset-0 bg-grid opacity-25" />
       <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at center, color-mix(in oklab, var(--copper) 12%, transparent) 0%, transparent 65%)" }} />
       <div className="container-x relative grid lg:grid-cols-[1fr_1fr] gap-16 lg:gap-20 items-start">
@@ -1175,7 +1171,7 @@ function Contact() {
             <span className="text-copper text-sm font-semibold tracking-[0.3em]">ENQUIRE</span>
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-8">
-            Request a programme <span className="text-gradient-copper">briefing.</span>
+            Request a programme <span className="text-copper">briefing.</span>
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed mb-12">
             Tell us about your unit, division or organisation. We'll come back with dates, a full outline, and cohort or in-house options.
