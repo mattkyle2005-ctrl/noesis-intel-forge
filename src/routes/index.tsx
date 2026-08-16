@@ -208,7 +208,7 @@ function TerminalSim() {
   }, []);
 
   return (
-    <div className="mt-16 lg:mt-20 max-w-4xl mx-auto rounded-xl border border-primary/20 bg-black/60 backdrop-blur-md shadow-[0_0_50px_rgba(212,116,82,0.15)] overflow-hidden">
+    <div className="mt-16 lg:mt-20 max-w-4xl mx-auto rounded-xl border border-white/10 bg-black/50 backdrop-blur-md overflow-hidden">
       <div className="flex items-center gap-2 px-4 py-3 border-b border-primary/20">
         <span className="h-2 w-2 rounded-full bg-primary/70" />
         <span className="h-2 w-2 rounded-full bg-foreground/15" />
