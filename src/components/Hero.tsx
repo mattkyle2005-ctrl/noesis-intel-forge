@@ -141,13 +141,14 @@ function Console() {
             <span className="h-2.5 w-2.5 rounded-full bg-foreground/15" />
             <span className="h-2.5 w-2.5 rounded-full bg-foreground/15" />
           </div>
+          <span className="font-mono text-[0.65rem] tabular text-copper">14ms</span>
           <div className="hidden sm:flex flex-1 items-center justify-center">
             <div className="flex w-full max-w-xs items-center gap-2 rounded-md border border-white/[0.08] bg-white/[0.03] px-3 py-1">
               <Search className="h-3 w-3 text-muted-foreground" strokeWidth={1.5} />
               <span className="font-mono text-[0.65rem] tracking-[0.15em] text-muted-foreground">noesis://forge/console</span>
             </div>
           </div>
-          <span className="ml-auto font-mono text-[0.65rem] tabular text-copper">14ms</span>
+          <span className="ml-auto font-mono text-[0.6rem] tracking-[0.2em] text-muted-foreground">LIVE</span>
         </div>
 
         <div className="grid sm:grid-cols-[168px_1fr]">
