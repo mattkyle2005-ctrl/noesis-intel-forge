@@ -128,27 +128,28 @@ function Hero() {
       <div className="absolute inset-0 bg-grid opacity-40" />
       <div className="container-x relative pt-44 lg:pt-56 pb-28">
         <div className="max-w-4xl mx-auto text-center animate-fade-up">
-          <div className="inline-flex items-center gap-2 mb-10 rounded-full border border-primary/20 bg-primary/10 backdrop-blur-xl px-4 py-1.5 font-mono text-xs text-primary">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full rounded-full bg-primary opacity-75 animate-ping" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
+          <div className="inline-flex items-center gap-2.5 mb-10 rounded-full border border-white/10 bg-white/[0.03] px-4 py-1.5 font-mono text-[0.7rem] tracking-[0.18em] text-muted-foreground">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="absolute inline-flex h-full w-full rounded-full bg-copper opacity-60 animate-ping" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-copper" />
             </span>
-            [ FORGE ENGINE v2.4 • LIVE TELEMETRY ]
+            <span className="text-copper">[SYS]</span> INTELLIGENCE-LED CAPABILITY DEVELOPMENT · SOUTH AFRICA
           </div>
-          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-foreground mb-8">
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-[-0.04em] leading-[1.05] text-foreground mb-8">
             Empowering Professionals.<br />Protecting Communities.
           </h1>
-          <p className="text-muted-foreground text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
+          <p className="text-muted-foreground text-lg sm:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
             Noesis turns raw signal into court-ready action — collection, analysis, planning and execution running as one continuous intelligence loop.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link to="/courses/metals-theft" className="group inline-flex items-center gap-3 rounded-full bg-copper text-primary-foreground px-7 py-4 text-sm font-semibold tracking-wide hover:bg-bronze glow-cta">
-              EXPLORE THE FLAGSHIP PROGRAMME <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          <div className="flex flex-wrap justify-center gap-3">
+            <Link to="/courses/metals-theft" className="group inline-flex items-center gap-3 rounded-full bg-copper text-primary-foreground px-7 py-3.5 text-sm font-semibold tracking-tight hover:bg-bronze transition-colors">
+              Explore the flagship programme <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
-            <a href="/noesis-brochure.pdf" download className="inline-flex items-center gap-3 rounded-full border border-copper/50 px-7 py-4 text-sm font-semibold tracking-wide text-foreground hover:bg-copper/10 hover:text-copper transition-colors">
-              <Download className="h-4 w-4" /> DOWNLOAD BROCHURE
+            <a href="/noesis-brochure.pdf" download className="inline-flex items-center gap-3 rounded-full border border-white/12 px-7 py-3.5 text-sm font-semibold tracking-tight text-muted-foreground hover:text-foreground hover:border-white/25 transition-colors">
+              <Download className="h-4 w-4" /> Download brochure
             </a>
           </div>
+
         </div>
 
         <TerminalSim />
